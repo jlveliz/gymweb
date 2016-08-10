@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace GymWeb\Events;
 
 abstract class Event
 {

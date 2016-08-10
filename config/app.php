@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        GymWeb\Providers\AppServiceProvider::class,
+        GymWeb\Providers\AuthServiceProvider::class,
+        GymWeb\Providers\EventServiceProvider::class,
+        GymWeb\Providers\RouteServiceProvider::class,
 
     ],
 
