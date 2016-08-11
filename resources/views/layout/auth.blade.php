@@ -14,6 +14,7 @@
 <body style="background:#F7F7F7;">
 	@yield('content')
 	<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 	@yield('js')
 </body>
 </html>

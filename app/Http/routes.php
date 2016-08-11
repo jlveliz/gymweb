@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/home',['middleware' => 'auth',function(){
-	return "hola";
+	return view('home.index');
 }]);
