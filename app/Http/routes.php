@@ -11,6 +11,13 @@
 |
 */
 
+Route::auth();
+
 Route::get('/', function () {
-    return view('auth.login');
+	if (Auth::guest()) return view('auth.login');
+	return redirect('/home');
 });
+
+Route::get('/home',['middleware' => 'auth',function(){
+	return "hola";
+}]);
