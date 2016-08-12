@@ -15,15 +15,15 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                     </button>
                     @foreach ($errors->all() as $error)
-                      {!!$error!!} <br>
+                      <strong style="color: #fff">{!!$error!!}</strong> <br>
                     @endforeach
                   </div>
             @endif
               <div>
-              <input type="text" class="form-control" placeholder="Username" name="username" id="username" required="" />
+              <input type="text" class="form-control" placeholder="Usuario" name="username" id="username" required="" />
             </div>
             <div>
-              <input type="password" class="form-control" placeholder="Password" name="password" id="password" required="" />
+              <input type="password" class="form-control" placeholder="Clave" name="password" id="password" required="" />
             </div>
             <div>
               <button type="submit" class="btn btn-default">Ingresar</button>
