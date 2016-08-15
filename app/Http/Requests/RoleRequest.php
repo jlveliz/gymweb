@@ -35,6 +35,7 @@ class RoleRequest extends Request
                     'name' => 'required|max:20|unique:permission',
                     'display_name' => 'required|max:30|unique:permission',
                     'description' => 'max:255',
+                    'permissions' => 'required',
                 ];
             }
             case 'PUT':
@@ -43,6 +44,7 @@ class RoleRequest extends Request
                     'name' => 'required|max:20|unique:permission,name,'.$this->get('key'),
                     'display_name' => 'required|max:30|unique:permission,display_name,'.$this->get('key'),
                     'description' => 'max:255',
+                    'permissions' => 'required',
                 ];   
             }
             default:
@@ -70,6 +72,7 @@ class RoleRequest extends Request
                     'display_name.max'=>'Nombre a mostrar del rol debe tener máximo 30 caracteres',
                     'display_name.unique'=>'El nombre a mostrar del rol ya existe',
                     'description.max'=>'La descripción del rol debe tener máximo 30 caracteres',
+                    'permissions.required'=>'Debe escoger al menos un permiso',
                 ];
             }
             case 'PUT':
@@ -81,6 +84,7 @@ class RoleRequest extends Request
                     'display_name.max'=>'Nombre a mostrar del rol debe tener máximo 30 caracteres',
                     'display_name.unique'=>'El nombre a mostrar del rol ya existe',
                     'description.max'=>'La descripción del rol debe tener máximo 30 caracteres',
+                    'permissions.required'=>'Debe escoger al menos un permiso',
                 ];
             default:
                 # code...

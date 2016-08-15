@@ -43,6 +43,9 @@ class RoleRepository implements RoleRepositoryInterface
 		$role = new Role();
 		$role->fill($data);
 		if ($role->save()) {
+			foreach ($data['permissions'] as $key => $permission) {
+				$role->attachPermission($permission);
+			}
 			$key = $role->getKey();
 			return  $this->find($key);
 		} 

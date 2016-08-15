@@ -8,16 +8,20 @@ use GymWeb\Http\Requests\RoleRequest;
 
 use GymWeb\RepositoryInterface\RoleRepositoryInterface; 
 
+use GymWeb\RepositoryInterface\PermissionRepositoryInterface; 
+
 use Redirect;
 
 class RoleController extends Controller
 {
     
 	public $role;
+	public $permission;
 
-    public function __construct(RoleRepositoryInterface $role)
+    public function __construct(RoleRepositoryInterface $role, PermissionRepositoryInterface $permission)
     {
     	$this->role = $role;
+    	$this->permission = $permission;
     }
 
     /**
@@ -41,7 +45,9 @@ class RoleController extends Controller
 	 */
 	public function create()
 	{
-		return view('role.create');
+		$permissions = $this->permission->enum();
+
+		return view('role.create',compact('permissions'));
 	}
 
 	/**
