@@ -155,6 +155,7 @@ return [
         GymWeb\Providers\AuthServiceProvider::class,
         GymWeb\Providers\EventServiceProvider::class,
         GymWeb\Providers\RouteServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -201,6 +202,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        // if use middleware
+        // 'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        // 'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        // 'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
     ],
 
