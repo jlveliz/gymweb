@@ -3,6 +3,7 @@
 namespace GymWeb\Models;
 
 use Zizaco\Entrust\EntrustPermission;
+use Carbon\Carbon;
 
 class Permission extends EntrustPermission
 {
@@ -22,4 +23,22 @@ class Permission extends EntrustPermission
     protected $fillable = [
         'name', 'display_name', 'description'
     ];
+
+    public function __construct(){
+
+        setlocale(LC_TIME, \Config('app.lang'));
+
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        $date = Carbon::parse($value);
+        return $date->formatLocalized('%A %d %B %Y - %H:%M');
+    } 
+
+    public function getUpdatedAtAttribute($value)
+    {
+        $date = Carbon::parse($value);
+        return $date->formatLocalized('%A %d %B %Y - %H:%M');
+    }
 }

@@ -28,5 +28,11 @@ class AppServiceProvider extends ServiceProvider
             'GymWeb\RepositoryInterface\UserRepositoryInterface',
             'GymWeb\Repository\UserRepository'
         );
+
+        //PERMISSIONS
+        $this->app->bind(
+            'GymWeb\RepositoryInterface\PermissionRepositoryInterface',
+            'GymWeb\Repository\PermissionRepository'
+        );
     }
 }
