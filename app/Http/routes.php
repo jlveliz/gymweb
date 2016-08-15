@@ -18,6 +18,12 @@ Route::get('/', function () {
 	return redirect('/home');
 });
 
-Route::get('/home',['middleware' => 'auth',function(){
-	return view('home.index');
-}]);
+Route::group(['middleware'=>'auth'],function(){
+	
+	Route::get('/home',function(){
+		return view('home.index');
+	});
+	
+	Route::resource('users','UserController',['except'=>'show']);
+	
+});

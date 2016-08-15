@@ -14,10 +14,13 @@ class UsersTableSeeder extends Seeder
     {
         $hash = Hash::make("admin");
 
+        $user = User::find(4);
+        $user->password = $hash;
+        $user->save();
+
         $data = [
-        	'username' => 'admin',
-        	'password' => $hash,
+            'username' => 'admin',
+            'password' => $hash,
         ];
-        User::create($data);
     }
 }
