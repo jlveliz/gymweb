@@ -26,5 +26,6 @@ Route::group(['middleware'=>'auth'],function(){
 	
 	Route::resource('users','UserController',['except'=>'show']);
 	Route::resource('permissions','PermissionController',['except'=>'show']);
+	Route::resource('roles','RoleController',['except'=>'show']);
 	
 });
