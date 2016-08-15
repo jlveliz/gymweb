@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','Creación de Usuarios /')
+@section('title','Edición de Usuarios /')
 
 @section('title-page')
 	<h3>Usuarios <small> personas que administran el sistema.</small></h3>
@@ -11,7 +11,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Crear <small>Usuarios</small></h2>
+					<h2>Editar <small>Usuarios</small></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
