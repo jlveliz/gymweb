@@ -43,6 +43,16 @@
 						<h4>Roles</h4>
 						<div class="clearfix"></div>
 						<div class="ln_solid"></div>
+						<div class="form-group col-md-12 col-sm-12 col-xs-12 @if($errors->has('roles')) has-error @endif">
+							@if ($errors->has('roles')) <p class="help-block">{{ $errors->first('roles') }}</p> @endif
+							@foreach ($roles as $role)
+								<div class="checkbox-inline">
+									<label><input type="checkbox" value="{{$role->id}}" name="roles[]">
+    									{{$role->display_name}}
+  									</label>
+								</div>
+							@endforeach
+						</div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
 	                        	<a href="{{ route('users.index') }}" class="btn btn-primary">Cancelar</a>

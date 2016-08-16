@@ -1,3 +1,4 @@
+	
 @extends('layout.master')
 
 @section('title','Listado de Usuarios /')
@@ -96,3 +97,4 @@
 	});
  </script>
 @endsection
+

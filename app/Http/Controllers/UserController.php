@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use GymWeb\Http\Requests\UserRequest;
 
-use GymWeb\RepositoryInterface\UserRepositoryInterface; 
+use GymWeb\RepositoryInterface\UserRepositoryInterface;
+
+use GymWeb\RepositoryInterface\RoleRepositoryInterface;
 
 use Response;
 
@@ -17,9 +19,12 @@ class UserController extends Controller
     
 	public $user;
 
-    public function __construct(UserRepositoryInterface $user)
+	public $role;
+
+    public function __construct(UserRepositoryInterface $user, RoleRepositoryInterface $role)
     {
     	$this->user = $user;
+    	$this->role = $role;
     }
 
     /**
@@ -43,7 +48,8 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		return view('user.create');
+		$roles = $this->role->enum();
+		return view('user.create',compact('roles'));
 	}
 
 	/**
@@ -78,14 +84,7 @@ class UserController extends Controller
 	 */
 	public function show($id)
 	{
-		try {
-			$user = $this->user->find($id);
-			return Response::make($user,200);
-		} catch (UserException $e) {
-			return Response::make(['message'=>$e->getMessage()],$e->getCode());
-		}catch (\Exception $e) {
-			return Response::make(['message'=>$e->getMessage()],$e->getCode());
-		}
+		
 	}
 
 	/**
@@ -97,7 +96,20 @@ class UserController extends Controller
 	public function edit($id)
 	{
 		$user = $this->user->find($id);
-		return view('user.edit',['user'=>$user]);
+		$roles = $this->role->enum();
+
+		foreach ($roles as $key => $role) {
+			foreach ($user->roles as $key => $rolUser) {
+				if ($rolUser->id == $role->id) {
+					$role->checked = true;
+				} 
+			}
+		}
+
+		return view('user.edit',[
+			'user'=>$user,
+			'roles'=>$roles
+			]);
 	}
 
 	/**

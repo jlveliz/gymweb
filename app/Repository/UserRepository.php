@@ -55,6 +55,7 @@ class UserRepository implements UserRepositoryInterface
 
 		$user->fill($data);
 		if ($user->save()) {
+			$user->roles()->sync($data['roles']);
 			$key = $user->getKey();
 			return  $this->find($key);
 		} 
@@ -75,6 +76,7 @@ class UserRepository implements UserRepositoryInterface
 				$user->password = $data['password']; 
    			}
 			if($user->update()){
+				$user->roles()->sync($data['roles']);
 				$key = $user->getKey();
 				return $this->find($key);
 			}

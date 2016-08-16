@@ -45,9 +45,11 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \GymWeb\Http\Middleware\Authenticate::class,
+        'role' => \GymWeb\Http\Middleware\RoleMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \GymWeb\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
     ];
 }

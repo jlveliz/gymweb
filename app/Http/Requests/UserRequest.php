@@ -35,6 +35,7 @@ class UserRequest extends Request
                     'username' => 'required|max:30|unique:user',
                     'password' => 'required',
                     'password_repeat' => 'required|same:password',
+                    'roles' => 'required',
                 ];
             }
             case 'PUT':
@@ -43,6 +44,7 @@ class UserRequest extends Request
                     'username' => 'required|max:30|unique:user,username,'.$this->get('key'),
                     'password' => 'required_with:password',
                     'password_repeat' => 'required_with:password|same:password',
+                    'roles' => 'required',
                 ];   
             }
             default:
@@ -69,6 +71,7 @@ class UserRequest extends Request
                     'password.required'=>'Clave requerida',
                     'password_repeat.required'=>'Confirmacion de clave requerida',
                     'password_repeat.same'=>'Las claves no coinciden',
+                    'roles.required'=>'Debe escoger al menos un rol',
                 ];
             }
             case 'PUT':
@@ -79,6 +82,7 @@ class UserRequest extends Request
                     'password.required_with' =>'Clave requerida',
                     'password_repeat.required_with'=>'Confirmacion de clave requerida',
                     'password_repeat.same'=>'Las claves no coinciden',
+                    'roles.required'=>'Debe escoger al menos un rol',
                 ];
             default:
                 # code...

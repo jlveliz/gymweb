@@ -97,8 +97,8 @@ class RoleController extends Controller
 		$permissions = $this->permission->enum();
 
 		foreach ($permissions as $key => $permission) {
-			foreach ($role->perms as $key => $permUser) {
-				if ($permUser->id == $permission->id) {
+			foreach ($role->perms as $key => $permRol) {
+				if ($permRol->id == $permission->id) {
 					$permission->checked = true;
 				} 
 			}
