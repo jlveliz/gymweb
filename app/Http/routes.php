@@ -23,6 +23,8 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::get('/home',function(){
 		return view('home.index');
 	});
+
+	Route::resource('clients','ClientController',['except'=>'show']);
 });
 
 Route::group(['middleware'=>['auth','role:administrator']],function(){

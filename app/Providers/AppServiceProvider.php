@@ -40,5 +40,11 @@ class AppServiceProvider extends ServiceProvider
             'GymWeb\RepositoryInterface\RoleRepositoryInterface',
             'GymWeb\Repository\RoleRepository'
         );
+
+        //CLIENTS
+        $this->app->bind(
+            'GymWeb\RepositoryInterface\ClientRepositoryInterface',
+            'GymWeb\Repository\ClientRepository'
+        );
     }
 }
