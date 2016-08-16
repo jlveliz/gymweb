@@ -43,9 +43,7 @@ class RoleRepository implements RoleRepositoryInterface
 		$role = new Role();
 		$role->fill($data);
 		if ($role->save()) {
-			foreach ($data['permissions'] as $key => $permission) {
-				$role->attachPermission($permission);
-			}
+			$role->perms()->sync($data['permissions']);
 			$key = $role->getKey();
 			return  $this->find($key);
 		} 
@@ -60,6 +58,7 @@ class RoleRepository implements RoleRepositoryInterface
 		if ($role) {
 			$role->fill($data);
 			if($role->update()){
+				$role->perms()->sync($data['permissions']);
 				$key = $role->getKey();
 				return $this->find($key);
 			}

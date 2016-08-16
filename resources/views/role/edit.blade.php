@@ -42,6 +42,19 @@
 						</div>
 						<div class="clearfix"></div>
 						<div class="ln_solid"></div>
+						<h4>Permisos</h4>
+						<div class="clearfix"></div>
+						<div class="ln_solid"></div>
+						<div class="form-group col-md-12 col-sm-12 col-xs-12 @if($errors->has('permissions')) has-error @endif">
+							@if ($errors->has('permissions')) <p class="help-block">{{ $errors->first('permissions') }}</p> @endif
+							@foreach ($permissions as $permission)
+								<div class="checkbox-inline">
+									<label><input type="checkbox" value="{{$permission->id}}" name="permissions[]"  @if($permission->checked) checked="checked" @endif>
+    									{{$permission->display_name}}
+  									</label>
+								</div>
+							@endforeach
+						</div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
 	                        	<a href="{{ route('roles.index') }}" class="btn btn-primary">Cancelar</a>

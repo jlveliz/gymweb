@@ -94,7 +94,20 @@ class RoleController extends Controller
 	public function edit($id)
 	{
 		$role = $this->role->find($id);
-		return view('role.edit',['role'=>$role]);
+		$permissions = $this->permission->enum();
+
+		foreach ($permissions as $key => $permission) {
+			foreach ($role->perms as $key => $permUser) {
+				if ($permUser->id == $permission->id) {
+					$permission->checked = true;
+				} 
+			}
+		}
+
+		return view('role.edit',[
+				'role'=>$role,
+				'permissions'=>$permissions
+				]);
 	}
 
 	/**
