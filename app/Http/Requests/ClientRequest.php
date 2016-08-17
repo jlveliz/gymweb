@@ -45,10 +45,10 @@ class ClientRequest extends Request
             case 'PUT':
             {
                 return [
-                    'identity_number' => 'required|max:10|unique:client',
+                    'identity_number' => 'required|max:10|unique:client,identity_number,'.$this->get('key'),
                     'name' => 'required|max:30',
                     'last_name' => 'required|max:30',
-                    'email' => 'required|email|max:50|unique:client',
+                    'email' => 'required|email|max:50|unique:client,email,'.$this->get('key'),
                     'phone' => 'required|numeric',
                     'height' => 'required|numeric:4',
                     'weight' => 'required|numeric',
