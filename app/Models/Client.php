@@ -28,8 +28,10 @@ class Client extends Model
         'phone',
         'mobile',
         'weight',
+        'height',
         'birth_date',
-        'date_admission'
+        'date_admission',
+        'user_id_created',
     ];
 
     public function __construct(){
@@ -42,6 +44,6 @@ class Client extends Model
     {
         $date = Carbon::parse($value);
         return $date->formatLocalized('%A %d %B %Y');
-    } 
+    }
 
 }

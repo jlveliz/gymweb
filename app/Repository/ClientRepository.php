@@ -22,17 +22,17 @@ class ClientRepository implements ClientRepositoryInterface
 	{
 		if (is_array($field)) {
 			if (array_key_exists('idenitity_number', $field)) { 
-				$client = Permission::where('idenitity_number',$field['idenitity_number'])->first();
+				$client = Client::where('idenitity_number',$field['idenitity_number'])->first();
 			}elseif (array_key_exists('email', $field)) { 
-				$client = Permission::where('email',$field['email'])->first();
+				$client = Client::where('email',$field['email'])->first();
 			} elseif (array_key_exists('name', $field)) { 
-				$client = Permission::where('name','like','%'.$field['name'].'%')->first();
+				$client = Client::where('name','like','%'.$field['name'].'%')->first();
 			} elseif (array_key_exists('last_name', $field)) { 
-				$client = Permission::where('last_name','like','%'.$field['last_name'].'%')->first();
+				$client = Client::where('last_name','like','%'.$field['last_name'].'%')->first();
 			} 
 		} elseif (is_string($field) || is_int($field)) {
 		
-			$client = Permission::where('id',$field)->first();
+			$client = Client::where('id',$field)->first();
 		}
 
 		
@@ -45,7 +45,8 @@ class ClientRepository implements ClientRepositoryInterface
 	//TODO
 	public function save($data)
 	{
-		$client = new Permission();
+		$data['user_id_created'] = \Auth::user()->id;
+		$client = new Client();
 		$client->fill($data);
 		if ($client->save()) {
 			$key = $client->getKey();

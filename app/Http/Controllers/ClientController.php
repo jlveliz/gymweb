@@ -76,7 +76,14 @@ class ClientController extends Controller
 	 */
 	public function show($id)
 	{
-		
+		$client = $this->client->find($id,false);
+		if ($client) {
+			return view('client.show',['client'=>$client]);
+		}
+
+		$sessionData['tipo_mensaje'] = 'error';
+		$sessionData['mensaje'] = 'El Cliente no pudo ser encontrado';
+		return Redirect::action('ClientController@index')->with($sessionData); 
 	}
 
 	/**

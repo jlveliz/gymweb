@@ -39,14 +39,17 @@
 						<tbody>
 							@foreach ($clients as $client)
 								<tr>
-									<td>{{$client->name}} {{$client->lastname}}</td>
-									<td>{{$client->idenitity_number}}</td>
-									<td>{{$client->phone || '-'}} / {{$client->mobile || '-'}}</td>
+									<td>{{$client->name .' '. $client->last_name}} </td>
+									<td>{{$client->identity_number}}</td>
+									<td>{{$client->phone}} @if($client->mobile) / {{$client->mobile}} @endif</td>
 									<td>{{$client->birth_date}}</td>
 									<td>
 										<ul class="nav navbar-right panel_toolbox">
 											<li>
-												<a href="{{ route('clients.edit',$client->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('clients.show',$client->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a>
+											</li>
+											<li>
+												<a href="{{ route('clients.edit',$client->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 											<li>
 												<form action="{{ route('clients.destroy',$client->id) }}" method="POST">
