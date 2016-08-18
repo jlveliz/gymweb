@@ -4,16 +4,27 @@ namespace GymWeb\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 use Carbon\Carbon;
 
-class Client extends Model
+class Book extends Model
 {
+    
+    use SoftDeletes;
+
+    private $active = 1;
+
+    private $inactive = 0;
+
     /**
     * table
     */
-    protected $table = "client";
+    protected $table = "book";
 
     public $timestamp = true;
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -21,17 +32,11 @@ class Client extends Model
      * @var array
      */
     protected $fillable = [
-        'identity_number', 
-        'name',
-        'last_name',
-        'email',
-        'phone',
-        'mobile',
-        'weight',
-        'height',
-        'birth_date',
-        'date_admission',
-        'user_id_created',
+        'client_id', 
+        'period_from',
+        'period_to',
+        'book_state_phisical',
+        'book_state_economic',
     ];
 
     public function __construct(){
@@ -46,14 +51,14 @@ class Client extends Model
         return $date->formatLocalized('%A %d %B %Y');
     }
 
-    public function books()
+    public function client()
     {
-        return $this->hasMany('GymWeb\Models\Book','client_id');
+        return $this->blongsTo('GymWeb\Models\Client','client_id');
     }
 
-    public function current_book()
+    public function getActive()
     {
-        return $this->books()->where('book_state_phisical',(new Book())->getActive())->first();
+        return $this->active;
     }
 
 }
