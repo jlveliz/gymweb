@@ -25,7 +25,7 @@ class UserController extends Controller
     {
     	$this->user = $user;
     	$this->role = $role;
-		$this->middleware('permission');
+		// $this->middleware('permission');
     }
 
     /**
