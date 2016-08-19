@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 @role('user')
 <div class="menu_section">
 	<h3>Administración</h3>
@@ -18,4 +16,3 @@
 	</ul>
 </div>
 @endrole
->>>>>>> 2ec2d1feb2eb1b277cda20a0ff69555ba2c47e1d
