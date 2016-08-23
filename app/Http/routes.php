@@ -24,7 +24,7 @@ Route::group(['middleware'=>'auth'],function(){
 		return view('home.index');
 	});
 	Route::resource('clients','ClientController');
-	Route::resource('books','BookController',['only'=>['store','show']]);
+	Route::resource('clients.books','BookController',['only'=>['index','show']]);
 
 });
 

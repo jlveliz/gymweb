@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
         //BOOKS
         $this->app->bind(
             'GymWeb\RepositoryInterface\BookRepositoryInterface',
-            'GymWeb\Repository\BooksRepository'
+            'GymWeb\Repository\BookRepository'
         );
     }
 }

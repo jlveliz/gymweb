@@ -1,7 +1,7 @@
 <?php
 namespace  GymWeb\RepositoryInterface;
 
-use GymWeb\RepositoryInterface\CoreRepositoryInterface;
+use GymWeb\RepositoryInterface\NestedRepositoryInterface;
 
 /**
 * Autor: 
@@ -9,7 +9,7 @@ use GymWeb\RepositoryInterface\CoreRepositoryInterface;
 * Descripcion:
 * Interface del cual todos los repositorios deben basarse
 */
-interface BookRepositoryInterface extends CoreRepositoryInterface
+interface BookRepositoryInterface extends NestedRepositoryInterface
 {
 	
 }

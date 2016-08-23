@@ -10,20 +10,25 @@ use GymWeb\Models\Book;
 class BookRepository implements BookRepositoryInterface
 {
 
+	protected $parent;
+
+
+	public function setParent($parent)
+	{
+		$this->parent = $parent;
+		return $this;
+	}
 
 	public function enum($params = null)
 	{
-		$books = Book::all();
-		
+		$books = Book::where('client_id',$this->parent)->get();
 		if ($books) return $books;
 	}
 
 	public function find($field, $returnException = true)
 	{
 		$book = Book::where('id',$field)->first();
-
 		if (!$book) return false;
-	
 		return $book;
 
 	}

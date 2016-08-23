@@ -25,9 +25,9 @@ class BookController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($parent)
 	{
-		$books = $this->book->enum();
+		$books = $this->book->setParent($parent)->enum();
 		$data = [
 			'books' => $books
 		];
