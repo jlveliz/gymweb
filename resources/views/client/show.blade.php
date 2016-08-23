@@ -54,7 +54,7 @@
 	                          	@if (!$client->current_book())
 	                          		<h5 class="text-center col-md-10">No tiene una cartilla activa</h5>
 	                          		<div class="col-md-2">
-	                          			<button data-toggle="modal" data-target="#create-book-modal" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Cartilla</button>	
+	                          			<a href="{{ route('clients.books.create',$client->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Cartilla</a>	
 	                          		</div>	
 	                          	@else
 	                          		<div class="row">
@@ -101,28 +101,12 @@
 			</div>
 		</div>
 	</div>
-
-	@include('client.create-book')
 @endsection
 
-<!-- daterangepicker -->
-<script type="text/javascript" src="{{ asset('js/moment/moment.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datepicker/daterangepicker.js') }}"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#period_from').daterangepicker({
-      singleDatePicker: true,
-      calender_style: "picker_1"
-    }, function(start, end, label) {
-      console.log(start.toISOString(), end.toISOString(), label);
-    });
-
-    $('#period_to').daterangepicker({
-      singleDatePicker: true,
-      calender_style: "picker_1"
-    }, function(start, end, label) {
-      console.log(start.toISOString(), end.toISOString(), label);
-    });
-  });
-</script>
+@section('css')
+<style type="text/css">
+	.daterangepicker{
+		z-index: 10000;
+	}
+</style>
+@endsection

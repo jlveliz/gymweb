@@ -39,9 +39,10 @@ class BookController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		return view('book.create');
+	public function create($parent)
+	{ 
+		if (!$parent) return Redirect::back();
+		return view('book.create',['client_id'=>$parent]);
 	}
 
 	/**
@@ -64,7 +65,7 @@ class BookController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookRequest@index')->with($sessionData);
+		return Redirect::action('BookController@index')->with($sessionData);
 		
 	}
 
