@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/green.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/floatexamples.css') }}">
+	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/floatexamples.css') }}"> --}}
     @yield('css')
 </head>
 <body  class="nav-md">

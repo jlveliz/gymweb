@@ -104,3 +104,25 @@
 
 	@include('client.create-book')
 @endsection
+
+<!-- daterangepicker -->
+<script type="text/javascript" src="{{ asset('js/moment/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datepicker/daterangepicker.js') }}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#period_from').daterangepicker({
+      singleDatePicker: true,
+      calender_style: "picker_1"
+    }, function(start, end, label) {
+      console.log(start.toISOString(), end.toISOString(), label);
+    });
+
+    $('#period_to').daterangepicker({
+      singleDatePicker: true,
+      calender_style: "picker_1"
+    }, function(start, end, label) {
+      console.log(start.toISOString(), end.toISOString(), label);
+    });
+  });
+</script>
