@@ -61,4 +61,9 @@ class Book extends Model
         return $this->active;
     }
 
+    public function details()
+    {
+        return $this->hasMany('GymWeb\Models\BookDetail','book_id');
+    }
+
 }

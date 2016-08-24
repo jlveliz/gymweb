@@ -157,6 +157,8 @@ return [
         GymWeb\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        GymWeb\Providers\ExtendValidatorServiceProvider::class,
+
     ],
 
     /*

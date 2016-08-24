@@ -50,7 +50,7 @@ class BookController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store(BookRequest $request)
+	public function store($parent,BookRequest $request)
 	{
 		$data = $request->all();
 		$book = $this->book->save($data);
@@ -59,13 +59,13 @@ class BookController extends Controller
 			'mensaje' => '',
 		];
 		if ($book) {
-			$sessionData['mensaje'] = 'Cliente Creado Satisfacoriamente';
+			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
-			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
+			$sessionData['mensaje'] = 'La cartilla del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookController@index')->with($sessionData);
+		return Redirect::action('ClientController@show',$parent)->with($sessionData);
 		
 	}
 

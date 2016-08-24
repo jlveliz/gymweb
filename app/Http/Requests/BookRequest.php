@@ -23,6 +23,7 @@ class BookRequest extends Request
      */
     public function rules()
     {
+        dd($this->all());
         switch ($this->method()) {
             case 'GET':
             case 'DELETE':
@@ -32,11 +33,11 @@ class BookRequest extends Request
             case 'POST':
             {
                 return [
-                    'client_id' => 'required|exists:user,id',
+                    'client_id' => 'required|exists:user,id|exist_book_active',
                     'period_from' => 'date|required',
                     'period_to' => 'required|date',
-                    'book_state_phisical' => 'required|digits:1',
-                    'book_state_economic' => 'required|digits:1',
+                    'book_state_phisical' => 'required|int',
+                    'book_state_economic' => 'required|int',
                 ];
             }
             case 'PUT':
@@ -63,12 +64,15 @@ class BookRequest extends Request
                 return [
                     'client_id.required' => 'El cliente es requerido',
                     'client_id.exists' => 'Ingrese un cliente existente',
+                    'client_id.exist_book_active' => 'Ya existe una cartilla vigente, no es posible crear otra.',
                     'period_from.date' => 'Ingrese una fecha válida',
                     'period_from.required' => 'El periodo desde es requerido',
                     'period_to.date' => ' Ingrese una fecha válida',
                     'period_to.required' => 'El periodo de duración de la cartilla es requerido',
                     'book_state_phisical.required' => 'Estado de la cartilla es requerido',
+                    'book_state_phisical.int' => 'Esta ingresando un estado fisico de cartilla inválido',
                     'book_state_economic.required' => 'Estado economico de la cartilla es requerido',
+                    'book_state_phisical.int' => 'Esta ingresando un estado economico de cartilla inválido',
                 ];
             }
             case 'PUT':                

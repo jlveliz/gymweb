@@ -13,10 +13,16 @@
 				<div class="x_title">
 					<h2>Crear <small>Cartilla</small></h2>
 					<div class="clearfix"></div>
+					@if($errors->has('client_id'))
+						<div class="alert alert-danger" role="alert">
+							{{$errors->first('client_id')}}
+						</div>
+					@endif
 				</div>
 			<div class="x_content"></div>
 				<form action="{{ route('clients.books.store',$client_id) }}" id="form-create-book" method="POST" class="form-horizontal form-label-left">
 				  <input type="hidden" name="book_state_phisical" id="book_state_phisical" value="1">
+				  <input type="hidden" name="client_id" id="client_id" value="{{$client_id}}">
 				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				  <div class="row">
 				    <div class="form-group col-md-4 col-sm-4 col-xs-12">
@@ -40,9 +46,9 @@
 				          <!--1 = impago -->
 				          <!--2 = abonado -->
 				          <!--3 = pago total -->
-				          <option value="@if(old('book_state_economic')) {{ old('book_state_economic') }} @else 1 @endif">Impago</option>
-				          <option value="@if(old('book_state_economic')) {{ old('book_state_economic') }} @else 2 @endif">Abonado</option>
-				          <option value="@if(old('book_state_economic')) {{ old('book_state_economic') }} @else 3 @endif">Pago total</option>
+				          <option value="@if(old('book_state_economic') == '1') {{ old('book_state_economic') }}@else 1 @endif">Impago</option>
+				          <option value="@if(old('book_state_economic') == '2') {{ old('book_state_economic') }}@else 2 @endif">Abonado</option>
+				          <option value="@if(old('book_state_economic') == '3') {{ old('book_state_economic') }}@else 3 @endif">Pago total</option>
 				        </select>
 				         @if ($errors->has('book_state_economic')) <p class="help-block">{{ $errors->first('book_state_economic') }}</p> @endif
 				      </div>
@@ -72,19 +78,25 @@
       singleDatePicker: true,
       calender_style: "picker_4",
       locale: {
-            format: 'MM/DD/YYYY'
+            format: 'YYYY/MM/DD',
+            separator: '-'
       },
       startDate: moment()
-    });
+    }, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
 
     $('#period_to').daterangepicker({
       singleDatePicker: true,
       calender_style: "picker_4",
       locale: {
-            format: 'MM/DD/YYYY'
+            format: 'YYYY/MM/DD',
+            separator: '-'
       },
       startDate: moment().add(30, 'days')
-    });
+    }, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
   });
 </script>
 @endsection
