@@ -23,7 +23,6 @@ class BookRequest extends Request
      */
     public function rules()
     {
-        dd($this->all());
         switch ($this->method()) {
             case 'GET':
             case 'DELETE':
@@ -38,6 +37,7 @@ class BookRequest extends Request
                     'period_to' => 'required|date',
                     'book_state_phisical' => 'required|int',
                     'book_state_economic' => 'required|int',
+                    'value'=>'numeric'
                 ];
             }
             case 'PUT':
@@ -73,6 +73,7 @@ class BookRequest extends Request
                     'book_state_phisical.int' => 'Esta ingresando un estado fisico de cartilla inválido',
                     'book_state_economic.required' => 'Estado economico de la cartilla es requerido',
                     'book_state_phisical.int' => 'Esta ingresando un estado economico de cartilla inválido',
+                    'value.numeric'=>'Es un valor inválido'
                 ];
             }
             case 'PUT':                

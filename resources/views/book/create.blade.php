@@ -54,6 +54,15 @@
 				      </div>
 				    </div>
 				  </div>
+				  <div class="row" id="payment" style="display:none">
+				  	<div class="form-group col-md-4 col-sm-4 col-xs-12">
+				  		<label class="control-label col-md-5 col-sm-5 col-xs-12">Valor </label>
+				  		<div class="col-md-7 col-sm-7 col-xs-12 @if($errors->has('value')) has-error @endif">
+				  		  <input type="number" class="form-control" placeholder="Valor" name="value" id="value" value="{{ old('value') }}">
+				  		   @if ($errors->has('value')) <p class="help-block">{{ $errors->first('value') }}</p> @endif
+				  		</div>
+				  	</div>
+				  </div>
 				<div class="clearfix"></div>
 				<div class="ln_solid"></div>
 				<div class="form-group">
@@ -66,37 +75,39 @@
 			</div>
 		</div>
 	</div>
+
 @endsection
 
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+@endsection
 @section('js')
 <!-- daterangepicker -->
-<script type="text/javascript" src="{{ asset('js/moment/moment.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#period_from').daterangepicker({
-      singleDatePicker: true,
-      calender_style: "picker_4",
-      locale: {
-            format: 'YYYY/MM/DD',
-            separator: '-'
-      },
-      startDate: moment()
-    }, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-});
+    
+  	// datepicker
+    $('#period_from').datetimepicker({
+    	minDate: moment(),
+    	format: 'YYYY-MM-DD'
+    });
+    $('#period_to').datetimepicker({
+    	minDate: moment().add(2,'months'),
+    	format: 'YYYY-MM-DD',
+    	disabledDates: [moment(),this.minDate]
+    });
 
-    $('#period_to').daterangepicker({
-      singleDatePicker: true,
-      calender_style: "picker_4",
-      locale: {
-            format: 'YYYY/MM/DD',
-            separator: '-'
-      },
-      startDate: moment().add(30, 'days')
-    }, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-});
+    // select 
+    $("#book_state_economic").on('change', function(event) {
+    	var val = $(this).val();
+    	$("#value").val('');
+    	if (val > 1) {
+    		$("#payment").css('display', 'block');
+    	} else {
+    		$("#payment").css('display', 'none');
+    	}
+    });
   });
 </script>
 @endsection

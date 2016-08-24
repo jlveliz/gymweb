@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/css/font-awesome.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/green.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/green.css') }}">
 	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/floatexamples.css') }}"> --}}
     @yield('css')
 </head>
@@ -85,6 +85,10 @@
 	</div>
 	<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/moment/moment.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        moment.locale('es');
+    </script>
     @yield('js')
 	<script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
 </body>

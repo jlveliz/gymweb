@@ -80,10 +80,10 @@
 		                          				</tr>
 		                          			</thead>
 		                          			<tbody>
-		                          				@foreach ($client->current_book()->details as $bDetail)
+		                          				@foreach ($client->current_book()->daysDetail as $dDetail)
 			                          				<tr>
-			                          					<td>{{$bDetail->secuence}}</td>
-			                          					<td>{{$bDetail->created_at}}</td>
+			                          					<td>{{$dDetail->secuence}}</td>
+			                          					<td>{{$dDetail->created_at}}</td>
 			                          				</tr>
 		                          				@endforeach
 		                          			</tbody>
@@ -92,7 +92,7 @@
 	                          	@endif
 	                          </div>
 	                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-	                          	<h2>{{$client->books}}</h2>
+	                          	<h2></h2>
 	                          </div>
 	                        </div>
 						</div>
