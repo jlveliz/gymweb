@@ -58,20 +58,21 @@
 	                          		</div>	
 	                          	@else
 	                          		<div class="row">
-	                          			<div class="col-md-6 col-sm-6 col-xs-12">
-	                          				<ul class="list-unstyled">
-	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodo desde : {{$client->current_book()->period_from}}</li>
-	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodo Hasta : {{$client->current_book()->period_to}}</li>
-	                          				</ul>
-	                          			</div>
-	                          			<div class="col-md-6 col-sm-6 col-xs-12">
-	                          				<ul class="list-unstyled">
-	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Estado físico de cartilla : {{$client->current_book()->book_state_phisical}}</li>
-	                          					<li><i class="fa fa-usd user-profile-icon"></i> Estado economico de cartilla : {{$client->current_book()->book_state_economic}}</li>
+	                          			<div class="col-md-12 col-sm-12 col-xs-12">
+	                          				<ul class="list-unstyled list-inline" style="font-size: 16px">
+	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {{$client->current_book()->period_from}} / {{$client->current_book()->period_to}}</li>
+	                          					<li class="@if($client->current_book()->book_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($client->current_book()->book_state_phisical == 0) Caducado @else  Activo  @endif</li>
+	                          					<li class="@if($client->current_book()->book_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($client->current_book()->book_state_economic == 1) Impago @endif @if($client->current_book()->book_state_economic == 2) Abonado @endif 
+	                          						@if($client->current_book()->book_state_economic == 3) Pagado @endif
+	                          					</li>
 	                          				</ul>
 	                          			</div>
 	                          		</div>
+	                          		<hr>
 	                          		<div class="row">
+	                          			<div class="col-md-2 pull-right">
+	                          				<a href="{{ route('clients.books.details.store',[$client->id,$client->current_book()->id]) }}" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</a>	
+	                          			</div>	
 		                          		<table class="table table-striped">
 		                          			<thead>
 		                          				<tr>
@@ -80,12 +81,18 @@
 		                          				</tr>
 		                          			</thead>
 		                          			<tbody>
-		                          				@foreach ($client->current_book()->daysDetail as $dDetail)
+		                          				@if (count($client->current_book()->daysDetail) > 0)
+		                          					@foreach ($client->current_book()->daysDetail as $dDetail)
 			                          				<tr>
 			                          					<td>{{$dDetail->secuence}}</td>
 			                          					<td>{{$dDetail->created_at}}</td>
 			                          				</tr>
 		                          				@endforeach
+		                          				@else
+		                          					<tr>
+		                          						<td colspan="2" class="text-center">No tiene días de trabajo</td>
+		                          					</tr>
+		                          				@endif
 		                          			</tbody>
 		                          		</table>
 	                          		</div>

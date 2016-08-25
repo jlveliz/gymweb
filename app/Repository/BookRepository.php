@@ -39,11 +39,13 @@ class BookRepository implements BookRepositoryInterface
 		$book = new Book();
 		$book->fill($data);
 		if ($book->save()) {
-			if ($book->book_state_economic > 1) { //if book is 'abonado' or 'cancelado' insert a payment detail
-				// dd($data);
-				$book->paymentsDetail()->create(['value'=>$data['value']]);//
-			}
 			$key = $book->getKey();
+			if ($book->book_state_economic > 1) { //if book is 'abonado' or 'cancelado' insert a payment detail
+				$paymentDetail = new \GymWeb\Models\BookPaymentDetail();
+				$paymentDetail->book_id = $key;
+				$paymentDetail->value = $data['value'];
+				$paymentDetail->save();
+			}
 			return  $this->find($key);
 		} 
 		return false;
