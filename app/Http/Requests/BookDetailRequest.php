@@ -6,6 +6,11 @@ use GymWeb\Http\Requests\Request;
 
 class BookDetailRequest extends Request
 {
+    
+    public function __construct()
+    {
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,7 +37,7 @@ class BookDetailRequest extends Request
             case 'POST':
             {
                 return [
-                    'book_id' => 'required|exists:book,id|exist_book_active',
+                    'book_id' => 'required|exists:book,id',
                     'secuence' => 'required|int',
                 ];
             }
@@ -60,7 +65,6 @@ class BookDetailRequest extends Request
                 return [
                     'book_id.required' => 'La cartilla es requerida',
                     'client_id.exists' => 'Ingrese una cartilla existente',
-                    'client_id.exist_book_active' => 'Ya existe una cartilla vigente, no es posible crear otra.',
                 ];
             }
             case 'PUT':                

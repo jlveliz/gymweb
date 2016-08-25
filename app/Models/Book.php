@@ -17,6 +17,8 @@ class Book extends Model
 
     private $inactive = 0;
 
+    private $maxDaysDetail = 25;
+
     /**
     * table
     */
@@ -61,6 +63,11 @@ class Book extends Model
         return $this->active;
     }
 
+    public function getMaxDaysDetail()
+    {
+        return $this->maxDaysDetail;
+    }
+
     public function daysDetail()
     {
         return $this->hasMany('GymWeb\Models\BookDetail','book_id');
@@ -69,6 +76,13 @@ class Book extends Model
     public function paymentsDetail()
     {
         return $this->hasMany('GymWeb\Models\BookPaymentDetail','book_id');
+    }
+
+    public function getNextSecuence()
+    {
+        $dDetails = $this->daysDetail()->orderBy('secuence','desc')->first();
+        if (!$dDetails) return 1;
+        return $dDetails->secuence + 1;
     }
 
 }

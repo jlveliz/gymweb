@@ -10,6 +10,10 @@ use GymWeb\RepositoryInterface\BookDetailRepositoryInterface;
 
 use Redirect;
 
+use GymWeb\Events\CheckStateBook;
+
+use Event;
+
 class BookDetailController extends Controller
 {
     
@@ -47,21 +51,21 @@ class BookDetailController extends Controller
 	 */
 	public function store($clientId, $bookId, BookDetailRequest $request)
 	{
-		dd($clientId, $bookId);
 		$data = $request->all();
-		$book = $this->book->save($data);
+		$bookDetail = $this->bookDetail->save($data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($book) {
+		if ($bookDetail) {
+			Event::fire(new CheckStateBook($bookId,$bookDetail->secuence));
 			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'La cartilla del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('ClientController@show',$parent)->with($sessionData);
+		return Redirect::action('ClientController@show',$clientId)->with($sessionData);
 		
 	}
 
