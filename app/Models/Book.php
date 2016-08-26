@@ -63,6 +63,11 @@ class Book extends Model
         return $this->active;
     }
 
+    public function getInactive()
+    {
+        return $this->inactive;
+    }
+
     public function getMaxDaysDetail()
     {
         return $this->maxDaysDetail;

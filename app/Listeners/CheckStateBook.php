@@ -1,7 +1,6 @@
 <?php
 
 namespace GymWeb\Listeners;
-
 use GymWeb\Events\CheckStateBook;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -27,9 +26,10 @@ class CheckStateBook
      */
     public function handle(CheckStateBook $book)
     {
-        dd($this->book);
-        if ($this->book->secuence == (new Book())->getMaxDaysSecuence()) {
-            
+        if ($book->detail->secuence == (new Book())->getMaxDaysDetail()) {
+            $bookToUpdate = Book::find($book->detail->book_id);
+            $bookToUpdate->book_state_phisical = (new Book())->getInactive();
+            $bookToUpdate->save();
         }
     }
 }

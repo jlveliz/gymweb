@@ -58,7 +58,7 @@ class BookDetailController extends Controller
 			'mensaje' => '',
 		];
 		if ($bookDetail) {
-			Event::fire(new CheckStateBook($bookId,$bookDetail->secuence));
+			Event::fire(new CheckStateBook($bookDetail));
 			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';

@@ -104,7 +104,28 @@
 	                          	@endif
 	                          </div>
 	                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-	                          	<h2></h2>
+	                          	<h2>Cartillas anteriores</h2>
+	                          	<hr>
+	                          	<table class="table table-striped">
+	                          		<thead>
+	                          			<tr>
+	                          				<th>Periodo desde</th>
+	                          				<th>Periodo hasta</th>
+	                          				<th>Estado físico</th>
+	                          				<th>Estado economico</th>
+	                          			</tr>
+	                          		</thead>
+	                          		<tbody>
+	                          			@foreach ($client->books as $book)
+		                          			<tr>
+		                          				<td>{{$book->period_from}}</td>
+		                          				<td>{{$book->period_to}}</td>
+		                          				<td>{{$book->book_state_phisical}}</td>
+		                          				<td>{{$book->book_state_economic}}</td>
+		                          			</tr>
+	                          			@endforeach
+	                          		</tbody>
+	                          	</table>
 	                          </div>
 	                        </div>
 						</div>

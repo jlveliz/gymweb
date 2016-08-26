@@ -10,18 +10,16 @@ class CheckStateBook extends Event
 {
     use SerializesModels;
 
-    public $bookId;
-    public $secuenceDayBookDetail;
+    public $detail;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($secuence)
+    public function __construct($detail)
     {
-        // $this->bookId = $bookId;
-        $this->secuenceDayBookDetail = $secuence;
+        $this->detail = $detail;
     }
 
     /**
