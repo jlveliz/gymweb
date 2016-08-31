@@ -113,15 +113,37 @@
 	                          				<th>Periodo hasta</th>
 	                          				<th>Estado físico</th>
 	                          				<th>Estado economico</th>
+	                          				<th>Acción</th>
 	                          			</tr>
 	                          		</thead>
 	                          		<tbody>
-	                          			@foreach ($client->books as $book)
+	                          			@foreach ($client->books()->orderBy('id','desc')->get() as $book)
 		                          			<tr>
 		                          				<td>{{$book->period_from}}</td>
 		                          				<td>{{$book->period_to}}</td>
-		                          				<td>{{$book->book_state_phisical}}</td>
-		                          				<td>{{$book->book_state_economic}}</td>
+		                          				<td @if ($book->book_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
+		                          					@if ($book->book_state_phisical == '1')
+		                          					Activa
+		                          					@else
+		                          					Caducada
+		                          					@endif 
+		                          				</td>
+		                          				<td @if($book->book_state_economic == '1') class="text-danger" @endif @if($book->book_state_economic == '2') class="text-warning" @endif @if($book->book_state_economic == '3') class="text-success" @endif>
+		                          					@if($book->book_state_economic == '1')
+		                          						Impago
+		                          					@endif
+		                          					@if($book->book_state_economic == '2')
+		                          						Abonado
+		                          					@endif
+		                          					@if($book->book_state_economic == '3')
+		                          						Pagado
+		                          					@endif
+		                          				</td>
+		                          				<td>
+		                          					@if ($book->book_state_economic == '1' || $book->book_state_economic == '2')
+		                          						<a href="" class="btn btn-success" title="Cancelar"> <i class="fa fa-dollar"></i> Cancelar</a>
+		                          					@endif
+		                          				</td>
 		                          			</tr>
 	                          			@endforeach
 	                          		</tbody>
