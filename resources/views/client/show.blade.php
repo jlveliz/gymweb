@@ -141,7 +141,7 @@
 		                          				</td>
 		                          				<td>
 		                          					@if ($book->book_state_economic == '1' || $book->book_state_economic == '2')
-		                          						<a href="" class="btn btn-success" title="Cancelar"> <i class="fa fa-dollar"></i> Cancelar</a>
+		                          						<a href="{{ route('clients.books.payments.create',[$client->id,$book->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
 		                          					@endif
 		                          				</td>
 		                          			</tr>

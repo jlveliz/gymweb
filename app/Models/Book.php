@@ -18,6 +18,8 @@ class Book extends Model
     private $inactive = 0;
 
     private $maxDaysDetail = 25;
+    
+    private $price = 25.00;
 
     /**
     * table
@@ -71,6 +73,11 @@ class Book extends Model
     public function getMaxDaysDetail()
     {
         return $this->maxDaysDetail;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
     }
 
     public function daysDetail()
