@@ -21,6 +21,12 @@ class Book extends Model
     
     private $price = 25.00;
 
+    public $stateEconomics = [
+        'impago' => 1,
+        'abonado'=>2,
+        'pagado'=>3
+    ];
+
     /**
     * table
     */
@@ -57,7 +63,7 @@ class Book extends Model
 
     public function client()
     {
-        return $this->blongsTo('GymWeb\Models\Client','client_id');
+        return $this->belongsTo('GymWeb\Models\Client','client_id');
     }
 
     public function getActive()
@@ -78,6 +84,13 @@ class Book extends Model
     public function getPrice()
     {
         return $this->price;
+    }
+
+    public function getSumPayments($bookId)
+    {
+        $sum = $this->where('id',$bookId)->first()->paymentsDetail()->sum('value');
+        if(!$sum) return '00.00';
+        return $sum;
     }
 
     public function daysDetail()

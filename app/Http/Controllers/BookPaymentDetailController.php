@@ -23,6 +23,7 @@ class BookPaymentDetailController extends Controller
 
     public function __construct(BookPaymentDetailRepositoryInterface $bookDetail)
     {
+    	$this->middleware('pay');
     	$this->bookDetail = $bookDetail;
     }
 
@@ -43,8 +44,8 @@ class BookPaymentDetailController extends Controller
 	 */
 	public function create($clientId, $bookId)
 	{ 
-		$balance = ( (new Book())->getPrice() - (new Book())->getLastPayment());
-		return view('bookpayment.create',['client_id'=>$clientId,'book_id'=>$bookId]);
+		$balance = ( (new Book())->getPrice() - (new Book())->getSumPayments($bookId) );
+		return view('bookpayment.create',['client_id'=>$clientId,'book_id'=>$bookId,'balance'=>$balance]);
 	}
 
 	/**

@@ -28,9 +28,7 @@ class BookDetail extends Model
     ];
 
     public function __construct(){
-
         setlocale(LC_TIME, \Config('app.lang'));
-
     }
 
     public function getCreatedAtAttribute($value)

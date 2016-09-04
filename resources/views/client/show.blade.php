@@ -90,7 +90,7 @@
 		                          					@foreach ($client->current_book()->daysDetail as $dDetail)
 			                          				<tr>
 			                          					<td>{{$dDetail->secuence}}</td>
-			                          					<td>{{$dDetail->created_at}}</td>
+			                          					<td><?php echo  $dDetail->created_at ?> </td>
 			                          				</tr>
 		                          				@endforeach
 		                          				@else

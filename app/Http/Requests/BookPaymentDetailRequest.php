@@ -29,6 +29,7 @@ class BookPaymentDetailRequest extends Request
      */
     public function rules()
     {
+        $float = floatval($this->get('value'));
         switch ($this->method()) {
             case 'GET':
             case 'DELETE':
@@ -39,7 +40,7 @@ class BookPaymentDetailRequest extends Request
             {
                 return [
                     'book_id' => 'required|exists:book,id',
-                    'value' => 'required|max:'.$this->get('balance'),
+                    'value' => 'required|max:'.$float,
                 ];
             }
             case 'PUT':

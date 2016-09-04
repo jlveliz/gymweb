@@ -27,7 +27,7 @@
 				    <div class="form-group col-md-4 col-sm-4 col-xs-12 has-feedback">
 				      <label class="control-label col-md-5 col-sm-5 col-xs-12">Saldo </label>
 				      <div class="col-md-7 col-sm-7 col-xs-12 @if($errors->has('balance')) has-error @endif">
-				        <input type="text" class="form-control has-feedback-left" placeholder="Saldo" name="balance" id="period_from" value="{{ old('period_from') }}" disabled>
+				        <input type="text" class="form-control has-feedback-left" placeholder="Saldo" name="balance" id="balance" value="{!! sprintf("%01.2f", $balance); !!}" readonly="">
 				         @if ($errors->has('balance')) <p class="help-block">{{ $errors->first('balance') }}</p> @endif
 				         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 				      </div>
