@@ -15,7 +15,7 @@ Route::auth();
 
 Route::get('/', function () {
 	if (Auth::guest()) return view('auth.login');
-	return redirect('/home');
+	return redirect('/clients');
 });
 
 Route::group(['middleware'=>'auth'],function(){
