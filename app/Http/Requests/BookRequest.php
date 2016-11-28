@@ -32,7 +32,7 @@ class BookRequest extends Request
             case 'POST':
             {
                 return [
-                    'client_id' => 'required|exists:user,id|exist_book_active',
+                    'client_id' => 'required|exists:client,id|exist_book_active',
                     'period_from' => 'date|required',
                     'period_to' => 'required|date',
                     'book_state_phisical' => 'required|int',
