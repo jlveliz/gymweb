@@ -29,6 +29,7 @@ class Client extends Model
         'mobile',
         'weight',
         'height',
+        'admission_date',
         'birth_date',
         'date_admission',
         'user_id_created',
@@ -40,7 +41,7 @@ class Client extends Model
 
     }
 
-    public function getCreatedAtAttribute($value)
+    public function getAdmissionDateAttribute($value)
     {
         $date = Carbon::parse($value);
         return $date->formatLocalized('%A %d %B %Y');

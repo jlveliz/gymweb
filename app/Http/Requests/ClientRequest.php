@@ -40,6 +40,7 @@ class ClientRequest extends Request
                     'height' => 'required|numeric:4|int',
                     'weight' => 'required|numeric',
                     'birth_date' => 'required|date',
+                    'admission_date' => 'required|date',
                 ];
             }
             case 'PUT':
@@ -53,6 +54,7 @@ class ClientRequest extends Request
                     'height' => 'required|numeric:4',
                     'weight' => 'required|numeric',
                     'birth_date' => 'required|date',
+                    'admission_date' => 'required|date',
                 ];   
             }
             default:
@@ -92,6 +94,8 @@ class ClientRequest extends Request
                     'weight.numeric' => 'Peso inválido',
                     'birth_date.required' => 'Fecha de nacimiento requerida',
                     'birth_date.date' => 'Fecha de nacimiento inválida',
+                    'admission_date.required' => 'Fecha de ingreso requerida',
+                    'admission_date.date' => 'Fecha de ingreso inválida',
                 ];
             }
             case 'PUT':
@@ -115,6 +119,8 @@ class ClientRequest extends Request
                     'weight.numeric' => 'Peso inválido',
                     'birth_date.required' => 'Fecha de nacimiento requerida',
                     'birth_date.date' => 'Fecha de nacimiento inválida',
+                    'admission_date.required' => 'Fecha de ingreso requerida',
+                    'admission_date.date' => 'Fecha de ingreso inválida',
                 ];
             default:
                 # code...

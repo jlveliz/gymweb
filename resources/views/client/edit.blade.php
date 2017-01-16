@@ -6,6 +6,15 @@
 	<h3>Clientes <small> Los que se ejercitan con nosotros.</small></h3>
 @endsection
 
+@section('js')
+ <script src="{{ asset('/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('/js/client/app.js') }}" type="text/javascript"></script>
+@endsection
+
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+@endsection
+
 @section('content-page')
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -83,8 +92,17 @@
 							<div class="form-group col-md-4 col-sm-4 col-xs-12 ">
 								<label class="control-label col-md-2 col-sm-2 col-xs-12">Fecha de nacimiento <small></small> </label>
 							     <div class="col-md-9 col-sm-9 col-xs-12 @if($errors->has('birth_date')) has-error @endif">
-							     	<input type="text" class="form-control" placeholder="Fecha de nacimiento" name="birth_date" value="{{ $client->birth_date }}">
+							     	<input type="text" class="form-control" placeholder="Fecha de nacimiento" name="birth_date" id="birth_date" value="{{ $client->birth_date }}">
 							     	@if ($errors->has('birth_date')) <p class="help-block">{{ $errors->first('birth_date') }}</p> @endif
+							     </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4 col-sm-4 col-xs-12 ">
+								<label class="control-label col-md-2 col-sm-2 col-xs-12">Fecha de ingreso</label>
+							     <div class="col-md-9 col-sm-9 col-xs-12 @if($errors->has('admission_date')) has-error @endif">
+							     	<input type="text" class="form-control" placeholder="Fecha de ingreso" name="admission_date" id="admission_date" value="{{ $client->admission_date }}">
+							     	@if ($errors->has('admission_date')) <p class="help-block">{{ $errors->first('admission_date') }}</p> @endif
 							     </div>
 							</div>
 						</div>

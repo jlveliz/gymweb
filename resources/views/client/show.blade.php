@@ -25,6 +25,7 @@
 						<ul class="list-unstyled user_data">
                         	<li><i class="fa fa-key user-profile-icon"></i> {{$client->identity_number}}</li>
                         	<li><i class="fa fa-birthday-cake user-profile-icon"></i> {{$client->birth_date}}</li>
+                        	<li><i class="fa fa-sign-in user-profile-icon"></i> {{$client->admission_date}}</li>
                         	<li><i class="fa fa-envelope-o user-profile-icon"></i> {{$client->email}}</li>
                         	<li><i class="fa fa-phone user-profile-icon"></i> {{$client->phone}}</li>
                         	@if ($client->mobile)

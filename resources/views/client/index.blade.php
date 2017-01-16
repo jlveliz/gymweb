@@ -42,7 +42,7 @@
 									<td>{{$client->name .' '. $client->last_name}} </td>
 									<td>{{$client->identity_number}}</td>
 									<td>{{$client->phone}} @if($client->mobile) / {{$client->mobile}} @endif</td>
-									<td>{{$client->created_at}}</td>
+									<td>{{$client->admission_date}}</td>
 									<td>
 										<ul class="nav navbar-right panel_toolbox">
 											<li>
