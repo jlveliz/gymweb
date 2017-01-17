@@ -93,7 +93,7 @@
     	format: 'YYYY-MM-DD'
     });
     $('#period_to').datetimepicker({
-    	minDate: moment().add(2,'months'),
+    	minDate: moment().add(1,'months'),
     	format: 'YYYY-MM-DD',
     	disabledDates: [moment(),this.minDate]
     });
