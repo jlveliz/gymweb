@@ -90,7 +90,7 @@ class Book extends Model
 
     public function getMaxDaysDetail()
     {
-        return $this->maxDaysDetail;
+        return \Config('book.max-days-detail');
     }
 
     public function getPrice()
