@@ -37,8 +37,14 @@ class Client extends Model
 
     public function __construct(){
 
-        setlocale(LC_TIME, \Config('app.lang'));
+        setlocale(LC_TIME, \Config('app.locale'));
 
+    }
+
+    public function currentDate()
+    {
+        $date = Carbon::now();
+        return $date->formatLocalized('%A %d %B %Y');
     }
 
     public function getAdmissionDateAttribute($value)

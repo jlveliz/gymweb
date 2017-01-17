@@ -71,6 +71,10 @@
 	                          		</div>
 	                          		<hr>
 	                          		<div class="row">
+	                          			<?php 
+	                          				$lastDayJob =   $client->current_book()->daysDetail()->orderBy('secuence','desc')->first()->created_at;  
+	                          			?>
+	                          			<?php if ($lastDayJob != $client->currentDate()): ?>
 	                          			<div class="col-md-3 col-sm-3 col-xs-12 pull-right">
 	                          				<form action="{{ route('clients.books.details.store',[$client->id,$client->current_book()->id]) }}" method="POST">
 	                          					<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -79,6 +83,8 @@
 		                          				<button type="submit" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>	
 	                          				</form>
 	                          			</div>	
+	                          				
+	                          			<?php endif ?>
 		                          		<table class="table table-striped">
 		                          			<thead>
 		                          				<tr>

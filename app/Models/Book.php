@@ -51,11 +51,23 @@ class Book extends Model
 
     public function __construct(){
 
-        setlocale(LC_TIME, \Config('app.lang'));
+        setlocale(LC_TIME, \Config('app.locale'));
 
     }
 
     public function getCreatedAtAttribute($value)
+    {
+        $date = Carbon::parse($value);
+        return $date->formatLocalized('%A %d %B %Y');
+    }
+
+    public function getPeriodFromAttribute($value)
+    {
+        $date = Carbon::parse($value);
+        return $date->formatLocalized('%A %d %B %Y');
+    }
+    
+    public function getPeriodToAttribute($value)
     {
         $date = Carbon::parse($value);
         return $date->formatLocalized('%A %d %B %Y');
