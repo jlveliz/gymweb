@@ -84,7 +84,7 @@ class BookController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Cliente no pudo ser encontrado';
-		return Redirect::action('BookRequest@index')->with($sessionData); 
+		return Redirect::action('ClientController@index')->with($sessionData); 
 	}
 
 	/**
@@ -105,7 +105,7 @@ class BookController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(BookRequest $request, $id)
+	public function update(BookRequest $request, $parent, $id)
 	{
 		$data = $request->all();
 		$book = $this->book->edit($id,$data);
@@ -120,7 +120,7 @@ class BookController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookRequest@index')->with($sessionData);
+		return Redirect::action('ClientController@show',$parent)->with($sessionData);
 	}
 
 	/**
@@ -146,7 +146,7 @@ class BookController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookRequest@index')->with($sessionData);
+		return Redirect::action('ClientController@index')->with($sessionData);
 			
 		
 	}

@@ -42,7 +42,9 @@ class BookRequest extends Request
             }
             case 'PUT':
             {
-                
+                return [
+                    'book_state_phisical' => 'required|int'
+                ];
             }
             default:
                 # code...
@@ -76,7 +78,11 @@ class BookRequest extends Request
                     'value.numeric'=>'Es un valor inválido'
                 ];
             }
-            case 'PUT':                
+            case 'PUT':
+                    return [
+                        'book_state_phisical.required' => 'Estado de la cartilla es requerido',
+                        'book_state_phisical.int' => 'Esta ingresando un estado fisico de cartilla inválido',
+                    ];
             default:
                 # code...
                 break;

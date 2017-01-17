@@ -71,44 +71,57 @@
 	                          		</div>
 	                          		<hr>
 	                          		<div class="row">
-	                          			<?php 
-	                          				$lastDayJob =   $client->current_book()->daysDetail()->orderBy('secuence','desc')->first()->created_at;  
-	                          			?>
-	                          			<?php if ($lastDayJob != $client->currentDate()): ?>
-	                          			<div class="col-md-3 col-sm-3 col-xs-12 pull-right">
-	                          				<form action="{{ route('clients.books.details.store',[$client->id,$client->current_book()->id]) }}" method="POST">
-	                          					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	                          					<input type="hidden" name="book_id" value="{{ $client->current_book()->id }}">
-	                          					<input type="hidden" name="secuence" value="{{ $client->current_book()->getNextSecuence() }}">
-		                          				<button type="submit" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>	
-	                          				</form>
-	                          			</div>	
+	                          			<div class="text-right">
+		                          			<?php 
+		                          			
+		                          				$lastDayJob =   count($client->current_book()->daysDetail) > 0 ? $client->current_book()->daysDetail()->orderBy('secuence','desc')->first()->created_at : null;  
+		                          			?>
+		                          			<?php if ($lastDayJob != $client->currentDate()): ?>
+		                          			<div class="col-md-9 col-sm-3 col-xs-12">
+		                          				<form action="{{ route('clients.books.details.store',[$client->id,$client->current_book()->id]) }}" method="POST">
+		                          					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                          					<input type="hidden" name="book_id" value="{{ $client->current_book()->id }}">
+		                          					<input type="hidden" name="secuence" value="{{ $client->current_book()->getNextSecuence() }}">
+			                          				<button type="submit" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>	
+		                          				</form>
+	                          				</div>
+	                          				<?php endif ?>
+
+	                          				@if (count($client->current_book()->daysDetail) > 0)
+				                          		<form action="{{ route('clients.books.update',[$client->id,$client->current_book()->id]) }}" method="POST">
+				                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+													<input type="hidden" name="_method" value="PUT">
+													<input type="hidden" name="book_state_phisical" value="0">
+				                          			<button type="submit" class="btn btn-danger pull-right"><i class="fa fa-times"> </i> Cerrar Cartilla</button>	
+				                          		</form>
+		                          			@endif
+				                        </div>
+	                          		</div>	
 	                          				
-	                          			<?php endif ?>
-		                          		<table class="table table-striped">
-		                          			<thead>
+	                          		<table class="table table-striped">
+	                          			<thead>
+	                          				<tr>
+	                          					<th>#</th>
+	                          					<th>Día Ejercitado</th>
+	                          				</tr>
+	                          			</thead>
+	                          			<tbody>
+	                          				@if (count($client->current_book()->daysDetail) > 0)
+	                          					@foreach ($client->current_book()->daysDetail as $dDetail)
 		                          				<tr>
-		                          					<th>#</th>
-		                          					<th>Día Ejercitado</th>
+		                          					<td>{{$dDetail->secuence}}</td>
+		                          					<td>{{$dDetail->created_at}} </td>
 		                          				</tr>
-		                          			</thead>
-		                          			<tbody>
-		                          				@if (count($client->current_book()->daysDetail) > 0)
-		                          					@foreach ($client->current_book()->daysDetail as $dDetail)
-			                          				<tr>
-			                          					<td>{{$dDetail->secuence}}</td>
-			                          					<td><?php echo  $dDetail->created_at ?> </td>
-			                          				</tr>
-		                          				@endforeach
-		                          				@else
-		                          					<tr>
-		                          						<td colspan="2" class="text-center">No tiene días de trabajo</td>
-		                          					</tr>
-		                          				@endif
-		                          			</tbody>
-		                          		</table>
-	                          		</div>
+	                          					@endforeach
+	                          				@else
+	                          					<tr>
+	                          						<td colspan="2" class="text-center">No tiene días de trabajo</td>
+	                          					</tr>
+	                          				@endif
+	                          			</tbody>
+	                          		</table>
 	                          	@endif
+	                          
 	                          </div>
 	                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
 	                          	<h2>Cartillas anteriores</h2>
