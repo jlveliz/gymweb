@@ -37,18 +37,27 @@ class CheckStateBook
 
         //state 'impago', 'Abonado' or 'Pagado'
         if ($book->detail->value) {
-            if ($book->detail->value < (new Book())->getPrice()) {
+
+            $sumPayments = (new Book())->getSumPayments($book->detail->book_id);
+            
+            if ($sumPayments < (new Book())->getPrice()) {
+                
                 $bookToUpdate = Book::find($book->detail->book_id);
                 $bookToUpdate->book_state_economic = (new Book())->stateEconomics['abonado'];
                 $bookToUpdate->save();
-            } else if($book->detail->value == (new Book())->getPrice()){
+
+            } else if($sumPayments == (new Book())->getPrice()){
+                
                 $bookToUpdate = Book::find($book->detail->book_id);
                 $bookToUpdate->book_state_economic = (new Book())->stateEconomics['pagado'];
                 $bookToUpdate->save();
+
             } else {
+
                 $bookToUpdate = Book::find($book->detail->book_id);
                 $bookToUpdate->book_state_economic = (new Book())->stateEconomics['impago'];
                 $bookToUpdate->save();
+
             }
         }
 
