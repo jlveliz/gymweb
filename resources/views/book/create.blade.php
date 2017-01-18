@@ -87,15 +87,30 @@
 <script type="text/javascript">
   $(document).ready(function() {
     
+    $("#period_from").val(moment().format('YYYY-MM-DD'));
+
   	// datepicker
     $('#period_from').datetimepicker({
-    	minDate: moment(),
-    	format: 'YYYY-MM-DD'
+    	format: 'YYYY-MM-DD',
+    	minDate: moment().startOf('month'),
+    	maxDate: moment(),
     });
     $('#period_to').datetimepicker({
-    	minDate: moment().add(1,'months'),
     	format: 'YYYY-MM-DD',
+    	minDate: moment($('#period_from').val()).add(1,'days'),
+    	maxDate: moment().add(1,'months'),
     	disabledDates: [moment(),this.minDate]
+    });
+
+    $('#period_from').on("dp.change", function() {
+    	console.log("entra");
+       var _this = $(this);
+       var date = _this.val();
+       var maximumDate = moment(date).add(1,'months').format('YYYY-MM-DD')
+
+       $('#period_to').val('');
+       $('#period_to').data('DateTimePicker').maxDate(maximumDate);
+       $('#period_to').val(maximumDate);
     });
 
     // select 

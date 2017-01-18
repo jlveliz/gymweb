@@ -110,7 +110,7 @@
 	                          					@foreach ($client->current_book()->daysDetail as $dDetail)
 		                          				<tr>
 		                          					<td>{{$dDetail->secuence}}</td>
-		                          					<td>{{$dDetail->created_at}} </td>
+		                          					<td>{!!$dDetail->created_at!!} </td>
 		                          				</tr>
 	                          					@endforeach
 	                          				@else
@@ -139,8 +139,8 @@
 	                          		<tbody>
 	                          			@foreach ($client->books()->orderBy('id','desc')->get() as $book)
 		                          			<tr>
-		                          				<td>{{$book->period_from}}</td>
-		                          				<td>{{$book->period_to}}</td>
+		                          				<td>{!!$book->period_from!!}</td>
+		                          				<td>{!!$book->period_to!!}</td>
 		                          				<td @if ($book->book_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
 		                          					@if ($book->book_state_phisical == '1')
 		                          					Activa
