@@ -31,6 +31,7 @@ Route::group(['middleware'=>'auth'],function(){
 });
 
 Route::group(['middleware'=>['auth','role:administrator']],function(){
+	Route::resource('book-types','BookTypeController',['except'=>['show']]);
 	Route::resource('users','UserController',['except'=>['show']]);
 	Route::resource('permissions','PermissionController',['except'=>['show']]);
 	Route::resource('roles','RoleController',['except'=>['show']]);

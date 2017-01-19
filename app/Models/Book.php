@@ -76,6 +76,11 @@ class Book extends Model
     public function client()
     {
         return $this->belongsTo('GymWeb\Models\Client','client_id');
+    } 
+
+    public function type()
+    {
+        return $this->belongsTo('GymWeb\Models\BookType','book_type_id');
     }
 
     public function getActive()
