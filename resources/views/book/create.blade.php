@@ -92,7 +92,7 @@
   	// datepicker
     $('#period_from').datetimepicker({
     	format: 'YYYY-MM-DD',
-    	minDate: moment().startOf('month'),
+    	minDate: moment().subtract(30,'days'),
     	maxDate: moment(),
     });
     $('#period_to').datetimepicker({
