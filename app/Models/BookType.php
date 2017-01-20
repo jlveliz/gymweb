@@ -4,14 +4,11 @@ namespace GymWeb\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 use Carbon\Carbon;
 
 class BookType extends Model
 {
-    
-    use SoftDeletes;
+   
 
     /**
     * table
@@ -19,8 +16,6 @@ class BookType extends Model
     protected $table = "book_type";
 
     public $timestamp = true;
-
-    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.

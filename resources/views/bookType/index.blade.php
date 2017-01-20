@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Listado de Clientes /')
+@section('title','Listado de Tipo de Cartilla /')
 
 @section('title-page')
-	<h3>Clientes <small> Los que se ejercitan con nosotros.</small></h3>
+	<h3>Tipo de Cartilla <small> Contiene la descripción y detalle de una cartilla.</small></h3>
 @endsection
 
 @section('content-page')
@@ -11,7 +11,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listado <small>Clientes</small></h2>
+					<h2>Listado <small>Tipo de Cartilla</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
 	                    <li><a href="{{ route('book-types.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
@@ -26,11 +26,12 @@
 					@endif
 				</div>
 				<div class="x_content">
-					<table id="client-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+					<table id="book-type-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="text-center">Nombre</th>
 								<th class="text-center">Descripción</th>
+								<th class="text-center">Precio</th>
 								<th class="text-center">Fecha de creación</th>
 								<th class="text-center col-md-2 col-sm-2 col-xs-6">Acción</th>
 							</tr>
@@ -40,6 +41,7 @@
 								<tr>
 									<td>{{$bookType->name}} </td>
 									<td>{{$bookType->description}}</td>
+									<td>$ {{$bookType->price}}</td>
 									<td>{{$bookType->created_at}}</td>
 									<td>
 										<ul class="nav navbar-right panel_toolbox">	
@@ -92,7 +94,7 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#client-datatable').DataTable();
+    	$('#book-type-datatable').DataTable();
 	});
  </script>
 @endsection
