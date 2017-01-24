@@ -44,7 +44,7 @@ class BookPaymentDetailController extends Controller
 	 */
 	public function create($clientId, $bookId)
 	{ 
-		$balance = ( (new Book())->getPrice() - (new Book())->getSumPayments($bookId) );
+		$balance = ( (new Book())->getPrice($bookId) - (new Book())->getSumPayments($bookId) );
 		return view('bookpayment.create',['client_id'=>$clientId,'book_id'=>$bookId,'balance'=>$balance]);
 	}
 

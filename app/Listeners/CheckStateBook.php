@@ -39,14 +39,13 @@ class CheckStateBook
         if ($book->detail->value) {
 
             $sumPayments = (new Book())->getSumPayments($book->detail->book_id);
-            
-            if ($sumPayments < (new Book())->getPrice()) {
+            if ($sumPayments < (new Book())->getPrice($book->detail->book_id)) {
                 
                 $bookToUpdate = Book::find($book->detail->book_id);
                 $bookToUpdate->book_state_economic = (new Book())->stateEconomics['abonado'];
                 $bookToUpdate->save();
 
-            } else if($sumPayments == (new Book())->getPrice()){
+            } else if($sumPayments == (new Book())->getPrice($book->detail->book_id)){
                 
                 $bookToUpdate = Book::find($book->detail->book_id);
                 $bookToUpdate->book_state_economic = (new Book())->stateEconomics['pagado'];

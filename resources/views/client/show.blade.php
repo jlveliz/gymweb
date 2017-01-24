@@ -61,6 +61,7 @@
 	                          		<div class="row">
 	                          			<div class="col-md-12 col-sm-12 col-xs-12">
 	                          				<ul class="list-unstyled list-inline" style="font-size: 16px">
+	                          					<li><i class="fa fa-book"></i> Cartilla: {{$client->current_book()->type->name}}  </li>
 	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {{$client->current_book()->period_from}} / {{$client->current_book()->period_to}}</li>
 	                          					<li class="@if($client->current_book()->book_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($client->current_book()->book_state_phisical == 0) Caducado @else  Activo  @endif</li>
 	                          					<li class="@if($client->current_book()->book_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($client->current_book()->book_state_economic == 1) Impago @endif @if($client->current_book()->book_state_economic == 2) Abonado @endif 
@@ -131,6 +132,7 @@
 	                          			<tr>
 	                          				<th>Periodo desde</th>
 	                          				<th>Periodo hasta</th>
+	                          				<th>Tipo de cartilla</th>
 	                          				<th>Estado físico</th>
 	                          				<th>Estado economico</th>
 	                          				<th>Acción</th>
@@ -141,6 +143,7 @@
 		                          			<tr>
 		                          				<td>{!!$book->period_from!!}</td>
 		                          				<td>{!!$book->period_to!!}</td>
+		                          				<td>{!!$book->type->name!!}</td>
 		                          				<td @if ($book->book_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
 		                          					@if ($book->book_state_phisical == '1')
 		                          					Activa

@@ -99,8 +99,10 @@ class Book extends Model
         return \Config('book.max-days-detail');
     }
 
-    public function getPrice()
+    public function getPrice($bookId)
     {
+        $price = $this->find($bookId)->type ? $this->find($bookId)->type->price : $this->price;
+        $this->price = $price;
         return $this->price;
     }
 
