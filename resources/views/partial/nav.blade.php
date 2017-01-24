@@ -14,6 +14,13 @@
 		<li class="@if(Request::path() == '/users') active @endif" "><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> Usuarios</span></a></li>
 		<li class="@if(Request::path() == '/roles') active @endif" "><a href="{{ route('roles.index') }}"><i class="fa fa-unlock"></i> Roles</span></a></li>
 		<li class="@if(Request::path() == '/permissions') active @endif" "><a href="{{ route('permissions.index') }}"><i class="fa fa-lock"></i> Permisos</span></a></li>
+		<li>
+			<a><i class="fa fa-file-text"></i> Registros</span></a>
+			<ul class="nav child_menu">
+				<li> <a href="{{route('registers.user-access.index')}}" title="Registro de accesos">Registro de accesos</a></li>
+			</ul>
+		</li>
+		
 	</ul>
 </div>
 @endrole

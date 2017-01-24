@@ -23,6 +23,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        
+
+        //REGISTERS LOGS
+
+        ///USERS ACCESS LOG
+        $this->app->bind(
+            'GymWeb\RepositoryInterface\UserAccessLogRepositoryInterface',
+            'GymWeb\Repository\UserAccessLogRepository'
+        );
+
+        ///END LOGS
+
         //USERS
         $this->app->bind(
             'GymWeb\RepositoryInterface\UserRepositoryInterface',

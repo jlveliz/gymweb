@@ -35,6 +35,10 @@ Route::group(['middleware'=>['auth','role:administrator']],function(){
 	Route::resource('users','UserController',['except'=>['show']]);
 	Route::resource('permissions','PermissionController',['except'=>['show']]);
 	Route::resource('roles','RoleController',['except'=>['show']]);
+
+	Route::group(['prefix'=>'registers'],function(){
+		Route::resource('user-access','RegisterLog\UserAccessLogController',['only'=>['index']]);
+	});
 });
 	
 	
