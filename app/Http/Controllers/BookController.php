@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GymWeb\Http\Requests\BookRequest;
 
 use GymWeb\RepositoryInterface\BookRepositoryInterface; 
+use GymWeb\RepositoryInterface\BookTypeRepositoryInterface; 
 
 use Redirect;
 
@@ -15,9 +16,12 @@ class BookController extends Controller
     
 	public $book;
 
-    public function __construct(BookRepositoryInterface $book)
+	public $bookType;
+
+    public function __construct(BookRepositoryInterface $book,BookTypeRepositoryInterface $bookType)
     {
     	$this->book = $book;
+    	$this->bookType = $bookType;
     }
 
     /**
@@ -42,7 +46,8 @@ class BookController extends Controller
 	public function create($parent)
 	{ 
 		if (!$parent) return Redirect::back();
-		return view('book.create',['client_id'=>$parent]);
+		$bookTypes = $this->bookType->enum();
+		return view('book.create',['client_id'=>$parent,'bookTypes'=>$bookTypes]);
 	}
 
 	/**

@@ -45,6 +45,7 @@ class Book extends Model
         'client_id', 
         'period_from',
         'period_to',
+        'book_type_id',
         'book_state_phisical',
         'book_state_economic',
     ];

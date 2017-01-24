@@ -33,6 +33,7 @@ class BookRequest extends Request
             {
                 return [
                     'client_id' => 'required|exists:client,id|exist_book_active',
+                    'book_type_id' => 'required|exists:book_type,id',
                     'period_from' => 'date|required',
                     'period_to' => 'required|date',
                     'book_state_phisical' => 'required|int',
@@ -66,6 +67,8 @@ class BookRequest extends Request
                 return [
                     'client_id.required' => 'El cliente es requerido',
                     'client_id.exists' => 'Ingrese un cliente existente',
+                    'book_type_id.required' => 'El tipo de membresia o cartilla es requerida|exists:book_type,id',
+                    'book_type_id.exists' => 'No existe el tipo de membresia o cartilla',
                     'client_id.exist_book_active' => 'Ya existe una cartilla vigente, no es posible crear otra.',
                     'period_from.date' => 'Ingrese una fecha válida',
                     'period_from.required' => 'El periodo desde es requerido',

@@ -25,14 +25,14 @@
 				  <input type="hidden" name="client_id" id="client_id" value="{{$client_id}}">
 				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				  <div class="row">
-				    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+				    <div class="form-group col-md-3 col-sm-3 col-xs-12">
 				      <label class="control-label col-md-5 col-sm-5 col-xs-12">Periodo desde </label>
 				      <div class="col-md-7 col-sm-7 col-xs-12 @if($errors->has('period_from')) has-error @endif">
 				        <input type="text" class="form-control" placeholder="Periodo desde" name="period_from" id="period_from" value="{{ old('period_from') }}">
 				         @if ($errors->has('period_from')) <p class="help-block">{{ $errors->first('period_from') }}</p> @endif
 				      </div>
 				    </div>
-				    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+				    <div class="form-group col-md-3 col-sm-3 col-xs-12">
 				      <label class="control-label col-md-5 col-sm-5 col-xs-12">Periodo hasta </label>
 				      <div class="col-md-7 col-sm-7 col-xs-12  @if($errors->has('period_to')) has-error @endif">
 				        <input type="text" class="form-control" placeholder="Periodo hasta" name="period_to" id="period_to" value="{{ old('period_to') }}">
@@ -40,6 +40,26 @@
 				      </div>
 				    </div>
 				    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+				      <label class="control-label col-md-4 col-sm-4 col-xs-12">Tipo de cartilla </label>
+				      <div class="col-md-7 col-sm-7 col-xs-12  @if($errors->has('book_type_id')) has-error @endif">
+				        <select name="book_type_id" class="form-control"  id="book_type_id">
+				          		<option data-price="null" value="null">--Selecione--</option>
+				        	<?php foreach ($bookTypes as $key => $bookType): ?>
+				          		<option data-price="{{$bookType->price}}" value="@if(old('book_type_id') == $bookType->id) {{ old('book_type_id') }} @else {{$bookType->id}} @endif">{{$bookType->name}}</option>
+				        	<?php endforeach ?>
+				        </select>
+				         @if ($errors->has('book_type_id')) <p class="help-block">{{ $errors->first('book_type_id') }}</p> @endif
+				      </div>
+				    </div>
+				    <div class="form-group col-md-3 col-sm-3 col-xs-12">
+				    	<label class="control-label col-md-5 col-sm-5 col-xs-12">Precio </label>
+				      <div class="col-md-7 col-sm-7 col-xs-12">
+				        <input type="text" class="form-control" placeholder="Precio" id="price" disabled value="">
+				      </div>
+				    </div>
+				  </div>
+				  <div class="row">
+				  	<div class="form-group col-md-4 col-sm-4 col-xs-12">
 				      <label class="control-label col-md-5 col-sm-5 col-xs-12">Pago </label>
 				      <div class="col-md-7 col-sm-7 col-xs-12  @if($errors->has('book_state_economic')) has-error @endif">
 				        <select name="book_state_economic" class="form-control"  id="book_state_economic">
@@ -53,9 +73,7 @@
 				         @if ($errors->has('book_state_economic')) <p class="help-block">{{ $errors->first('book_state_economic') }}</p> @endif
 				      </div>
 				    </div>
-				  </div>
-				  <div class="row" id="payment" style="display:none">
-				  	<div class="form-group col-md-4 col-sm-4 col-xs-12">
+				  	<div class="form-group col-md-4 col-sm-4 col-xs-12" id="payment" style="display:none">
 				  		<label class="control-label col-md-5 col-sm-5 col-xs-12">Valor </label>
 				  		<div class="col-md-7 col-sm-7 col-xs-12 @if($errors->has('value')) has-error @endif">
 				  		  <input type="number" step="any" class="form-control" placeholder="Valor" name="value" id="value" value="{{ old('value') }}">
@@ -116,13 +134,30 @@
     // select 
     $("#book_state_economic").on('change', function(event) {
     	var val = $(this).val();
-    	$("#value").val('');
+    	var value = $("#value");
+    	value.val('');
     	if (val > 1) {
     		$("#payment").css('display', 'block');
+    		value.removeAttr('readonly');
+    		if (val == 3) {
+    			value.attr('readonly',true);
+    			var price = $("#book_type_id option:selected").data("price");
+    			console.log(price)
+    			value.val(price);
+    		}
     	} else {
     		$("#payment").css('display', 'none');
     	}
     });
+
+
+    $("#book_type_id").on('change', function(event) {
+    	var val = $(this).children("option:selected").data("price");
+    	var price = $("#price");
+    	if (!val) price.val(0.00);
+    	price.val(val);
+    });
+
   });
 </script>
 @endsection
