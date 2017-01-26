@@ -110,24 +110,23 @@
   	// datepicker
     $('#period_from').datetimepicker({
     	format: 'YYYY-MM-DD',
-    	minDate: moment().subtract(30,'days'),
+    	// minDate: moment().subtract(30,'days'),
     	maxDate: moment(),
     });
     $('#period_to').datetimepicker({
     	format: 'YYYY-MM-DD',
     	minDate: moment($('#period_from').val()).add(1,'days'),
-    	maxDate: moment().add(1,'months'),
+    	// maxDate: moment().add(1,'months'),
     	disabledDates: [moment(),this.minDate]
     });
 
     $('#period_from').on("dp.change", function() {
-    	console.log("entra");
        var _this = $(this);
        var date = _this.val();
-       var maximumDate = moment(date).add(1,'months').format('YYYY-MM-DD')
+       var maximumDate = moment(date).add(1,'days').format('YYYY-MM-DD')
 
        $('#period_to').val('');
-       $('#period_to').data('DateTimePicker').maxDate(maximumDate);
+       $('#period_to').data('DateTimePicker').minDate(maximumDate);
        $('#period_to').val(maximumDate);
     });
 
