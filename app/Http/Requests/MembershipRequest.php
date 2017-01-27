@@ -4,7 +4,7 @@ namespace GymWeb\Http\Requests;
 
 use GymWeb\Http\Requests\Request;
 
-class BookRequest extends Request
+class MembershipRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,19 +32,19 @@ class BookRequest extends Request
             case 'POST':
             {
                 return [
-                    'client_id' => 'required|exists:client,id|exist_book_active',
-                    'book_type_id' => 'required|exists:book_type,id',
+                    'client_id' => 'required|exists:client,id|exist_membership_active',
+                    'membership_type_id' => 'required|exists:membership_type,id',
                     'period_from' => 'date|required',
                     'period_to' => 'required|date',
-                    'book_state_phisical' => 'required|int',
-                    'book_state_economic' => 'required|int',
+                    'membership_state_phisical' => 'required|int',
+                    'membership_state_economic' => 'required|int',
                     'value'=>'numeric'
                 ];
             }
             case 'PUT':
             {
                 return [
-                    'book_state_phisical' => 'required|int'
+                    'membership_state_phisical' => 'required|int'
                 ];
             }
             default:
@@ -67,24 +67,24 @@ class BookRequest extends Request
                 return [
                     'client_id.required' => 'El cliente es requerido',
                     'client_id.exists' => 'Ingrese un cliente existente',
-                    'book_type_id.required' => 'El tipo de membresia o cartilla es requerida|exists:book_type,id',
-                    'book_type_id.exists' => 'No existe el tipo de membresia o cartilla',
-                    'client_id.exist_book_active' => 'Ya existe una cartilla vigente, no es posible crear otra.',
+                    'membership_type_id.required' => 'El tipo de membresia es requerida|exists:membership_type,id',
+                    'membership_type_id.exists' => 'No existe el tipo de membresia',
+                    'client_id.exist_membership_active' => 'Ya existe una membresia vigente, no es posible crear otra.',
                     'period_from.date' => 'Ingrese una fecha válida',
                     'period_from.required' => 'El periodo desde es requerido',
                     'period_to.date' => ' Ingrese una fecha válida',
-                    'period_to.required' => 'El periodo de duración de la cartilla es requerido',
-                    'book_state_phisical.required' => 'Estado de la cartilla es requerido',
-                    'book_state_phisical.int' => 'Esta ingresando un estado fisico de cartilla inválido',
-                    'book_state_economic.required' => 'Estado economico de la cartilla es requerido',
-                    'book_state_phisical.int' => 'Esta ingresando un estado economico de cartilla inválido',
+                    'period_to.required' => 'El periodo de duración de la membresia es requerido',
+                    'membership_state_phisical.required' => 'Estado de la membresia es requerido',
+                    'membership_state_phisical.int' => 'Esta ingresando un estado fisico de membresia inválido',
+                    'membership_state_economic.required' => 'Estado economico de la membresia es requerido',
+                    'membership_state_phisical.int' => 'Esta ingresando un estado economico de membresia inválido',
                     'value.numeric'=>'Es un valor inválido'
                 ];
             }
             case 'PUT':
                     return [
-                        'book_state_phisical.required' => 'Estado de la cartilla es requerido',
-                        'book_state_phisical.int' => 'Esta ingresando un estado fisico de cartilla inválido',
+                        'membership_state_phisical.required' => 'Estado de la membresia es requerido',
+                        'membership_state_phisical.int' => 'Esta ingresando un estado fisico de membresia inválida',
                     ];
             default:
                 # code...

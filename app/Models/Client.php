@@ -53,14 +53,14 @@ class Client extends Model
         return $date->formatLocalized('%A %d %B %Y');
     }
 
-    public function books()
+    public function memberships()
     {
-        return $this->hasMany('GymWeb\Models\Book','client_id');
+        return $this->hasMany('GymWeb\Models\Membership','client_id');
     }
 
-    public function current_book()
+    public function current_membership()
     {
-        return $this->books()->where('book_state_phisical',(new Book())->getActive())->first();
+        return $this->memberships()->where('membership_state_phisical',(new Membership())->getActive())->first();
     }
 
 }

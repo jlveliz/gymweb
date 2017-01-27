@@ -4,24 +4,24 @@ namespace GymWeb\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use GymWeb\Http\Requests\BookRequest;
+use GymWeb\Http\Requests\MembershipRequest;
 
-use GymWeb\RepositoryInterface\BookRepositoryInterface; 
-use GymWeb\RepositoryInterface\BookTypeRepositoryInterface; 
+use GymWeb\RepositoryInterface\MembershipRepositoryInterface; 
+use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface; 
 
 use Redirect;
 
-class BookController extends Controller
+class MembershipController extends Controller
 {
     
-	public $book;
+	public $membership;
 
-	public $bookType;
+	public $membershipType;
 
-    public function __construct(BookRepositoryInterface $book,BookTypeRepositoryInterface $bookType)
+    public function __construct(MembershipRepositoryInterface $membership,MembershipTypeRepositoryInterface $membershipType)
     {
-    	$this->book = $book;
-    	$this->bookType = $bookType;
+    	$this->membership = $membership;
+    	$this->membershipType = $membershipType;
     }
 
     /**
@@ -31,11 +31,11 @@ class BookController extends Controller
 	 */
 	public function index($parent)
 	{
-		$books = $this->book->setParent($parent)->enum();
+		$memberships = $this->membership->setParent($parent)->enum();
 		$data = [
-			'books' => $books
+			'memberships' => $memberships
 		];
-		return view('book.index',$data);
+		return view('membership.index',$data);
 	}
 
 	/**
@@ -46,8 +46,8 @@ class BookController extends Controller
 	public function create($parent)
 	{ 
 		if (!$parent) return Redirect::back();
-		$bookTypes = $this->bookType->enum();
-		return view('book.create',['client_id'=>$parent,'bookTypes'=>$bookTypes]);
+		$membershipTypes = $this->membershipType->enum();
+		return view('membership.create',['client_id'=>$parent,'membershipTypes'=>$membershipTypes]);
 	}
 
 	/**
@@ -55,15 +55,15 @@ class BookController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store($parent,BookRequest $request)
+	public function store($parent,MembershipRequest $request)
 	{
 		$data = $request->all();
-		$book = $this->book->save($data);
+		$membership = $this->membership->save($data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($book) {
+		if ($membership) {
 			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
@@ -82,9 +82,9 @@ class BookController extends Controller
 	 */
 	public function show($id)
 	{
-		$book = $this->book->find($id,false);
-		if ($book) {
-			return view('book.show',['book'=>$book]);
+		$membership = $this->membership->find($id,false);
+		if ($membership) {
+			return view('membership.show',['membership'=>$membership]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
@@ -100,8 +100,8 @@ class BookController extends Controller
 	 */
 	public function edit($id)
 	{
-		$book = $this->book->find($id);
-		return view('book.edit',['book'=>$book]);
+		$membership = $this->membership->find($id);
+		return view('membership.edit',['membership'=>$membership]);
 	}
 
 	/**
@@ -110,15 +110,15 @@ class BookController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(BookRequest $request, $parent, $id)
+	public function update(MembershipRequest $request, $parent, $id)
 	{
 		$data = $request->all();
-		$book = $this->book->edit($id,$data);
+		$membership = $this->membership->edit($id,$data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($book) {
+		if ($membership) {
 			$sessionData['mensaje'] = 'Cliente Editado Satisfacoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
@@ -137,14 +137,14 @@ class BookController extends Controller
 	public function destroy($id)
 	{
 		
-		$book = $this->book->remove($id);
+		$membership = $this->membership->remove($id);
 		
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
 		
-		if ($book) {
+		if ($membership) {
 			$sessionData['mensaje'] = 'Cliente Eliminado Satisfacoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';

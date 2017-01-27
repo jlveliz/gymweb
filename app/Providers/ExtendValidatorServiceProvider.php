@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use Validator;
 
-use GymWeb\Models\Book;
+use GymWeb\Models\Membership;
 
 class ExtendValidatorServiceProvider extends ServiceProvider
 {
@@ -17,11 +17,11 @@ class ExtendValidatorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('exist_book_active',function($attribute, $value, $parameters, $validator){
-            $existBookActive = Book::where($attribute,$value)
-                               ->where('book_state_phisical',(new Book())->getActive())
+        Validator::extend('exist_membership_active',function($attribute, $value, $parameters, $validator){
+            $existMembershipActive = Membership::where($attribute,$value)
+                               ->where('membership_state_phisical',(new Membership())->getActive())
                                ->first();
-            if ($existBookActive) return false;
+            if ($existMembershipActive) return false;
             return true;
         });
     }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Carbon\Carbon;
 
-class Book extends Model
+class Membership extends Model
 {
     
     use SoftDeletes;
@@ -16,11 +16,7 @@ class Book extends Model
     private $active = 1;
 
     private $inactive = 0;
-
-    private $maxDaysDetail = 25;
     
-    private $price = 25.00;
-
     public $stateEconomics = [
         'impago' => 1,
         'abonado'=>2,
@@ -30,7 +26,7 @@ class Book extends Model
     /**
     * table
     */
-    protected $table = "book";
+    protected $table = "membership";
 
     public $timestamp = true;
 
@@ -45,9 +41,9 @@ class Book extends Model
         'client_id', 
         'period_from',
         'period_to',
-        'book_type_id',
-        'book_state_phisical',
-        'book_state_economic',
+        'membership_type_id',
+        'membership_state_phisical',
+        'membership_state_economic',
     ];
 
     public function __construct(){
@@ -81,7 +77,7 @@ class Book extends Model
 
     public function type()
     {
-        return $this->belongsTo('GymWeb\Models\BookType','book_type_id');
+        return $this->belongsTo('GymWeb\Models\MembershipType','membership_type_id');
     }
 
     public function getActive()
@@ -99,28 +95,28 @@ class Book extends Model
         return \Config('book.max-days-detail');
     }
 
-    public function getPrice($bookId)
+    public function getPrice($membershipId)
     {
-        $price = $this->find($bookId)->type ? $this->find($bookId)->type->price : $this->price;
+        $price = $this->find($membershipId)->type ? $this->find($membershipId)->type->price : $this->price;
         $this->price = $price;
         return $this->price;
     }
 
-    public function getSumPayments($bookId)
+    public function getSumPayments($membershipId)
     {
-        $sum = $this->where('id',$bookId)->first()->paymentsDetail()->sum('value');
+        $sum = $this->where('id',$membershipId)->first()->paymentsDetail()->sum('value');
         if(!$sum) return '00.00';
         return $sum;
     }
 
     public function daysDetail()
     {
-        return $this->hasMany('GymWeb\Models\BookDetail','book_id');
+        return $this->hasMany('GymWeb\Models\MembershipDetail','membership_id');
     }
 
     public function paymentsDetail()
     {
-        return $this->hasMany('GymWeb\Models\BookPaymentDetail','book_id');
+        return $this->hasMany('GymWeb\Models\MembershipDetail','membership_id');
     }
 
     public function getNextSecuence()
