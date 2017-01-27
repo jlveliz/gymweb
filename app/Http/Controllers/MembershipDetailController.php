@@ -4,24 +4,24 @@ namespace GymWeb\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use GymWeb\Http\Requests\BookDetailRequest;
+use GymWeb\Http\Requests\MembershipDetailRequest;
 
-use GymWeb\RepositoryInterface\BookDetailRepositoryInterface; 
+use GymWeb\RepositoryInterface\MembershipDetailRepositoryInterface; 
 
 use Redirect;
 
-use GymWeb\Events\CheckStateBook;
+use GymWeb\Events\CheckStateMembership;
 
 use Event;
 
-class BookDetailController extends Controller
+class MembershipDetailController extends Controller
 {
     
-	public $bookDetail;
+	public $membershipDetail;
 
-    public function __construct(BookDetailRepositoryInterface $bookDetail)
+    public function __construct(MembershipDetailRepositoryInterface $membershipDetail)
     {
-    	$this->bookDetail = $bookDetail;
+    	$this->membershipDetail = $membershipDetail;
     }
 
     /**
@@ -49,20 +49,20 @@ class BookDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store($clientId, $bookId, BookDetailRequest $request)
+	public function store($clientId, $membershipId, MembershipDetailRequest $request)
 	{
 		$data = $request->all();
-		$bookDetail = $this->bookDetail->save($data);
+		$membershipDetail = $this->membershipDetail->save($data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($bookDetail) {
-			Event::fire(new CheckStateBook($bookDetail));
-			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
+		if ($membershipDetail) {
+			Event::fire(new CheckStateMembership($membershipDetail));
+			$sessionData['mensaje'] = 'La membresia se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
-			$sessionData['mensaje'] = 'La cartilla del cliente no pudo ser creado, intente nuevamente';
+			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
 		return Redirect::action('ClientController@show',$clientId)->with($sessionData);
@@ -97,7 +97,7 @@ class BookDetailController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(BookRequest $request, $id)
+	public function update(MembershipRequest $request, $id)
 	{
 		
 	}

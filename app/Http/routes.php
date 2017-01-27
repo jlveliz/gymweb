@@ -25,7 +25,7 @@ Route::group(['middleware'=>'auth'],function(){
 	});
 	Route::resource('clients','ClientController');
 	Route::resource('clients.memberships','MemberShipController',['only'=>['create','store','update']]);
-	Route::resource('clients.books.details','BookDetailController',['only'=>['store']]);
+	Route::resource('clients.memberships.details','MembershipDetailController',['only'=>['store']]);
 	Route::resource('clients.memberships.payments','BookPaymentDetailController',['only'=>['create','store']]);
 
 });

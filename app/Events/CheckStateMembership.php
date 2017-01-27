@@ -6,7 +6,7 @@ use GymWeb\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class CheckStateBook extends Event
+class CheckStateMembership extends Event
 {
     use SerializesModels;
 

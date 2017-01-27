@@ -4,7 +4,7 @@ namespace GymWeb\Http\Requests;
 
 use GymWeb\Http\Requests\Request;
 
-class BookDetailRequest extends Request
+class MembershipDetailRequest extends Request
 {
     
     public function __construct()
@@ -37,7 +37,7 @@ class BookDetailRequest extends Request
             case 'POST':
             {
                 return [
-                    'book_id' => 'required|exists:book,id',
+                    'membership_id' => 'required|exists:membership,id',
                     'secuence' => 'required|int',
                 ];
             }
@@ -63,8 +63,8 @@ class BookDetailRequest extends Request
             case 'POST':
             {
                 return [
-                    'book_id.required' => 'La cartilla es requerida',
-                    'client_id.exists' => 'Ingrese una cartilla existente',
+                    'membership_id.required' => 'La membresia es requerida',
+                    'membership_id.exists' => 'Ingrese una membresia existente',
                 ];
             }
             case 'PUT':                

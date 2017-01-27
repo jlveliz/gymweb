@@ -1,13 +1,13 @@
 <?php
 namespace GymWeb\Repository;
 
-use GymWeb\RepositoryInterface\BookDetailRepositoryInterface;
-use GymWeb\Models\BookDetail;
+use GymWeb\RepositoryInterface\MembershipDetailRepositoryInterface;
+use GymWeb\Models\MembershipDetail;
 
 /**
 * 
 */
-class BookDetailRepository implements BookDetailRepositoryInterface
+class MembershipDetailRepository implements MembershipDetailRepositoryInterface
 {
 
 	protected $parent;
@@ -27,7 +27,7 @@ class BookDetailRepository implements BookDetailRepositoryInterface
 	//TODO
 	public function save($data)
 	{
-		$bookDetail = new BookDetail();
+		$bookDetail = new MembershipDetail();
 		$bookDetail->fill($data);
 		if ($bookDetail->save()) {
 			$key = $bookDetail->getKey();

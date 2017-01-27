@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 
-class BookDetail extends Model
+class MembershipDetail extends Model
 {
     
     /**
     * table
     */
-    protected $table = "book_detail";
+    protected $table = "membership_detail";
 
     public $timestamp = true;
 
@@ -23,7 +23,7 @@ class BookDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'book_id', 
+        'membership_id', 
         'secuence',
     ];
 
@@ -37,9 +37,9 @@ class BookDetail extends Model
         return $date->formatLocalized('%A %d %B %Y');
     }
 
-    public function book()
+    public function membership()
     {
-        return $this->blongsTo('GymWeb\Models\Book','book_id');
+        return $this->blongsTo('GymWeb\Models\Membership','membership_id');
     }
 
 }
