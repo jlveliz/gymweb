@@ -4,7 +4,7 @@ namespace GymWeb\Http\Requests;
 
 use GymWeb\Http\Requests\Request;
 
-class BookTypeRequest extends Request
+class MembershipTypeRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Listado de Tipo de Cartilla /')
+@section('title','Listado de Tipo de Membresia /')
 
 @section('title-page')
-	<h3>Tipo de Cartilla <small> Contiene la descripción y detalle de una cartilla.</small></h3>
+	<h3>Tipo de Membresia <small> Contiene la descripción y detalle de una membresia.</small></h3>
 @endsection
 
 @section('content-page')
@@ -11,9 +11,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listado <small>Tipo de Cartilla</small></h2>
+					<h2>Listado <small>Tipo de Membresia</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('book-types.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <li><a href="{{ route('membership-types.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 	                  </ul>
 					<div class="clearfix"></div>
@@ -26,7 +26,7 @@
 					@endif
 				</div>
 				<div class="x_content">
-					<table id="book-type-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+					<table id="membership-type-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="text-center">Nombre</th>
@@ -37,19 +37,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($bookTypes as $bookType)
+							@foreach ($membershipTypes as $membershipType)
 								<tr>
-									<td>{{$bookType->name}} </td>
-									<td>{{$bookType->description}}</td>
-									<td>$ {{$bookType->price}}</td>
-									<td>{{$bookType->created_at}}</td>
+									<td>{{$membershipType->name}} </td>
+									<td>{{$membershipType->description}}</td>
+									<td>$ {{$membershipType->price}}</td>
+									<td>{{$membershipType->created_at}}</td>
 									<td>
 										<ul class="nav navbar-right panel_toolbox">	
 											<li>
-												<a href="{{ route('book-types.edit',$bookType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('membership-types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 											<li>
-												<form action="{{ route('book-types.destroy',$bookType->id) }}" method="POST">
+												<form action="{{ route('membership-types.destroy',$membershipType->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>
@@ -94,7 +94,7 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#book-type-datatable').DataTable();
+    	$('#membership-type-datatable').DataTable();
 	});
  </script>
 @endsection

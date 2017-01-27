@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 
-class BookType extends Model
+class MembershipType extends Model
 {
    
 
     /**
     * table
     */
-    protected $table = "book_type";
+    protected $table = "membership_type";
 
     public $timestamp = true;
 
@@ -40,9 +40,9 @@ class BookType extends Model
         return $date->formatLocalized('%A %d %B %Y');
     }
 
-    public function books()
+    public function memberships()
     {
-        return $this->hasMany('GymWeb\Models\Book','book_type_id');
+        return $this->hasMany('GymWeb\Models\Membership','membership_type_id');
     }
 
 }

@@ -9,7 +9,7 @@ use GymWeb\RepositoryInterface\CoreRepositoryInterface;
 * Descripcion:
 * Interface del cual todos los repositorios deben basarse
 */
-interface BookTypeRepositoryInterface extends CoreRepositoryInterface
+interface MembershipTypeRepositoryInterface extends CoreRepositoryInterface
 {
 	
 }

@@ -52,20 +52,20 @@
 	                        </ul>
 	                        <div id="myTabContent" class="tab-content">
 	                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-	                          	@if (!$client->current_book())
+	                          	@if (!$client->current_membership())
 	                          		<h5 class="text-center col-md-10">No tiene una cartilla activa</h5>
 	                          		<div class="col-md-2">
-	                          			<a href="{{ route('clients.books.create',$client->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Cartilla</a>	
+	                          			<a href="{{ route('clients.memberships.create',$client->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Cartilla</a>	
 	                          		</div>	
 	                          	@else
 	                          		<div class="row">
 	                          			<div class="col-md-12 col-sm-12 col-xs-12">
 	                          				<ul class="list-unstyled list-inline" style="font-size: 16px">
-	                          					<li><i class="fa fa-book"></i> Cartilla: {{$client->current_book()->type->name}}  </li>
-	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {{$client->current_book()->period_from}} / {{$client->current_book()->period_to}}</li>
-	                          					<li class="@if($client->current_book()->book_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($client->current_book()->book_state_phisical == 0) Caducado @else  Activo  @endif</li>
-	                          					<li class="@if($client->current_book()->book_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($client->current_book()->book_state_economic == 1) Impago @endif @if($client->current_book()->book_state_economic == 2) Abonado @endif 
-	                          						@if($client->current_book()->book_state_economic == 3) Pagado @endif
+	                          					<li><i class="fa fa-membership"></i> Cartilla: {{$client->current_membership()->type->name}}  </li>
+	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {{$client->current_membership()->period_from}} / {{$client->current_membership()->period_to}}</li>
+	                          					<li class="@if($client->current_membership()->membership_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($client->current_membership()->membership_state_phisical == 0) Caducado @else  Activo  @endif</li>
+	                          					<li class="@if($client->current_membership()->membership_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($client->current_membership()->membership_state_economic == 1) Impago @endif @if($client->current_membership()->membership_state_economic == 2) Abonado @endif 
+	                          						@if($client->current_membership()->membership_state_economic == 3) Pagado @endif
 	                          					</li>
 	                          				</ul>
 	                          			</div>
@@ -75,24 +75,24 @@
 	                          			<div class="text-right">
 		                          			<?php 
 		                          			
-		                          				$lastDayJob =   count($client->current_book()->daysDetail) > 0 ? $client->current_book()->daysDetail()->orderBy('secuence','desc')->first()->created_at : null;  
+		                          				$lastDayJob =   count($client->current_membership()->daysDetail) > 0 ? $client->current_membership()->daysDetail()->orderBy('secuence','desc')->first()->created_at : null;  
 		                          			?>
 		                          			<?php if ($lastDayJob != $client->currentDate()): ?>
 		                          			<div class="col-md-9 col-sm-3 col-xs-12">
-		                          				<form action="{{ route('clients.books.details.store',[$client->id,$client->current_book()->id]) }}" method="POST">
+		                          				<form action="{{ route('clients.memberships.details.store',[$client->id,$client->current_membership()->id]) }}" method="POST">
 		                          					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		                          					<input type="hidden" name="book_id" value="{{ $client->current_book()->id }}">
-		                          					<input type="hidden" name="secuence" value="{{ $client->current_book()->getNextSecuence() }}">
+		                          					<input type="hidden" name="membership_id" value="{{ $client->current_membership()->id }}">
+		                          					<input type="hidden" name="secuence" value="{{ $client->current_membership()->getNextSecuence() }}">
 			                          				<button type="submit" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>	
 		                          				</form>
 	                          				</div>
 	                          				<?php endif ?>
 
-	                          				@if (count($client->current_book()->daysDetail) > 0)
-				                          		<form action="{{ route('clients.books.update',[$client->id,$client->current_book()->id]) }}" method="POST">
+	                          				@if (count($client->current_membership()->daysDetail) > 0)
+				                          		<form action="{{ route('clients.memberships.update',[$client->id,$client->current_membership()->id]) }}" method="POST">
 				                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="PUT">
-													<input type="hidden" name="book_state_phisical" value="0">
+													<input type="hidden" name="membership_state_phisical" value="0">
 				                          			<button type="submit" class="btn btn-danger pull-right"><i class="fa fa-times"> </i> Cerrar Cartilla</button>	
 				                          		</form>
 		                          			@endif
@@ -107,8 +107,8 @@
 	                          				</tr>
 	                          			</thead>
 	                          			<tbody>
-	                          				@if (count($client->current_book()->daysDetail) > 0)
-	                          					@foreach ($client->current_book()->daysDetail as $dDetail)
+	                          				@if (count($client->current_membership()->daysDetail) > 0)
+	                          					@foreach ($client->current_membership()->daysDetail as $dDetail)
 		                          				<tr>
 		                          					<td>{{$dDetail->secuence}}</td>
 		                          					<td>{!!$dDetail->created_at!!} </td>
@@ -139,32 +139,32 @@
 	                          			</tr>
 	                          		</thead>
 	                          		<tbody>
-	                          			@foreach ($client->books()->orderBy('id','desc')->get() as $book)
+	                          			@foreach ($client->memberships()->orderBy('id','desc')->get() as $membership)
 		                          			<tr>
-		                          				<td>{!!$book->period_from!!}</td>
-		                          				<td>{!!$book->period_to!!}</td>
-		                          				<td>{!!$book->type->name!!}</td>
-		                          				<td @if ($book->book_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
-		                          					@if ($book->book_state_phisical == '1')
+		                          				<td>{!!$membership->period_from!!}</td>
+		                          				<td>{!!$membership->period_to!!}</td>
+		                          				<td>{!!$membership->type->name!!}</td>
+		                          				<td @if ($membership->membership_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
+		                          					@if ($membership->membership_state_phisical == '1')
 		                          					Activa
 		                          					@else
 		                          					Caducada
 		                          					@endif 
 		                          				</td>
-		                          				<td @if($book->book_state_economic == '1') class="text-danger" @endif @if($book->book_state_economic == '2') class="text-warning" @endif @if($book->book_state_economic == '3') class="text-success" @endif>
-		                          					@if($book->book_state_economic == '1')
+		                          				<td @if($membership->membership_state_economic == '1') class="text-danger" @endif @if($membership->membership_state_economic == '2') class="text-warning" @endif @if($membership->membership_state_economic == '3') class="text-success" @endif>
+		                          					@if($membership->membership_state_economic == '1')
 		                          						Impago
 		                          					@endif
-		                          					@if($book->book_state_economic == '2')
+		                          					@if($membership->membership_state_economic == '2')
 		                          						Abonado
 		                          					@endif
-		                          					@if($book->book_state_economic == '3')
+		                          					@if($membership->membership_state_economic == '3')
 		                          						Pagado
 		                          					@endif
 		                          				</td>
 		                          				<td>
-		                          					@if ($book->book_state_economic == '1' || $book->book_state_economic == '2')
-		                          						<a href="{{ route('clients.books.payments.create',[$client->id,$book->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
+		                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
+		                          						<a href="{{ route('clients.memberships.payments.create',[$client->id,$membership->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
 		                          					@endif
 		                          				</td>
 		                          			</tr>

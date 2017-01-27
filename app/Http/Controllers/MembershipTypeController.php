@@ -4,20 +4,20 @@ namespace GymWeb\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use GymWeb\Http\Requests\BookTypeRequest;
+use GymWeb\Http\Requests\MembershipTypeRequest;
 
-use GymWeb\RepositoryInterface\BookTypeRepositoryInterface; 
+use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface; 
 
 use Redirect;
 
-class BookTypeController extends Controller
+class MembershipTypeController extends Controller
 {
     
-	public $bookType;
+	public $membershipType;
 
-    public function __construct(BookTypeRepositoryInterface $bookType)
+    public function __construct(MembershipTypeRepositoryInterface $membershipType)
     {
-    	$this->bookType = $bookType;
+    	$this->membershipType = $membershipType;
     }
 
     /**
@@ -27,11 +27,11 @@ class BookTypeController extends Controller
 	 */
 	public function index()
 	{
-		$bookTypes = $this->bookType->enum();
+		$membershipTypes = $this->membershipType->enum();
 		$data = [
-			'bookTypes' => $bookTypes
+			'membershipTypes' => $membershipTypes
 		];
-		return view('bookType.index',$data);
+		return view('membershipType.index',$data);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class BookTypeController extends Controller
 	 */
 	public function create()
 	{
-		return view('bookType.create');
+		return view('membershipType.create');
 	}
 
 	/**
@@ -49,22 +49,22 @@ class BookTypeController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store(BookTypeRequest $request)
+	public function store(MembershipTypeRequest $request)
 	{
 		$data = $request->all();
-		$bookType = $this->bookType->save($data);
+		$membershipType = $this->membershipType->save($data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($bookType) {
+		if ($membershipType) {
 			$sessionData['mensaje'] = 'Tipo de Subscripción Creado Satisfacoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Subscripción no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookTypeController@index')->with($sessionData);
+		return Redirect::action('MembershipTypeController@index')->with($sessionData);
 		
 	}
 
@@ -76,14 +76,14 @@ class BookTypeController extends Controller
 	 */
 	public function show($id)
 	{
-		$bookType = $this->bookType->find($id,false);
-		if ($bookType) {
-			return view('bookType.show',['bookType'=>$bookType]);
+		$membershipType = $this->membershipType->find($id,false);
+		if ($membershipType) {
+			return view('membershipType.show',['membershipType'=>$membershipType]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser encontrado';
-		return Redirect::action('BookTypeController@index')->with($sessionData); 
+		return Redirect::action('MembershipTypeController@index')->with($sessionData); 
 	}
 
 	/**
@@ -94,14 +94,14 @@ class BookTypeController extends Controller
 	 */
 	public function edit($id)
 	{
-		$bookType = $this->bookType->find($id);
-		if ($bookType) {
-			return view('bookType.edit',['bookType'=>$bookType]);
+		$membershipType = $this->membershipType->find($id);
+		if ($membershipType) {
+			return view('membershipType.edit',['membershipType'=>$membershipType]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser encontrado';
-		return Redirect::action('BookTypeController@index')->with($sessionData); 
+		return Redirect::action('MembershipTypeController@index')->with($sessionData); 
 	}
 
 	/**
@@ -110,22 +110,22 @@ class BookTypeController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(BookTypeRequest $request, $id)
+	public function update(MembershipTypeRequest $request, $id)
 	{
 		$data = $request->all();
-		$bookType = $this->bookType->edit($id,$data);
+		$membershipType = $this->membershipType->edit($id,$data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($bookType) {
+		if ($membershipType) {
 			$sessionData['mensaje'] = 'El tipo de membresia ha sido editado Satisfacoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El tipo de membresia no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookTypeController@index')->with($sessionData);
+		return Redirect::action('MembershipTypeController@index')->with($sessionData);
 	}
 
 	/**
@@ -137,21 +137,21 @@ class BookTypeController extends Controller
 	public function destroy($id)
 	{
 		
-		$bookType = $this->bookType->remove($id);
+		$membershipType = $this->membershipType->remove($id);
 		
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
 		
-		if ($bookType) {
+		if ($membershipType) {
 			$sessionData['mensaje'] = 'Tipo de membresia Eliminado Satisfacoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return Redirect::action('BookTypeController@index')->with($sessionData);
+		return Redirect::action('MembershipTypeController@index')->with($sessionData);
 			
 		
 	}

@@ -26,12 +26,12 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::resource('clients','ClientController');
 	Route::resource('clients.memberships','MemberShipController',['only'=>['create','store','update']]);
 	Route::resource('clients.books.details','BookDetailController',['only'=>['store']]);
-	Route::resource('clients.books.payments','BookPaymentDetailController',['only'=>['create','store']]);
+	Route::resource('clients.memberships.payments','BookPaymentDetailController',['only'=>['create','store']]);
 
 });
 
 Route::group(['middleware'=>['auth','role:administrator']],function(){
-	Route::resource('book-types','BookTypeController',['except'=>['show']]);
+	Route::resource('membership-types','MembershipTypeController',['except'=>['show']]);
 	Route::resource('users','UserController',['except'=>['show']]);
 	Route::resource('permissions','PermissionController',['except'=>['show']]);
 	Route::resource('roles','RoleController',['except'=>['show']]);

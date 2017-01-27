@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Creación de Tipo de Cartilla /')
+@section('title','Edición de Tipo de membresia /')
 
 @section('title-page')
-	<h3>Tipo de Cartilla <small> Contiene la descripción y detalle de una cartilla.</small></h3>
+	<h3>Tipo de membresia <small> Contiene la descripción y detalle de una membresia.</small></h3>
 @endsection
 
 @section('js')
@@ -20,31 +20,33 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Crear <small>Tipo de Cartilla</small></h2>
+					<h2>Editar <small>Tipo de membresia</small></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<form method="post" class="form-horizontal form-label-left" action="{{ route('book-types.store') }}">
+					<form method="post" class="form-horizontal form-label-left" action="{{ route('membership-types.update',$membershipType->id) }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_method" value="PUT">
+						<input type="hidden" name="key" value="{{$membershipType->id}}">
 						<div class="row">
 							<div class="form-group col-md-4 col-sm-4 col-xs-12">
 								<label class="control-label col-md-2 col-sm-2 col-xs-12">Nombre </label>
 							     <div class="col-md-9 col-sm-9 col-xs-12 if @if($errors->has('name')) has-error @endif">
-							     	<input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}" autofocus>
+							     	<input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ $membershipType->name }}" autofocus>
 							     	 @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
 							     </div>
 							</div>
 							<div class="form-group col-md-5 col-sm-5 col-xs-12 ">
 								<label class="control-label col-md-2 col-sm-2 col-xs-12">Descipción </label>
 							     <div class="col-md-10 col-sm-10 col-xs-12 @if($errors->has('description')) has-error @endif">
-							     	<input type="text" class="form-control" placeholder="Descripción" name="description" value="{{ old('description') }}">
+							     	<input type="text" class="form-control" placeholder="Descripción" name="description" value="{{ $membershipType->description }}">
 							     	@if ($errors->has('description')) <p class="help-block">{{ $errors->first('description') }}</p> @endif
 							     </div>
 							</div>
 							<div class="form-group col-md-3 col-sm-3 col-xs-12 ">
 								<label class="control-label col-md-2 col-sm-2 col-xs-12">Precio </label>
 							     <div class="col-md-9 col-sm-9 col-xs-12 @if($errors->has('price')) has-error @endif">
-							     	<input type="number" class="form-control" placeholder="Precio" name="price" value="{{ old('price') }}">
+							     	<input type="number" class="form-control" placeholder="Precio" name="price" value="{{$membershipType->price}}">
 							     	@if ($errors->has('price')) <p class="help-block">{{ $errors->first('price') }}</p> @endif
 							     </div>
 							</div>
@@ -53,7 +55,7 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
-	                        	<a href="{{ route('book-types.index') }}" class="btn btn-primary">Cancelar</a>
+	                        	<a href="{{ route('clients.index') }}" class="btn btn-primary">Cancelar</a>
 	                        	<button type="submit" class="btn btn-success">Guardar</button>
 	                      	</div>
                     	</div>
@@ -64,3 +66,4 @@
 	</div>
 
 @endsection
+
