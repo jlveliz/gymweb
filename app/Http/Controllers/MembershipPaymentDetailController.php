@@ -4,27 +4,27 @@ namespace GymWeb\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use GymWeb\Http\Requests\BookPaymentDetailRequest;
+use GymWeb\Http\Requests\MembershipPaymentDetailRequest;
 
-use GymWeb\RepositoryInterface\BookPaymentDetailRepositoryInterface; 
+use GymWeb\RepositoryInterface\MembershipPaymentDetailRepositoryInterface; 
 
 use Redirect;
 
-use GymWeb\Events\CheckStateBook;
+use GymWeb\Events\CheckStateMembership;
 
-use GymWeb\Models\Book;
+use GymWeb\Models\Membership;
 
 use Event;
 
-class BookPaymentDetailController extends Controller
+class MembershipPaymentDetailController extends Controller
 {
     
-	public $bookDetail;
+	public $membershipDetail;
 
-    public function __construct(BookPaymentDetailRepositoryInterface $bookDetail)
+    public function __construct(MembershipPaymentDetailRepositoryInterface $membershipDetail)
     {
     	$this->middleware('pay');
-    	$this->bookDetail = $bookDetail;
+    	$this->membershipDetail = $membershipDetail;
     }
 
     /**
@@ -42,10 +42,10 @@ class BookPaymentDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function create($clientId, $bookId)
+	public function create($clientId, $membershipId)
 	{ 
-		$balance = ( (new Book())->getPrice($bookId) - (new Book())->getSumPayments($bookId) );
-		return view('bookpayment.create',['client_id'=>$clientId,'book_id'=>$bookId,'balance'=>$balance]);
+		$balance = ( (new Membership())->getPrice($membershipId) - (new Membership())->getSumPayments($membershipId) );
+		return view('membershippayment.create',['client_id'=>$clientId,'membership_id'=>$membershipId,'balance'=>$balance]);
 	}
 
 	/**
@@ -53,20 +53,20 @@ class BookPaymentDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store($clientId, $bookId, BookPaymentDetailRequest $request)
+	public function store($clientId, $membershipId, MembershipPaymentDetailRequest $request)
 	{
 		$data = $request->all();
-		$bookDetail = $this->bookDetail->save($data);
+		$membershipDetail = $this->membershipDetail->save($data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($bookDetail) {
-			Event::fire(new CheckStateBook($bookDetail));
-			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
+		if ($membershipDetail) {
+			Event::fire(new CheckStateMembership($membershipDetail));
+			$sessionData['mensaje'] = 'La membresia se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
-			$sessionData['mensaje'] = 'La cartilla del cliente no pudo ser creado, intente nuevamente';
+			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
 		return Redirect::action('ClientController@show',$clientId)->with($sessionData);
@@ -101,7 +101,7 @@ class BookPaymentDetailController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(BookRequest $request, $id)
+	public function update(MembershipRequest $request, $id)
 	{
 		
 	}

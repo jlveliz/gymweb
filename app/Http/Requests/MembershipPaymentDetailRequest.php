@@ -5,7 +5,7 @@ namespace GymWeb\Http\Requests;
 use GymWeb\Http\Requests\Request;
 
 
-class BookPaymentDetailRequest extends Request
+class MembershipPaymentDetailRequest extends Request
 {
     
     public function __construct()
@@ -39,7 +39,7 @@ class BookPaymentDetailRequest extends Request
             case 'POST':
             {
                 return [
-                    'book_id' => 'required|exists:book,id',
+                    'membership_id' => 'required|exists:membership,id',
                     'value' => 'required|max:'.$float,
                 ];
             }
@@ -65,8 +65,8 @@ class BookPaymentDetailRequest extends Request
             case 'POST':
             {
                 return [
-                    'book_id.required' => 'La cartilla es requerida',
-                    'book_id.exists' => 'Ingrese una cartilla existente',
+                    'membership_id.required' => 'La membresia es requerida',
+                    'membership_id.exists' => 'Ingrese una membresia existente',
                     'value.required' => 'El valor es requerido',
                     'value.max' => 'El valor no debe exceder del saldo indicado',
                 ];

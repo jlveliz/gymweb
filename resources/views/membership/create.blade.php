@@ -11,7 +11,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Crear <small>Cartilla</small></h2>
+					<h2>Crear <small>Membresia</small></h2>
 					<div class="clearfix"></div>
 					@if($errors->has('client_id'))
 						<div class="alert alert-danger" role="alert">
@@ -40,7 +40,7 @@
 				      </div>
 				    </div>
 				    <div class="form-group col-md-4 col-sm-4 col-xs-12">
-				      <label class="control-label col-md-4 col-sm-4 col-xs-12">Tipo de cartilla </label>
+				      <label class="control-label col-md-4 col-sm-4 col-xs-12">Tipo de membresia </label>
 				      <div class="col-md-7 col-sm-7 col-xs-12  @if($errors->has('membership_type_id')) has-error @endif">
 				        <select name="membership_type_id" class="form-control"  id="membership_type_id">
 				          		<option data-price="null" value="null">--Selecione--</option>

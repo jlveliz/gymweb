@@ -4,7 +4,7 @@ namespace GymWeb\Http\Middleware;
 
 use Closure;
 
-use GymWeb\Models\Book;
+use GymWeb\Models\Membership;
 
 class PayMiddleware
 {
@@ -17,11 +17,11 @@ class PayMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $bookId = $request->route()->getParameter('books');
+        $membershipId = $request->route()->getParameter('memberships');
         $clientId = $request->route()->getParameter('clients');
-        if (!$bookId) return redirect()->route('clients.show',$clientId);
-        $book = Book::find($bookId);
-        if (!$book || ($book->book_state_economic == (new Book())->stateEconomics['pagado'])) {
+        if (!$membershipId) return redirect()->route('clients.show',$clientId);
+        $membership = Membership::find($membershipId);
+        if (!$membership || ($membership->membership_state_economic == (new Membership())->stateEconomics['pagado'])) {
             return redirect()->route('clients.show',$clientId);
         }
         return $next($request);

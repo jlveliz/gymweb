@@ -45,7 +45,7 @@
 						</div>
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 	                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-	                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Cartilla</a>
+	                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Membresia</a>
 	                          </li>
 	                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Historial</a>
 	                          </li>
@@ -53,9 +53,9 @@
 	                        <div id="myTabContent" class="tab-content">
 	                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 	                          	@if (!$client->current_book())
-	                          		<h5 class="text-center col-md-10">No tiene una cartilla activa</h5>
+	                          		<h5 class="text-center col-md-10">No tiene una membresia activa</h5>
 	                          		<div class="col-md-2">
-	                          			<a href="{{ route('clients.books.create',$client->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Cartilla</a>	
+	                          			<a href="{{ route('clients.books.create',$client->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Membresia</a>	
 	                          		</div>	
 	                          	@else
 	                          		<div class="row">
@@ -92,7 +92,7 @@
 				                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="PUT">
 													<input type="hidden" name="book_state_phisical" value="0">
-				                          			<button type="submit" class="btn btn-danger pull-right"><i class="fa fa-times"> </i> Cerrar Cartilla</button>	
+				                          			<button type="submit" class="btn btn-danger pull-right"><i class="fa fa-times"> </i> Cerrar Membresia</button>	
 				                          		</form>
 		                          			@endif
 				                        </div>
@@ -124,7 +124,7 @@
 	                          
 	                          </div>
 	                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-	                          	<h2>Cartillas anteriores</h2>
+	                          	<h2>Membresias anteriores</h2>
 	                          	<hr>
 	                          	<table class="table table-striped">
 	                          		<thead>

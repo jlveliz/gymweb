@@ -64,10 +64,10 @@ class MembershipController extends Controller
 			'mensaje' => '',
 		];
 		if ($membership) {
-			$sessionData['mensaje'] = 'La cartilla se ha creado satisfactoriamente';
+			$sessionData['mensaje'] = 'La membresia se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
-			$sessionData['mensaje'] = 'La cartilla del cliente no pudo ser creado, intente nuevamente';
+			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
 		return Redirect::action('ClientController@show',$parent)->with($sessionData);

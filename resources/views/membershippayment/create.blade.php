@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','Pago de cartilla /')
+@section('title','Pago de membresia /')
 
 @section('title-page')
 	<h3>Clientes <small> Los que se ejercitan con nosotros.</small></h3>
@@ -11,7 +11,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Crear <small>Cartilla</small></h2>
+					<h2>Crear <small>Membresia</small></h2>
 					<div class="clearfix"></div>
 					@if($errors->has('client_id'))
 						<div class="alert alert-danger" role="alert">
@@ -20,8 +20,8 @@
 					@endif
 				</div>
 			<div class="x_content"></div>
-				<form action="{{ route('clients.books.payments.store',[$client_id,$book_id]) }}" id="form-create-book" method="POST" class="form-horizontal form-label-left">
-				  <input type="hidden" name="book_id" id="book_state_phisical" value="{{$book_id}}">
+				<form action="{{ route('clients.memberships.payments.store',[$client_id,$membership_id]) }}" id="form-create-membership" method="POST" class="form-horizontal form-label-left">
+				  <input type="hidden" name="membership_id" id="membership_state_phisical" value="{{$membership_id}}">
 				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				  <div class="row">
 				    <div class="form-group col-md-4 col-sm-4 col-xs-12 has-feedback">

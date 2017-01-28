@@ -116,7 +116,7 @@ class Membership extends Model
 
     public function paymentsDetail()
     {
-        return $this->hasMany('GymWeb\Models\MembershipDetail','membership_id');
+        return $this->hasMany('GymWeb\Models\MembershipPaymentDetail','membership_id');
     }
 
     public function getNextSecuence()
