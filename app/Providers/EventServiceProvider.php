@@ -16,8 +16,8 @@ class EventServiceProvider extends ServiceProvider
         'GymWeb\Events\SomeEvent' => [
             'GymWeb\Listeners\EventListener',
         ],
-        'GymWeb\Events\CheckStateBook' => [
-            'GymWeb\Listeners\CheckStateBook',
+        'GymWeb\Events\CheckStateMembership' => [
+            'GymWeb\Listeners\CheckStateMembership',
         ],
     ];
 
