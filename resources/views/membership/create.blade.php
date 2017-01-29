@@ -37,6 +37,12 @@
 				         @if ($errors->has('period_to')) <p class="help-block">{{ $errors->first('period_to') }}</p> @endif
 				    </div>
 
+				    <div class="form-group col-md-2 col-sm-2 col-xs-6 @if($errors->has('max_days')) has-error @endif">
+				      <label for="max_days">Dias de asistencia </label>
+				        <input type="number" step="any" class="form-control" placeholder="Dias de asistencia" name="max_days" id="max_days" value="{{ old('max_days') }}">
+				         @if ($errors->has('max_days')) <p class="help-block">{{ $errors->first('max_days') }}</p> @endif
+				    </div>
+
 				    <div class="form-group col-md-2 col-sm-2 col-xs-6 @if($errors->has('membership_type_id')) has-error @endif">
 				      <label class="control-label">Tipo de membresia </label>
 				        <select name="membership_type_id" class="form-control"  id="membership_type_id">
@@ -49,8 +55,8 @@
 				    </div>
 				      
 				    <div class="form-group col-md-2 col-sm-2 col-xs-3 @if($errors->has('base_price')) has-error @endif">
-				    	<label class="base_price">Precio Base </label>
-				        <input type="text" class="form-control" placeholder="Precio" id="base_price" disabled value="">
+				    	<label for="base_price">Precio Base de Membresia </label>
+				        <input type="text" class="form-control col-md-4 col-xs-12" placeholder="Precio" id="base_price" disabled value="">
 				    </div>
 
 				  	<div class="form-group col-md-2 col-sm-2 col-xs-12 @if($errors->has('membership_state_economic')) has-error @endif">
@@ -70,9 +76,9 @@
 				  	
 
 				  	<div class="form-group col-md-2 col-sm-2 col-xs-12" id="payment" style="display:none">
-				  		<label for="value">Valor </label>
-				  		  <input type="number" step="any" class="form-control" placeholder="Valor" name="value" id="value" value="{{ old('value') }}">
-				  		   @if ($errors->has('value')) <p class="help-block">{{ $errors->first('value') }}</p> @endif
+				  		<label for="payment_value">Valor </label>
+				  		  <input type="number" step="any" class="form-control" placeholder="Valor" name="payment_value" id="value" value="{{ old('payment_value') }}">
+				  		   @if ($errors->has('payment_value')) <p class="help-block">{{ $errors->first('payment_value') }}</p> @endif
 				  	</div>
 				<div class="clearfix"></div>
 				<div class="ln_solid"></div>
@@ -97,31 +103,43 @@
 <script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+
+  	 function calculateMaxDays() {
+    	var  periodFrom = moment($('#period_from').val());
+    	var  periodTo = moment($('#period_to').val());
+    	return periodTo.diff(periodFrom,'days'); 
+    }
     
     $("#period_from").val(moment().format('YYYY-MM-DD'));
+
 
   	// datepicker
     $('#period_from').datetimepicker({
     	format: 'YYYY-MM-DD',
-    	// minDate: moment().subtract(30,'days'),
-    	maxDate: moment(),
+    	// maxDate: moment(),
     });
     $('#period_to').datetimepicker({
     	format: 'YYYY-MM-DD',
-    	minDate: moment($('#period_from').val()).add(1,'days'),
+    	// minDate: moment($('#period_from').val()).add(1,'days'),
     	// maxDate: moment().add(1,'months'),
-    	disabledDates: [moment(),this.minDate]
     });
+
+    $("#period_to").val(moment().endOf(1,'months').format('YYYY-MM-DD'));
 
     $('#period_from').on("dp.change", function() {
        var _this = $(this);
        var date = _this.val();
-       var maximumDate = moment(date).add(1,'days').format('YYYY-MM-DD')
-
+       var maximumDate = moment(date).add(1,'months').format('YYYY-MM-DD');
        $('#period_to').val('');
-       $('#period_to').data('DateTimePicker').minDate(maximumDate);
+       $('#period_to').data('DateTimePicker').minDate(moment($('#period_from').val()).add(1,'days'));
        $('#period_to').val(maximumDate);
+       //max days job
+       $("#max_days").val(calculateMaxDays());
     });
+
+     $('#period_to').on("dp.change", function() {
+     	$("#max_days").val(calculateMaxDays());
+     })
 
     // select 
     $("#membership_state_economic").on('change', function(event) {
@@ -142,6 +160,8 @@
     });
 
 
+
+
     $("#membership_type_id").on('change', function(event) {
     	var _this = $(this);
     	if (_this.val() == 'null') {
@@ -160,6 +180,11 @@
     	if (!val) basePrice.val(0.00);
     	basePrice.val(val);
     });
+
+
+   
+
+    $("#max_days").val(calculateMaxDays());
 
   });
 </script>

@@ -10,16 +10,16 @@ class CheckStateMembership extends Event
 {
     use SerializesModels;
 
-    public $detail;
+    public $detailMembership;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($detail)
+    public function __construct($detailMembership)
     {
-        $this->detail = $detail;
+        $this->detailMembership = $detailMembership;
     }
 
     /**

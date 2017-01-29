@@ -3,6 +3,8 @@ namespace GymWeb\Repository;
 
 use GymWeb\RepositoryInterface\MembershipRepositoryInterface;
 use GymWeb\Models\Membership;
+use GymWeb\Events\CheckStateMembership;
+use Event;
 
 /**
 * 
@@ -43,8 +45,9 @@ class MembershipRepository implements MembershipRepositoryInterface
 			if ($membership->membership_state_economic > 1) { //if membership is 'abonado' or 'cancelado' insert a payment detail
 				$paymentDetail = new \GymWeb\Models\MembershipPaymentDetail();
 				$paymentDetail->membership_id = $key;
-				$paymentDetail->value = $data['value'];
+				$paymentDetail->value = $data['payment_value'];
 				$paymentDetail->save();
+				Event::fire(new CheckStateMembership($paymentDetail));
 			}
 			return  $this->find($key);
 		} 

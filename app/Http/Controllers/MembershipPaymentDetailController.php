@@ -63,10 +63,10 @@ class MembershipPaymentDetailController extends Controller
 		];
 		if ($membershipDetail) {
 			Event::fire(new CheckStateMembership($membershipDetail));
-			$sessionData['mensaje'] = 'La membresia se ha creado satisfactoriamente';
+			$sessionData['mensaje'] = 'Se ha realizado un pago a la membresia satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
-			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
+			$sessionData['mensaje'] = 'No se pudo realizar la transacción, intente nuevamente.';
 		}
 		
 		return Redirect::action('ClientController@show',$clientId)->with($sessionData);

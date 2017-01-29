@@ -40,6 +40,7 @@ class Membership extends Model
     protected $fillable = [
         'client_id', 
         'price', 
+        'max_days', 
         'period_from',
         'period_to',
         'membership_type_id',
@@ -96,16 +97,9 @@ class Membership extends Model
         return \Config('book.max-days-detail');
     }
 
-    public function getPrice($membershipId)
+    public function getSumPayments()
     {
-        $price = $this->find($membershipId)->type ? $this->find($membershipId)->type->price : $this->price;
-        $this->price = $price;
-        return $this->price;
-    }
-
-    public function getSumPayments($membershipId)
-    {
-        $sum = $this->where('id',$membershipId)->first()->paymentsDetail()->sum('value');
+        $sum = $this->paymentsDetail()->sum('value');
         if(!$sum) return '00.00';
         return $sum;
     }
