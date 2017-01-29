@@ -67,7 +67,7 @@ class UserController extends Controller
 			'mensaje' => '',
 		];
 		if ($user) {
-			$sessionData['mensaje'] = 'Usuario Creado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Usuario Creado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El usuario no pudo ser creado, intente nuevamente';
@@ -128,7 +128,7 @@ class UserController extends Controller
 			'mensaje' => '',
 		];
 		if ($user) {
-			$sessionData['mensaje'] = 'Usuario Editado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Usuario Editado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El usuario no pudo ser creado, intente nuevamente';
@@ -154,7 +154,7 @@ class UserController extends Controller
 		];
 		
 		if ($user) {
-			$sessionData['mensaje'] = 'Usuario Eliminado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Usuario Eliminado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El usuario no pudo ser eliminado, intente nuevamente';

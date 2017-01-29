@@ -4,7 +4,7 @@ namespace GymWeb\Http\Requests;
 
 use GymWeb\Http\Requests\Request;
 
-class MembershipTypeRequest extends Request
+class DivisionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,6 @@ class MembershipTypeRequest extends Request
          return [
             'name' => 'required|max:50',
             'description' => 'required|max:150',
-            'price' => 'required|numeric',
         ];
     }
 
@@ -34,12 +33,10 @@ class MembershipTypeRequest extends Request
     {
         
         return [
-            'name.required' => 'El nombre de tipo de membresia requerida',
+            'name.required' => 'El nombre de tipo de la devisión es requerida',
             'name.max' => 'El nombre debe tener un máximo de 50 caracteres',
             'description.required' => 'La descripción del tipo de membresia requerida',
             'description.max' => 'La descripción debe tener un máximo de 150 caracteres',
-            'price.required' => 'El precio del tipo de membresia requerida',
-            'price.numeric' => 'El precio del tipo de membresia es inválida',
         ];
     }
 }

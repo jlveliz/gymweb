@@ -24,7 +24,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<form method="post" class="form-horizontal form-label-left" action="{{ route('membership-types.store') }}">
+					<form method="post" class="form-horizontal form-label-left" action="{{ route('memberships.types.store') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="row">
 							<div class="form-group col-md-4 col-sm-4 col-xs-12">
@@ -53,7 +53,7 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
-	                        	<a href="{{ route('membership-types.index') }}" class="btn btn-primary">Cancelar</a>
+	                        	<a href="{{ route('memberships.types.index') }}" class="btn btn-primary">Cancelar</a>
 	                        	<button type="submit" class="btn btn-success">Guardar</button>
 	                      	</div>
                     	</div>

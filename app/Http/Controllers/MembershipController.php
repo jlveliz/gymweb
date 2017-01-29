@@ -119,7 +119,7 @@ class MembershipController extends Controller
 			'mensaje' => '',
 		];
 		if ($membership) {
-			$sessionData['mensaje'] = 'Cliente Editado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Cliente Editado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
@@ -145,7 +145,7 @@ class MembershipController extends Controller
 		];
 		
 		if ($membership) {
-			$sessionData['mensaje'] = 'Cliente Eliminado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Cliente Eliminado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Cliente no pudo ser eliminado, intente nuevamente';

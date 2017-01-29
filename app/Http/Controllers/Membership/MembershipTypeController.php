@@ -1,12 +1,14 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Membership;
 
 use Illuminate\Http\Request;
 
 use GymWeb\Http\Requests\MembershipTypeRequest;
 
 use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface; 
+
+use GymWeb\Http\Controllers\Controller;
 
 use Redirect;
 
@@ -31,7 +33,7 @@ class MembershipTypeController extends Controller
 		$data = [
 			'membershipTypes' => $membershipTypes
 		];
-		return view('membershipType.index',$data);
+		return view('memberships.type.index',$data);
 	}
 
 	/**
@@ -41,7 +43,7 @@ class MembershipTypeController extends Controller
 	 */
 	public function create()
 	{
-		return view('membershipType.create');
+		return view('memberships.type.create');
 	}
 
 	/**
@@ -58,7 +60,7 @@ class MembershipTypeController extends Controller
 			'mensaje' => '',
 		];
 		if ($membershipType) {
-			$sessionData['mensaje'] = 'Tipo de Subscripción Creado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Tipo de Subscripción Creado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Subscripción no pudo ser creado, intente nuevamente';
@@ -119,7 +121,7 @@ class MembershipTypeController extends Controller
 			'mensaje' => '',
 		];
 		if ($membershipType) {
-			$sessionData['mensaje'] = 'El tipo de membresia ha sido editado Satisfacoriamente';
+			$sessionData['mensaje'] = 'El tipo de membresia ha sido editado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El tipo de membresia no pudo ser creado, intente nuevamente';
@@ -145,7 +147,7 @@ class MembershipTypeController extends Controller
 		];
 		
 		if ($membershipType) {
-			$sessionData['mensaje'] = 'Tipo de membresia Eliminado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Tipo de membresia Eliminado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser eliminado, intente nuevamente';

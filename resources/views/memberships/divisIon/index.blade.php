@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Listado de Tipo de Membresia /')
+@section('title','Listado de Tipo de División /')
 
 @section('title-page')
-	<h3>Tipo de Membresia <small> Contiene la descripción y detalle de una membresia.</small></h3>
+	<h3>Tipo de División <small> Contiene la descripción y detalle de una División.</small></h3>
 @endsection
 
 @section('content-page')
@@ -11,9 +11,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listado <small>Tipo de Membresia</small></h2>
+					<h2>Listado <small>Tipo de División</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('membership-types.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <li><a href="{{ route('memberships.divisions.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 	                  </ul>
 					<div class="clearfix"></div>
@@ -31,25 +31,25 @@
 							<tr>
 								<th class="text-center">Nombre</th>
 								<th class="text-center">Descripción</th>
-								<th class="text-center">Precio</th>
 								<th class="text-center">Fecha de creación</th>
+								<th class="text-center">Fecha de actualización</th>
 								<th class="text-center col-md-2 col-sm-2 col-xs-6">Acción</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($membershipTypes as $membershipType)
+							@foreach ($divisions as $division)
 								<tr>
-									<td>{{$membershipType->name}} </td>
-									<td>{{$membershipType->description}}</td>
-									<td>$ {{$membershipType->price}}</td>
-									<td>{{$membershipType->created_at}}</td>
+									<td>{{$division->name}} </td>
+									<td>{{$division->description}}</td>
+									<td>{{$division->created_at}}</td>
+									<td>{{$division->updated_at}}</td>
 									<td>
 										<ul class="nav navbar-right panel_toolbox">	
 											<li>
-												<a href="{{ route('membership-types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('memberships.divisions.edit',$division->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 											<li>
-												<form action="{{ route('membership-types.destroy',$membershipType->id) }}" method="POST">
+												<form action="{{ route('memberships.divisions.destroy',$division->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>

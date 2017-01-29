@@ -58,7 +58,7 @@ class ClientController extends Controller
 			'mensaje' => '',
 		];
 		if ($client) {
-			$sessionData['mensaje'] = 'Cliente Creado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Cliente Creado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
@@ -113,7 +113,7 @@ class ClientController extends Controller
 			'mensaje' => '',
 		];
 		if ($client) {
-			$sessionData['mensaje'] = 'Cliente Editado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Cliente Editado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
@@ -139,7 +139,7 @@ class ClientController extends Controller
 		];
 		
 		if ($client) {
-			$sessionData['mensaje'] = 'Cliente Eliminado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Cliente Eliminado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Cliente no pudo ser eliminado, intente nuevamente';

@@ -64,7 +64,7 @@ class RoleController extends Controller
 			'mensaje' => '',
 		];
 		if ($role) {
-			$sessionData['mensaje'] = 'Rol Creado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Rol Creado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Rol no pudo ser creado, intente nuevamente';
@@ -125,7 +125,7 @@ class RoleController extends Controller
 			'mensaje' => '',
 		];
 		if ($role) {
-			$sessionData['mensaje'] = 'Rol Editado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Rol Editado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Rol no pudo ser creado, intente nuevamente';
@@ -151,7 +151,7 @@ class RoleController extends Controller
 		];
 		
 		if ($role) {
-			$sessionData['mensaje'] = 'Rol Eliminado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Rol Eliminado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Rol no pudo ser eliminado, intente nuevamente';

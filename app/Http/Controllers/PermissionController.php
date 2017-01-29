@@ -58,7 +58,7 @@ class PermissionController extends Controller
 			'mensaje' => '',
 		];
 		if ($permission) {
-			$sessionData['mensaje'] = 'Permiso Creado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Permiso Creado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Permiso no pudo ser creado, intente nuevamente';
@@ -106,7 +106,7 @@ class PermissionController extends Controller
 			'mensaje' => '',
 		];
 		if ($permission) {
-			$sessionData['mensaje'] = 'Permiso Editado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Permiso Editado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Permiso no pudo ser creado, intente nuevamente';
@@ -132,7 +132,7 @@ class PermissionController extends Controller
 		];
 		
 		if ($permission) {
-			$sessionData['mensaje'] = 'Permiso Eliminado Satisfacoriamente';
+			$sessionData['mensaje'] = 'Permiso Eliminado Satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Permiso no pudo ser eliminado, intente nuevamente';

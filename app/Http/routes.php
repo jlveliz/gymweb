@@ -31,7 +31,12 @@ Route::group(['middleware'=>'auth'],function(){
 });
 
 Route::group(['middleware'=>['auth','role:administrator']],function(){
-	Route::resource('membership-types','MembershipTypeController',['except'=>['show']]);
+
+	Route::group(['prefix'=>'memberships'],function(){
+		Route::resource('divisions','Membership\DivisionController',['except'=>['show']]);
+		Route::resource('types','Membership\MembershipTypeController',['except'=>['show']]);
+	});
+	
 	Route::resource('users','UserController',['except'=>['show']]);
 	Route::resource('permissions','PermissionController',['except'=>['show']]);
 	Route::resource('roles','RoleController',['except'=>['show']]);

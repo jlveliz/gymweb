@@ -10,7 +10,17 @@
 <div class="menu_section">
 	<h3>Configuración</h3>
 	<ul class="nav side-menu">
-		<li class="@if(Request::path() == '/membership-types') active @endif" "><a href="{{ route('membership-types.index') }}"><i class="fa fa-book"></i> Tipos de Membresia</span></a></li>
+		<li>
+			<a title="Membresias"><i class="fa fa-book"></i> Membresias</a>
+			<ul class="nav child_menu">
+				<li>
+					<a href="{{ route('memberships.types.index') }}" title="Tipos"> Tipos</span></a>
+				</li>
+				<li>
+					<a href="{{ route('memberships.divisions.index') }}" title="Divisiones"> Divisiones</span></a>
+				</li>
+			</ul>
+		</li>
 		<li class="@if(Request::path() == '/users') active @endif" "><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> Usuarios</span></a></li>
 		<li class="@if(Request::path() == '/roles') active @endif" "><a href="{{ route('roles.index') }}"><i class="fa fa-unlock"></i> Roles</span></a></li>
 		<li class="@if(Request::path() == '/permissions') active @endif" "><a href="{{ route('permissions.index') }}"><i class="fa fa-lock"></i> Permisos</span></a></li>
