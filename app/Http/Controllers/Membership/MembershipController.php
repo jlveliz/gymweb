@@ -1,13 +1,18 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Membership;
 
 use Illuminate\Http\Request;
 
 use GymWeb\Http\Requests\MembershipRequest;
 
 use GymWeb\RepositoryInterface\MembershipRepositoryInterface; 
+
 use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface; 
+
+use GymWeb\Http\Controllers\Controller;
+
+use GymWeb\Http\Controllers\ClientController;
 
 use Redirect;
 
@@ -35,7 +40,7 @@ class MembershipController extends Controller
 		$data = [
 			'memberships' => $memberships
 		];
-		return view('membership.index',$data);
+		return view('memberships.membership.index',$data);
 	}
 
 	/**
@@ -47,7 +52,7 @@ class MembershipController extends Controller
 	{ 
 		if (!$parent) return Redirect::back();
 		$membershipTypes = $this->membershipType->enum();
-		return view('membership.create',['client_id'=>$parent,'membershipTypes'=>$membershipTypes]);
+		return view('memberships.membership.create',['client_id'=>$parent,'membershipTypes'=>$membershipTypes]);
 	}
 
 	/**
@@ -101,7 +106,7 @@ class MembershipController extends Controller
 	public function edit($id)
 	{
 		$membership = $this->membership->find($id);
-		return view('membership.edit',['membership'=>$membership]);
+		return view('memberships.membership.edit',['membership'=>$membership]);
 	}
 
 	/**

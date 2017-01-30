@@ -1,6 +1,6 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Membership;
 
 use Illuminate\Http\Request;
 
@@ -11,6 +11,8 @@ use GymWeb\RepositoryInterface\MembershipPaymentDetailRepositoryInterface;
 use Redirect;
 
 use GymWeb\Events\CheckStateMembership;
+
+use GymWeb\Http\Controllers\Controller;
 
 use GymWeb\Models\Membership;
 
@@ -44,8 +46,8 @@ class MembershipPaymentDetailController extends Controller
 	 */
 	public function create($clientId, $membershipId)
 	{ 
-		$balance = ( (new Membership())->getPrice($membershipId) - (new Membership())->getSumPayments($membershipId) );
-		return view('membershippayment.create',['client_id'=>$clientId,'membership_id'=>$membershipId,'balance'=>$balance]);
+		$balance = ( Membership::find($membershipId)->price - Membership::find($membershipId)->getSumPayments());
+		return view('memberships.payment.create',['client_id'=>$clientId,'membership_id'=>$membershipId,'balance'=>$balance]);
 	}
 
 	/**

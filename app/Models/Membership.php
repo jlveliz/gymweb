@@ -39,11 +39,10 @@ class Membership extends Model
      */
     protected $fillable = [
         'client_id', 
+        'membership_type_id',
         'price', 
-        'max_days', 
         'period_from',
         'period_to',
-        'membership_type_id',
         'membership_state_phisical',
         'membership_state_economic',
     ];

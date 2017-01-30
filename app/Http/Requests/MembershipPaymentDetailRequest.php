@@ -29,7 +29,6 @@ class MembershipPaymentDetailRequest extends Request
      */
     public function rules()
     {
-        $float = floatval($this->get('value'));
         switch ($this->method()) {
             case 'GET':
             case 'DELETE':
@@ -40,7 +39,7 @@ class MembershipPaymentDetailRequest extends Request
             {
                 return [
                     'membership_id' => 'required|exists:membership,id',
-                    'value' => 'required|max:'.$float,
+                    'value' => 'required|max:"'.$this->get('balance').'"',
                 ];
             }
             case 'PUT':

@@ -31,8 +31,8 @@ class UpdateStateMembership
         $membershipToUpdate = Membership::find($event->detailMembership->membership_id);
 
         //state phisical
-        $jobSecuenceDay = $event->detailMembership->length_secuence_day ? $event->detailMembership->length_secuence_day : null;
-        $maxJobDaysMembership = $membershipToUpdate->max_day ? $membershipToUpdate->max_days : null;
+        // $jobSecuenceDay = $event->detailMembership->length_secuence_day ? $event->detailMembership->length_secuence_day : null;
+        // $maxJobDaysMembership = $membershipToUpdate->max_day ? $membershipToUpdate->max_days : null;
         
         //state economics
         $sumPayments =      $membershipToUpdate->getSumPayments();
@@ -40,11 +40,11 @@ class UpdateStateMembership
        
 
         //state 'caducado' or 'activo'
-        if ($jobSecuenceDay) {
-            if ($jobSecuenceDay == $maxJobDaysMembership) {
-                $membershipToUpdate->membership_state_phisical = $membershipToUpdate->getInactive();
-            }
-        }
+        // if ($jobSecuenceDay) {
+        //     if ($jobSecuenceDay == $maxJobDaysMembership) {
+        //         $membershipToUpdate->membership_state_phisical = $membershipToUpdate->getInactive();
+        //     }
+        // }
 
         //state 'impago', 'Abonado' or 'Pagado'
         if ($event->detailMembership->value) {
