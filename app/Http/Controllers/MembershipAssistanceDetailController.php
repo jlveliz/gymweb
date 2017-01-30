@@ -4,9 +4,9 @@ namespace GymWeb\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use GymWeb\Http\Requests\MembershipDetailRequest;
+use GymWeb\Http\Requests\MembershipAssistanceDetailRequest;
 
-use GymWeb\RepositoryInterface\MembershipDetailRepositoryInterface; 
+use GymWeb\RepositoryInterface\MembershipAssistanceDetailRepositoryInterface; 
 
 use Redirect;
 
@@ -14,14 +14,14 @@ use GymWeb\Events\CheckStateMembership;
 
 use Event;
 
-class MembershipDetailController extends Controller
+class MembershipAssistanceDetailController extends Controller
 {
     
-	public $membershipDetail;
+	public $membershipDetailAssis;
 
-    public function __construct(MembershipDetailRepositoryInterface $membershipDetail)
+    public function __construct(MembershipAssistanceDetailRepositoryInterface $membershipDetailAssis)
     {
-    	$this->membershipDetail = $membershipDetail;
+    	$this->membershipDetailAssis = $membershipDetailAssis;
     }
 
     /**
@@ -49,16 +49,16 @@ class MembershipDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store($clientId, $membershipId, MembershipDetailRequest $request)
+	public function store($clientId, $membershipId, MembershipAssistanceDetailRequest $request)
 	{
 		$data = $request->all();
-		$membershipDetail = $this->membershipDetail->save($data);
+		$membershipDetailAssis = $this->membershipDetailAssis->save($data);
 		$sessionData = [
 			'tipo_mensaje' => 'success',
 			'mensaje' => '',
 		];
-		if ($membershipDetail) {
-			Event::fire(new CheckStateMembership($membershipDetail));
+		if ($membershipDetailAssis) {
+			Event::fire(new CheckStateMembership($membershipDetailAssis));
 			$sessionData['mensaje'] = 'La membresia se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';

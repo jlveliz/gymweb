@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 
-class MembershipDetail extends Model
+class MembershipAssistanceDetail extends Model
 {
     
     /**
     * table
     */
-    protected $table = "membership_detail";
+    protected $table = "membership_assistance_detail";
 
     public $timestamp = true;
 
@@ -24,7 +24,7 @@ class MembershipDetail extends Model
      */
     protected $fillable = [
         'membership_id', 
-        'secuence',
+        'length_secuence_day',
     ];
 
     public function __construct(){

@@ -8,6 +8,8 @@ use GymWeb\Http\Requests\MembershipTypeRequest;
 
 use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface; 
 
+use GymWeb\RepositoryInterface\DivisionRepositoryInterface; 
+
 use GymWeb\Http\Controllers\Controller;
 
 use Redirect;
@@ -17,9 +19,12 @@ class MembershipTypeController extends Controller
     
 	public $membershipType;
 
-    public function __construct(MembershipTypeRepositoryInterface $membershipType)
+	public $division;
+
+    public function __construct(MembershipTypeRepositoryInterface $membershipType, DivisionRepositoryInterface $division)
     {
     	$this->membershipType = $membershipType;
+    	$this->division = $division;
     }
 
     /**
@@ -43,7 +48,10 @@ class MembershipTypeController extends Controller
 	 */
 	public function create()
 	{
-		return view('memberships.type.create');
+		$data = [
+			'divisions' => $this->division->enum()
+		];
+		return view('memberships.type.create',$data);
 	}
 
 	/**
@@ -66,7 +74,7 @@ class MembershipTypeController extends Controller
 			$sessionData['mensaje'] = 'El Subscripción no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('MembershipTypeController@index')->with($sessionData);
+		return Redirect::action('Membership\MembershipTypeController@index')->with($sessionData);
 		
 	}
 
@@ -85,7 +93,7 @@ class MembershipTypeController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser encontrado';
-		return Redirect::action('MembershipTypeController@index')->with($sessionData); 
+		return Redirect::action('Membership\MembershipTypeController@index')->with($sessionData); 
 	}
 
 	/**
@@ -98,12 +106,12 @@ class MembershipTypeController extends Controller
 	{
 		$membershipType = $this->membershipType->find($id);
 		if ($membershipType) {
-			return view('membershipType.edit',['membershipType'=>$membershipType]);
+			return view('memberships.type.edit',['membershipType'=>$membershipType,'divisions' => $this->division->enum()]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser encontrado';
-		return Redirect::action('MembershipTypeController@index')->with($sessionData); 
+		return Redirect::action('Membership\MembershipTypeController@index')->with($sessionData); 
 	}
 
 	/**
@@ -127,7 +135,7 @@ class MembershipTypeController extends Controller
 			$sessionData['mensaje'] = 'El tipo de membresia no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('MembershipTypeController@index')->with($sessionData);
+		return Redirect::action('Membership\MembershipTypeController@index')->with($sessionData);
 	}
 
 	/**
@@ -153,7 +161,7 @@ class MembershipTypeController extends Controller
 			$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return Redirect::action('MembershipTypeController@index')->with($sessionData);
+		return Redirect::action('Membership\MembershipTypeController@index')->with($sessionData);
 			
 		
 	}

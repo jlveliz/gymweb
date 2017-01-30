@@ -23,8 +23,11 @@ class MembershipType extends Model
      * @var array
      */
     protected $fillable = [
+        'division_id', 
         'name', 
         'description',
+        'length_time_number',
+        'length_time_mod',
         'price'
     ];
 
@@ -43,6 +46,11 @@ class MembershipType extends Model
     public function memberships()
     {
         return $this->hasMany('GymWeb\Models\Membership','membership_type_id');
+    }
+
+    public function division()
+    {
+        return $this->belongsTo('GymWeb\Models\Division','division_id');
     }
 
 }

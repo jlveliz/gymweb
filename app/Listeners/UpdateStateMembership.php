@@ -31,13 +31,13 @@ class UpdateStateMembership
         $membershipToUpdate = Membership::find($event->detailMembership->membership_id);
 
         //state phisical
-        $jobSecuenceDay = $event->detailMembership->secuence ? $event->detailMembership->secuence : null;
+        $jobSecuenceDay = $event->detailMembership->length_secuence_day ? $event->detailMembership->length_secuence_day : null;
         $maxJobDaysMembership = $membershipToUpdate->max_day ? $membershipToUpdate->max_days : null;
         
         //state economics
         $sumPayments =      $membershipToUpdate->getSumPayments();
         $membershipPrice =  $membershipToUpdate->price;
-        dd($sumPayments,$membershipPrice);
+       
 
         //state 'caducado' or 'activo'
         if ($jobSecuenceDay) {

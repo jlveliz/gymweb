@@ -104,9 +104,9 @@ class Membership extends Model
         return $sum;
     }
 
-    public function daysDetail()
+    public function assistances()
     {
-        return $this->hasMany('GymWeb\Models\MembershipDetail','membership_id');
+        return $this->hasMany('GymWeb\Models\MembershipAssistanceDetail','membership_id');
     }
 
     public function paymentsDetail()
@@ -116,9 +116,9 @@ class Membership extends Model
 
     public function getNextSecuence()
     {
-        $dDetails = $this->daysDetail()->orderBy('secuence','desc')->first();
+        $dDetails = $this->assistances()->orderBy('length_secuence_day','desc')->first();
         if (!$dDetails) return 1;
-        return $dDetails->secuence + 1;
+        return $dDetails->length_secuence_day + 1;
     }
 
 }

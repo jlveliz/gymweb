@@ -9,7 +9,7 @@ use GymWeb\RepositoryInterface\NestedRepositoryInterface;
 * Descripcion:
 * Interface del cual todos los repositorios deben basarse
 */
-interface MembershipDetailRepositoryInterface extends NestedRepositoryInterface
+interface MembershipAssistanceDetailRepositoryInterface extends NestedRepositoryInterface
 {
 	
 }

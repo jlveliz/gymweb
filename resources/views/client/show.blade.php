@@ -75,20 +75,20 @@
 	                          			<div class="text-right">
 		                          			<?php 
 		                          			
-		                          				$lastDayJob =   count($client->current_membership()->daysDetail) > 0 ? $client->current_membership()->daysDetail()->orderBy('secuence','desc')->first()->created_at : null;  
+		                          				$lastDayJob =   count($client->current_membership()->assistances) > 0 ? $client->current_membership()->assistances()->orderBy('length_secuence_day','desc')->first()->created_at : null;  
 		                          			?>
 		                          			<?php if ($lastDayJob != $client->currentDate()): ?>
 		                          			<div class="col-md-9 col-sm-3 col-xs-12">
-		                          				<form action="{{ route('clients.memberships.details.store',[$client->id,$client->current_membership()->id]) }}" method="POST">
+		                          				<form action="{{ route('clients.memberships.assistances.store',[$client->id,$client->current_membership()->id]) }}" method="POST">
 		                          					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                          					<input type="hidden" name="membership_id" value="{{ $client->current_membership()->id }}">
-		                          					<input type="hidden" name="secuence" value="{{ $client->current_membership()->getNextSecuence() }}">
+		                          					<input type="hidden" name="length_secuence_day" value="{{ $client->current_membership()->getNextSecuence() }}">
 			                          				<button type="submit" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>	
 		                          				</form>
 	                          				</div>
 	                          				<?php endif ?>
 
-	                          				@if (count($client->current_membership()->daysDetail) > 0)
+	                          				@if (count($client->current_membership()->assistances) > 0)
 				                          		<form action="{{ route('clients.memberships.update',[$client->id,$client->current_membership()->id]) }}" method="POST">
 				                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="PUT">
@@ -107,10 +107,10 @@
 	                          				</tr>
 	                          			</thead>
 	                          			<tbody>
-	                          				@if (count($client->current_membership()->daysDetail) > 0)
-	                          					@foreach ($client->current_membership()->daysDetail as $dDetail)
+	                          				@if (count($client->current_membership()->assistances) > 0)
+	                          					@foreach ($client->current_membership()->assistances as $dDetail)
 		                          				<tr>
-		                          					<td>{{$dDetail->secuence}}</td>
+		                          					<td>{{$dDetail->length_secuence_day}}</td>
 		                          					<td>{!!$dDetail->created_at!!} </td>
 		                          				</tr>
 	                          					@endforeach

@@ -4,7 +4,7 @@ namespace GymWeb\Http\Requests;
 
 use GymWeb\Http\Requests\Request;
 
-class MembershipDetailRequest extends Request
+class MembershipAssistanceDetailRequest extends Request
 {
     
     public function __construct()
@@ -38,7 +38,7 @@ class MembershipDetailRequest extends Request
             {
                 return [
                     'membership_id' => 'required|exists:membership,id',
-                    'secuence' => 'required|int',
+                    'length_secuence_day' => 'required|int',
                 ];
             }
             case 'PUT':

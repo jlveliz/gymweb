@@ -30,6 +30,7 @@
 						<thead>
 							<tr>
 								<th class="text-center">Nombre</th>
+								<th class="text-center">División</th>
 								<th class="text-center">Descripción</th>
 								<th class="text-center">Precio</th>
 								<th class="text-center">Fecha de creación</th>
@@ -40,6 +41,7 @@
 							@foreach ($membershipTypes as $membershipType)
 								<tr>
 									<td>{{$membershipType->name}} </td>
+									<td>{{$membershipType->division->name}} </td>
 									<td>{{$membershipType->description}}</td>
 									<td>$ {{$membershipType->price}}</td>
 									<td>{{$membershipType->created_at}}</td>
