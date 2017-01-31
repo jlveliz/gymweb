@@ -28,14 +28,14 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::resource('clients.memberships.assistances','MembershipAssistanceDetailController',['only'=>['store']]);
 	Route::resource('clients.memberships.payments','MemberShip\MembershipPaymentDetailController',['only'=>['create','store']]);
 
-});
-
-Route::group(['middleware'=>['auth','role:administrator']],function(){
-
 	Route::group(['prefix'=>'memberships'],function(){
 		Route::resource('divisions','Membership\DivisionController',['except'=>['show']]);
 		Route::resource('types','Membership\MembershipTypeController',['except'=>['show']]);
 	});
+
+});
+
+Route::group(['middleware'=>['auth','role:administrator']],function(){
 	
 	Route::resource('users','UserController',['except'=>['show']]);
 	Route::resource('permissions','PermissionController',['except'=>['show']]);

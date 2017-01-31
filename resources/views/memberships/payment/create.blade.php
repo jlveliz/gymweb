@@ -35,7 +35,7 @@
 				    <div class="form-group col-md-4 col-sm-4 col-xs-12">
 				      <label class="control-label col-md-5 col-sm-5 col-xs-12">Pago </label>
 				      <div class="col-md-7 col-sm-7 col-xs-12  @if($errors->has('value')) has-error @endif">
-				        <input type="number" step="0.01" min="0.01" class="form-control" placeholder="Valor" name="value" id="value" value="{{ old('value') }}">
+				        <input type="number" step="0.01" min="0.01" class="form-control" placeholder="Valor" name="value" id="value" value="">
 				         @if ($errors->has('value')) <p class="help-block">{{ $errors->first('value') }}</p> @endif
 				      </div>
 				    </div>
