@@ -39,7 +39,7 @@ class MembershipPaymentDetailRequest extends Request
             {
                 return [
                     'membership_id' => 'required|exists:membership,id',
-                    'value' => 'required|max:"'.$this->get('balance').'"',
+                    'value' => 'numeric|max:"'.$this->get('balance').'"',
                 ];
             }
             case 'PUT':
