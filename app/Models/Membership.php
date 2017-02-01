@@ -43,6 +43,8 @@ class Membership extends Model
         'price', 
         'period_from',
         'period_to',
+        'expiry_mode',
+        'max_day_job',
         'membership_state_phisical',
         'membership_state_economic',
     ];
