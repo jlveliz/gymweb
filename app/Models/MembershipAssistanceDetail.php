@@ -25,13 +25,14 @@ class MembershipAssistanceDetail extends Model
     protected $fillable = [
         'membership_id', 
         'length_secuence_day',
+        'date_job',
     ];
 
     public function __construct(){
         setlocale(LC_TIME, \Config('app.locale'));
     }
 
-    public function getCreatedAtAttribute($value)
+    public function getDateJobAttribute($value)
     {
         $date = Carbon::parse($value);
         return $date->formatLocalized('%A %d %B %Y');
