@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'GymWeb\Events\SomeEvent' => [
+        'Illuminate\Auth\Events\Login' => [
             'GymWeb\Listeners\EventListener',
         ],
         'GymWeb\Events\CheckStateMembership' => [

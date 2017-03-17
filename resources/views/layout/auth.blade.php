@@ -12,10 +12,11 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/green.css') }}">
 	@yield('css')
 </head>
-<body style="background:#F7F7F7;">
+<body style="background:#F7F7F7;" id="background">
 	@yield('content')
 	<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('js/bg_switcher/jquery.bgswitcher.js') }}" type="text/javascript"></script>
 	@yield('js')
 </body>
 </html>

@@ -51,3 +51,12 @@
   </div>
 
 @endsection
+@section('js')
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#background").bgswitcher({
+      images: ["pic1.jpg", "pic2.jpg", "pic3.jpg"],
+    });
+  });
+</script>
+@endsection

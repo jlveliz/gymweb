@@ -45,7 +45,7 @@
 									<td>
 										<ul class="nav navbar-right panel_toolbox">
 											<li>
-												<a href="{{ route('users.edit',$user->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span></a>
 											</li>
 											<li>
 												<form action="{{ route('users.destroy',$user->id) }}" method="POST">
