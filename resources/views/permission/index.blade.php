@@ -96,7 +96,11 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#permission-datatable').DataTable();
+    	$('#permission-datatable').DataTable({
+    		"language": {
+          		"url": "js/datatables/json/es.json"
+        	}
+    	});
 	});
  </script>
 @endsection

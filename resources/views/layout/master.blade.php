@@ -9,13 +9,13 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/green.css') }}">
-	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/floatexamples.css') }}"> --}}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/nprogress/nprogress.css') }}">
     @yield('css')
 </head>
 <body  class="nav-md">
 	<div class="container body">
 		<div class="main_container">
-            <div class="col-md-3 left_col">
+            <div class="col-md-3 left_col animated fadeIn">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="{{ url('home') }}" class="site_title"><i class="fa fa-cog"></i> <span>Gim. GymTai</span></a>
@@ -80,16 +80,16 @@
 				@yield('content-page')
             </div>
             	
-            </div>
         </div>
-	</div>
+    </div>
+</div>
 	<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/moment/moment.min.js') }}" type="text/javascript"></script>
-    <script type="text/javascript">
-        moment.locale('es');
-    </script>
+    <script src="{{ asset('js/nicescroll/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/nprogress/nprogress.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bg_switcher/jquery.bgswitcher.js') }}" type="text/javascript"></script>
     @yield('js')
-	<script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
 </body>
 </html>

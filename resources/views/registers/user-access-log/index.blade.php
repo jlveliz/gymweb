@@ -74,7 +74,11 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#user-access-datatable').DataTable();
+    	$('#user-access-datatable').DataTable({
+    		"language": {
+          		"url": "{{ asset('js/datatables/json/es.json') }} "
+        	}
+    	});
 	});
  </script>
 @endsection

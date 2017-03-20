@@ -3,18 +3,17 @@
 @section('title','Listado de Clientes /')
 
 @section('title-page')
-	<h3>Clientes <small> Los que se ejercitan con nosotros.</small></h3>
+	<h3 class="animated fadeInDown">Clientes</h3>
 @endsection
 
 @section('content-page')
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
+			<div class="x_panel animated fadeInUp">
 				<div class="x_title">
-					<h2>Listado <small>Clientes</small></h2>
+					<h2>Listado <small>/ Todos los clientes que se ejercitan con nosotros</small></h2> 
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('clients.create') }}"><i class="fa fa-plus"></i> Crear</a>
-	                    </li>
+	                    <a class="btn btn-info" href="{{ route('clients.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                  </ul>
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
@@ -26,7 +25,7 @@
 					@endif
 				</div>
 				<div class="x_content">
-					<table id="client-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+					<table id="client-datatable" class="table table-striped table-bordered dt-responsive nowrap table-gym" cellspacing="0">
 						<thead>
 							<tr>
 								<th class="text-center">Nombre</th>
@@ -43,22 +42,26 @@
 									<td>{{$client->identity_number}}</td>
 									<td>{{$client->phone}} @if($client->mobile) / {{$client->mobile}} @endif</td>
 									<td>{{$client->admission_date}}</td>
-									<td>
-										<ul class="nav navbar-right panel_toolbox">
-											<li>
-												<a href="{{ route('clients.show',$client->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a>
-											</li>
-											<li>
+									<td class="text-center">
+										<div class="btn-group">
+										  <button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <i class="fa fa-cog"></i> <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu">
+										    <li><a href="{{ route('clients.show',$client->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
+										    <li>
 												<a href="{{ route('clients.edit',$client->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
-											<li>
+										    <li role="separator" class="divider"></li>
+										    <li>
 												<form action="{{ route('clients.destroy',$client->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>
 												</form>
 											</li>
-										</ul>
+										  </ul>
+										</div>
 									</td>
 								</tr>
 							@endforeach
@@ -97,7 +100,11 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#client-datatable').DataTable();
+    	$('#client-datatable').DataTable({
+    		"language": {
+          		"url": "js/datatables/json/es.json"
+        	}
+    	});
 	});
  </script>
 @endsection

@@ -96,7 +96,11 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#role-datatable').DataTable();
+    	$('#role-datatable').DataTable({
+    		"language": {
+          		"url": "{{ asset('/js/datatables/json/es.json') }}"
+        	}
+    	});
 	});
  </script>
 @endsection

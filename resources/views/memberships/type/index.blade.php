@@ -96,7 +96,11 @@
 
  <script type="text/javascript">
  	$(document).ready(function(){
-    	$('#membership-type-datatable').DataTable();
+    	$('#membership-type-datatable').DataTable({
+    		"language": {
+          		"url": "{{ asset('js/datatables/json/es.json') }}"
+        	}
+    	});
 	});
  </script>
 @endsection
