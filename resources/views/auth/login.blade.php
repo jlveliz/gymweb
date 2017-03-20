@@ -54,10 +54,15 @@
 @section('js')
 <script type="text/javascript">
   $(document).ready(function() {
-    $(".background").bgswitcher({
+    $("#login").bgswitcher({
       images: ["{{ asset('img/login_1.jpg')}}","{{asset('img/login_2.jpg')}}","{{asset('img/login_3.jpg')}}" ],
       loop:true,
-      
+      effect: "fade", 
+      interval: 5000, 
+      loop: false, 
+      shuffle: false, 
+      duration: 5000, 
+      easing: "swing"    
     });
   });
 </script>
