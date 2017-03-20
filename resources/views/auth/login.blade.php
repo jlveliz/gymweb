@@ -54,8 +54,10 @@
 @section('js')
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#background").bgswitcher({
-      images: ["pic1.jpg", "pic2.jpg", "pic3.jpg"],
+    $(".background").bgswitcher({
+      images: ["{{ asset('img/login_1.jpg')}}","{{asset('img/login_2.jpg')}}","{{asset('img/login_3.jpg')}}" ],
+      loop:true,
+      
     });
   });
 </script>
