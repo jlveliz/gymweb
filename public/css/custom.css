@@ -6312,3 +6312,7 @@ ul.notifications {
 .table-gym > thead > tr > th {
     color: #2a979c
 }
+
+.no-padding-left{
+    padding-left: 0px !important;
+}

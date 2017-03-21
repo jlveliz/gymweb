@@ -1,4 +1,5 @@
 @extends('layout.auth')
+@section('title','Ingreso')
 @section('content')
 <div id="wrapper">
       <div id="login" class="animated form bounceIn">

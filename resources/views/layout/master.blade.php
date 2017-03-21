@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@yield('title') GymWeb / GymTai</title>
+    <link rel="icon" href="{{asset('img/favicon.ico')}}">
+    <title>@yield('title') | GymTai</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/css/font-awesome.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
