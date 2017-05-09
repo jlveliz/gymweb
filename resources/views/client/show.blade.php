@@ -3,7 +3,7 @@
 @section('title','Ver  Cliente /')
 
 @section('title-page')
-	<h3>Clientes <small> Los que se ejercitan con nosotros.</small></h3>
+	<h3>Clientes</h3>
 @endsection
 
 @section('content-page')
@@ -11,7 +11,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Cliente <small> {{$client->name}} {{$client->last_name}} </small></h2>
+					<h2>{{$client->name}} {{$client->last_name}}</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -38,11 +38,6 @@
                         <a class="btn btn-info" href="{{ route('clients.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<div class="profile_title">
-							<div class="col-md-6">
-								<h2>Reporte de actividades</h2>
-							</div>
-						</div>
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 	                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
 	                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Membresia</a>
