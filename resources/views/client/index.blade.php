@@ -13,7 +13,7 @@
 				<div class="x_title">
 					<h2>Listado <small> | Todos los clientes que se ejercitan con nosotros</small></h2> 
 					<ul class="nav navbar-right panel_toolbox">
-	                    <a class="btn btn-info" href="{{ route('clients.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <a class="btn btn-info" href="{{ route('clients.create') }}"><i class="fa fa-plus"></i> Crear Cliente</a>
 	                  </ul>
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
