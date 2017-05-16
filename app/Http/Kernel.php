@@ -51,7 +51,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \GymWeb\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'pay' => \GymWeb\Http\Middleware\PayMiddleWare::class,
+        'pay' => \GymWeb\Http\Middleware\PayMiddleware::class,
 
     ];
 }

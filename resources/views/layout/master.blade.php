@@ -3,14 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="{{asset('img/favicon.ico')}}">
+    <link rel="icon" href="{{asset('public/img/favicon.ico')}}">
     <title>@yield('title') | GymTai</title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/icheck/flat/green.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/nprogress/nprogress.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/fonts/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/animate.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/icheck/flat/green.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nprogress/nprogress.css') }}">
     @yield('css')
 </head>
 <body  class="nav-md">
@@ -84,13 +84,13 @@
         </div>
     </div>
 </div>
-	<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/moment/moment.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/nicescroll/jquery.nicescroll.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/nprogress/nprogress.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/bg_switcher/jquery.bgswitcher.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/jquery.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/js/moment/moment.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/js/nicescroll/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/js/nprogress/nprogress.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/js/bg_switcher/jquery.bgswitcher.js') }}" type="text/javascript"></script>
     @yield('js')
-    <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/js/custom.js') }}" type="text/javascript"></script>
 </body>
 </html>

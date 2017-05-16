@@ -18,7 +18,7 @@
 					<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
 						<div class="profile_img">
 							<div id="crop-avatar">
-								<img class="img-responsive avatar-view" src="{{ asset('img/default-user.png') }}" alt="Avatar" title="Change the avatar">
+								<img class="img-responsive avatar-view" src="{{ asset('public/img/default-user.png') }}" alt="Avatar" title="Change the avatar">
 							</div>
 						</div>
 						<h3>{{explode(' ', $client->name)[0]}} {{explode(' ', $client->last_name)[0]}}</h3>
@@ -207,7 +207,7 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
 
 <style type="text/css">
 	.daterangepicker{
@@ -217,7 +217,7 @@
 @endsection
 
 @section('js')
-<script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#date_job").val(moment().format('YYYY-MM-DD'));

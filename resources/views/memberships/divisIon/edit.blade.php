@@ -7,12 +7,12 @@
 @endsection
 
 @section('js')
- <script src="{{ asset('/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
- <script src="{{ asset('/js/client/app.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('public//js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('public//js/client/app.js') }}" type="text/javascript"></script>
 @endsection
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public//css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
 @endsection
 
 @section('content-page')

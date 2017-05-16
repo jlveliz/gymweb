@@ -24,9 +24,9 @@ Route::group(['middleware'=>'auth'],function(){
 		return view('home.index');
 	});
 	Route::resource('clients','ClientController');
-	Route::resource('clients.memberships','MemberShip\MemberShipController',['only'=>['create','store','update']]);
+	Route::resource('clients.memberships','Membership\MembershipController',['only'=>['create','store','update']]);
 	Route::resource('clients.memberships.assistances','MembershipAssistanceDetailController',['only'=>['store']]);
-	Route::resource('clients.memberships.payments','MemberShip\MembershipPaymentDetailController',['only'=>['create','store']]);
+	Route::resource('clients.memberships.payments','Membership\MembershipPaymentDetailController',['only'=>['create','store']]);
 
 	Route::group(['prefix'=>'memberships'],function(){
 		Route::resource('divisions','Membership\DivisionController',['except'=>['show']]);

@@ -114,11 +114,11 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
 @endsection
 @section('js')
 <!-- daterangepicker -->
-<script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
 
