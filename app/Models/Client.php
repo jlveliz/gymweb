@@ -60,7 +60,21 @@ class Client extends Model
 
     public function current_membership()
     {
-        return $this->memberships()->where('membership_state_phisical',(new Membership())->getActive())->first();
+        // return $this->memberships()->where('membership_state_phisical',(new Membership())->getActive())->first();
+        $dt = Carbon::now();
+        $current = null;
+        foreach ($this->memberships as $key => $membership) {
+
+            if ($membership->expiry_mode == 'period_to' && ($membership->period_to <= $dt->toDateString() )) {
+                $membership->membership_state_phisical = $membership->getInactive();
+                $membership->save();
+            } else {
+                $current = $membership;
+            }
+        }
+
+        return $current;
+
     }
 
 }
