@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Ver  Cliente /')
+@section('title','Ver  Miembro /')
 
 @section('title-page')
-	<h3>Clientes</h3>
+	<h3>Miembro</h3>
 @endsection
 
 @section('content-page')
@@ -11,7 +11,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>{{$client->name}} {{$client->last_name}}</h2>
+					<h2>{{$member->name}} {{$member->last_name}}</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -21,21 +21,21 @@
 								<img class="img-responsive avatar-view" src="{{ asset('public/img/default-user.png') }}" alt="Avatar" title="Change the avatar">
 							</div>
 						</div>
-						<h3>{{explode(' ', $client->name)[0]}} {{explode(' ', $client->last_name)[0]}}</h3>
+						<h3>{{explode(' ', $member->name)[0]}} {{explode(' ', $member->last_name)[0]}}</h3>
 						<ul class="list-unstyled user_data">
-                        	<li><i class="fa fa-key user-profile-icon"></i> {{$client->identity_number}}</li>
-                        	<li><i class="fa fa-birthday-cake user-profile-icon"></i> {{$client->birth_date}}</li>
-                        	<li><i class="fa fa-sign-in user-profile-icon"></i> {{$client->admission_date}}</li>
-                        	<li><i class="fa fa-envelope-o user-profile-icon"></i> {{$client->email}}</li>
-                        	<li><i class="fa fa-phone user-profile-icon"></i> {{$client->phone}}</li>
-                        	@if ($client->mobile)
-                        		<li><i class="fa fa-mobile user-profile-icon"></i> {{$client->mobile}}</li>
+                        	<li><i class="fa fa-key user-profile-icon"></i> {{$member->identity_number}}</li>
+                        	<li><i class="fa fa-birthday-cake user-profile-icon"></i> {{$member->birth_date}}</li>
+                        	<li><i class="fa fa-sign-in user-profile-icon"></i> {{$member->admission_date}}</li>
+                        	<li><i class="fa fa-envelope-o user-profile-icon"></i> {{$member->email}}</li>
+                        	<li><i class="fa fa-phone user-profile-icon"></i> {{$member->phone}}</li>
+                        	@if ($member->mobile)
+                        		<li><i class="fa fa-mobile user-profile-icon"></i> {{$member->mobile}}</li>
                         	@endif
-                        	<li><i class="fa fa-circle user-profile-icon"></i> {{$client->weight}} Libras</li>
-                        	<li><i class="fa fa-circle-o user-profile-icon"></i> {{$client->height}} Centimetros</li>
+                        	<li><i class="fa fa-circle user-profile-icon"></i> {{$member->weight}} Libras</li>
+                        	<li><i class="fa fa-circle-o user-profile-icon"></i> {{$member->height}} Centimetros</li>
                         </ul>
-                        <a class="btn btn-success" href="{{ route('clients.edit',$client->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar Cliente</a>
-                        <a class="btn btn-info" href="{{ route('clients.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
+                        <a class="btn btn-success" href="{{ route('members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar Miembro</a>
+                        <a class="btn btn-info" href="{{ route('members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -47,20 +47,20 @@
 	                        </ul>
 	                        <div id="myTabContent" class="tab-content">
 	                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-	                          	@if (!$client->current_membership())
+	                          	@if (!$member->current_membership())
 	                          		<h5 class="text-center col-md-10">No tiene una membresia activa</h5>
 	                          		<div class="col-md-2">
-	                          			<a href="{{ route('clients.memberships.create',$client->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Membresia</a>	
+	                          			<a href="{{ route('members.memberships.create',$member->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Membresia</a>	
 	                          		</div>	
 	                          	@else
 	                          		<div class="row">
 	                          			<div class="col-md-12 col-sm-12 col-xs-12">
 	                          				<ul class="list-unstyled list-inline" style="font-size: 16px">
-	                          					<li><i class="fa fa-membership"></i> Membresia: {{$client->current_membership()->type->name}}  </li>
-	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {!!$client->current_membership()->period_from!!} / {!!$client->current_membership()->period_to!!}</li>
-	                          					<li class="@if($client->current_membership()->membership_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($client->current_membership()->membership_state_phisical == 0) Caducado @else  Activo  @endif</li>
-	                          					<li class="@if($client->current_membership()->membership_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($client->current_membership()->membership_state_economic == 1) Impago @endif @if($client->current_membership()->membership_state_economic == 2) Abonado @endif 
-	                          						@if($client->current_membership()->membership_state_economic == 3) Pagado @endif
+	                          					<li><i class="fa fa-membership"></i> Membresia: {{$member->current_membership()->type->name}}  </li>
+	                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {!!$member->current_membership()->period_from!!} / {!!$member->current_membership()->period_to!!}</li>
+	                          					<li class="@if($member->current_membership()->membership_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($member->current_membership()->membership_state_phisical == 0) Caducado @else  Activo  @endif</li>
+	                          					<li class="@if($member->current_membership()->membership_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($member->current_membership()->membership_state_economic == 1) Impago @endif @if($member->current_membership()->membership_state_economic == 2) Abonado @endif 
+	                          						@if($member->current_membership()->membership_state_economic == 3) Pagado @endif
 	                          					</li>
 	                          				</ul>
 	                          			</div>
@@ -70,16 +70,16 @@
 	                          			<div class="text-right">
 		                          			<?php 
 		                          			
-		                          				$lastDayJob =   count($client->current_membership()->assistances) > 0 ? $client->current_membership()->assistances()->orderBy('length_secuence_day','desc')->first()->date_job : null;  
+		                          				$lastDayJob =   count($member->current_membership()->assistances) > 0 ? $member->current_membership()->assistances()->orderBy('length_secuence_day','desc')->first()->date_job : null;  
 		                          			?>
-		                          			<?php if ($lastDayJob != $client->currentDate()): ?>
+		                          			<?php if ($lastDayJob != $member->currentDate()): ?>
 		                          			<div class="col-md-9 col-sm-3 col-xs-12">
 			                          			<button data-toggle="modal" data-target="#jobModal" type="button" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>
 	                          				</div>
 	                          				<?php endif ?>
 
-	                          				@if (count($client->current_membership()->assistances) > 0)
-				                          		<form action="{{ route('clients.memberships.update',[$client->id,$client->current_membership()->id]) }}" method="POST">
+	                          				@if (count($member->current_membership()->assistances) > 0)
+				                          		<form action="{{ route('members.memberships.update',[$member->id,$member->current_membership()->id]) }}" method="POST">
 				                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="PUT">
 													<input type="hidden" name="membership_state_phisical" value="0">
@@ -97,8 +97,8 @@
 	                          				</tr>
 	                          			</thead>
 	                          			<tbody>
-	                          				@if (count($client->current_membership()->assistances) > 0)
-	                          					@foreach ($client->current_membership()->assistances as $dDetail)
+	                          				@if (count($member->current_membership()->assistances) > 0)
+	                          					@foreach ($member->current_membership()->assistances as $dDetail)
 		                          				<tr>
 		                          					<td>{{$dDetail->length_secuence_day}}</td>
 		                          					<td>{!!$dDetail->date_job!!} </td>
@@ -129,7 +129,7 @@
 	                          			</tr>
 	                          		</thead>
 	                          		<tbody>
-	                          			@foreach ($client->memberships()->orderBy('id','desc')->get() as $membership)
+	                          			@foreach ($member->memberships()->orderBy('id','desc')->get() as $membership)
 		                          			<tr>
 		                          				<td>{!!$membership->period_from!!}</td>
 		                          				<td>{!!$membership->period_to!!}</td>
@@ -154,7 +154,7 @@
 		                          				</td>
 		                          				<td>
 		                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
-		                          						<a href="{{ route('clients.memberships.payments.create',[$client->id,$membership->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
+		                          						<a href="{{ route('members.memberships.payments.create',[$member->id,$membership->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
 		                          					@endif
 		                          				</td>
 		                          			</tr>
@@ -170,7 +170,7 @@
 		</div>
 	</div>
 
-	@if (count($client->current_membership()))	
+	@if (count($member->current_membership()))	
 		<!-- Modal JOB -->
 		<div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog modal-sm" role="document">
@@ -179,11 +179,11 @@
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="myModalLabel">Agregar día de trabajo</h4>
 		      </div>
-			 <form action="{{ route('clients.memberships.assistances.store',[$client->id,$client->current_membership()->id]) }}" method="POST">
+			 <form action="{{ route('members.memberships.assistances.store',[$member->id,$member->current_membership()->id]) }}" method="POST">
 		      <div class="modal-body">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<input type="hidden" name="membership_id" value="{{ $client->current_membership()->id }}">
-					<input type="hidden" name="length_secuence_day" value="{{ $client->current_membership()->getNextSecuence() }}">
+					<input type="hidden" name="membership_id" value="{{ $member->current_membership()->id }}">
+					<input type="hidden" name="length_secuence_day" value="{{ $member->current_membership()->getNextSecuence() }}">
 					<div class="row">
 		                <div class="col-md-8 col-sm-8 col-xs8 col-xs-offset-2">
 		                	<input type="text" class="form-control" name="date_job" id="date_job">

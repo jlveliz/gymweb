@@ -2,7 +2,7 @@
 <div class="menu_section">
 	<h3>Administración</h3>
 	<ul class="nav side-menu">
-		<li class="@if(Request::path() == '/clients') active @endif" "><a href="{{ route('clients.index') }}"><i class="fa fa-address-book"></i> Clientes</span></a></li>
+		<li class="@if(Request::path() == '/members') active @endif" "><a href="{{ route('members.index') }}"><i class="fa fa-address-book"></i> Miembros</span></a></li>
 		<li>
 			<a class="clickable" title="Membresias"><i class="fa fa-book"></i> Membresias</a>
 			<ul class="nav child_menu">

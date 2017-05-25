@@ -12,7 +12,7 @@ use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface;
 
 use GymWeb\Http\Controllers\Controller;
 
-use GymWeb\Http\Controllers\ClientController;
+use GymWeb\Http\Controllers\MemberController;
 
 use Redirect;
 
@@ -52,7 +52,7 @@ class MembershipController extends Controller
 	{ 
 		if (!$parent) return Redirect::back();
 		$membershipTypes = $this->membershipType->enum();
-		return view('memberships.membership.create',['client_id'=>$parent,'membershipTypes'=>$membershipTypes]);
+		return view('memberships.membership.create',['member_id'=>$parent,'membershipTypes'=>$membershipTypes]);
 	}
 
 	/**
@@ -75,7 +75,7 @@ class MembershipController extends Controller
 			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('ClientController@show',$parent)->with($sessionData);
+		return Redirect::action('MemberController@show',$parent)->with($sessionData);
 		
 	}
 
@@ -94,7 +94,7 @@ class MembershipController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Cliente no pudo ser encontrado';
-		return Redirect::action('ClientController@index')->with($sessionData); 
+		return Redirect::action('MemberController@index')->with($sessionData); 
 	}
 
 	/**
@@ -130,7 +130,7 @@ class MembershipController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('ClientController@show',$parent)->with($sessionData);
+		return Redirect::action('MemberController@show',$parent)->with($sessionData);
 	}
 
 	/**
@@ -156,7 +156,7 @@ class MembershipController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return Redirect::action('ClientController@index')->with($sessionData);
+		return Redirect::action('MemberController@index')->with($sessionData);
 			
 		
 	}

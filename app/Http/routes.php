@@ -15,7 +15,7 @@ Route::auth();
 
 Route::get('/', function () {
 	if (Auth::guest()) return view('auth.login');
-	return redirect('/clients');
+	return redirect('/members');
 });
 
 Route::group(['middleware'=>'auth'],function(){
@@ -23,10 +23,10 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::get('/home',function(){
 		return view('home.index');
 	});
-	Route::resource('clients','ClientController');
-	Route::resource('clients.memberships','Membership\MembershipController',['only'=>['create','store','update']]);
-	Route::resource('clients.memberships.assistances','MembershipAssistanceDetailController',['only'=>['store']]);
-	Route::resource('clients.memberships.payments','Membership\MembershipPaymentDetailController',['only'=>['create','store']]);
+	Route::resource('members','MemberController');
+	Route::resource('members.memberships','Membership\MembershipController',['only'=>['create','store','update']]);
+	Route::resource('members.memberships.assistances','MembershipAssistanceDetailController',['only'=>['store']]);
+	Route::resource('members.memberships.payments','Membership\MembershipPaymentDetailController',['only'=>['create','store']]);
 
 	Route::group(['prefix'=>'memberships'],function(){
 		Route::resource('divisions','Membership\DivisionController',['except'=>['show']]);

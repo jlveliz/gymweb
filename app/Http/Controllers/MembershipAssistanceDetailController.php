@@ -65,7 +65,7 @@ class MembershipAssistanceDetailController extends Controller
 			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('ClientController@show',$clientId)->with($sessionData);
+		return Redirect::action('MemberController@show',$clientId)->with($sessionData);
 		
 	}
 

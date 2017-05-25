@@ -13,16 +13,16 @@
 				<div class="x_title">
 					<h2>Crear <small>Membresia</small></h2>
 					<div class="clearfix"></div>
-					@if($errors->has('client_id'))
+					@if($errors->has('member_id'))
 						<div class="alert alert-danger" role="alert">
-							{{$errors->first('client_id')}}
+							{{$errors->first('member_id')}}
 						</div>
 					@endif
 				</div>
 			<div class="x_content"></div>
-				<form action="{{ route('clients.memberships.store',$client_id) }}" id="form-create-membership" method="POST">
+				<form action="{{ route('members.memberships.store',$member_id) }}" id="form-create-membership" method="POST">
 				  <input type="hidden" name="membership_state_phisical" id="membership_state_phisical" value="1">
-				  <input type="hidden" name="client_id" id="client_id" value="{{$client_id}}">
+				  <input type="hidden" name="member_id" id="member_id" value="{{$member_id}}">
 				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 				    <div class="form-group col-md-4 col-sm-4 col-xs-6 @if($errors->has('membership_type_id')) has-error @endif">
@@ -102,7 +102,7 @@
 				<div class="ln_solid"></div>
 				<div class="form-group">
                   	<div class="col-md-6 col-sm-6 col-xs-12">
-                    	<a href="{{ route('clients.show',$client_id) }}" class="btn btn-primary">Cancelar</a>
+                    	<a href="{{ route('members.show',$member_id) }}" class="btn btn-primary">Cancelar</a>
                     	<button type="submit" class="btn btn-success">Guardar</button>
                   	</div>
             	</div>

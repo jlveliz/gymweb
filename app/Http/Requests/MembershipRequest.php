@@ -32,7 +32,7 @@ class MembershipRequest extends Request
             case 'POST':
             {
                 return [
-                    'client_id' => 'required|exists:client,id|exist_membership_active',
+                    'member_id' => 'required|exists:member,id|exist_membership_active',
                     'membership_type_id' => 'required|exists:membership_type,id',
                     'period_from' => 'date|required',
                     'period_to' => 'date',
@@ -68,11 +68,11 @@ class MembershipRequest extends Request
             case 'POST':
             {
                 return [
-                    'client_id.required' => 'El cliente es requerido',
-                    'client_id.exists' => 'Ingrese un cliente existente',
+                    'member_id.required' => 'El cliente es requerido',
+                    'member_id.exists' => 'Ingrese un cliente existente',
                     'membership_type_id.required' => 'El tipo de membresia es requerida',
                     'membership_type_id.exists' => 'No existe el tipo de membresia',
-                    'client_id.exist_membership_active' => 'Ya existe una membresia vigente, no es posible crear otra.',
+                    'member_id.exist_membership_active' => 'Ya existe una membresia vigente, no es posible crear otra.',
                     'period_from.date' => 'Ingrese una fecha válida',
                     'period_from.required' => 'El periodo desde es requerido',
                     'period_to.date' => ' Ingrese una fecha válida',

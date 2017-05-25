@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Clientes')
+@section('title','Miembros')
 
 @section('title-page')
-	<h3 class="animated fadeInDown">Clientes</h3>
+	<h3 class="animated fadeInDown">Miembros</h3>
 @endsection
 
 @section('js')
@@ -20,11 +20,11 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel  animated fadeInUp">
 				<div class="x_title">
-					<h2>Crear Cliente <small> | Todos los clientes que se ejercitan con nosotros</small></h2>
+					<h2>Crear Miembro</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<form method="post" class="form-label-left" action="{{ route('clients.store') }}">
+					<form method="post" class="form-label-left" action="{{ route('members.store') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="row">
 							<div class="form-group col-md-2 col-sm-3 col-xs-6">
@@ -85,7 +85,7 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
-	                        	<a href="{{ route('clients.index') }}" class="btn btn-primary">Cancelar</a>
+	                        	<a href="{{ route('members.index') }}" class="btn btn-primary">Cancelar</a>
 	                        	<button type="submit" class="btn btn-success">Guardar</button>
 	                      	</div>
                     	</div>

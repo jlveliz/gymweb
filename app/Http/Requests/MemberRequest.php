@@ -4,7 +4,7 @@ namespace GymWeb\Http\Requests;
 
 use GymWeb\Http\Requests\Request;
 
-class ClientRequest extends Request
+class MemberRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,10 +32,10 @@ class ClientRequest extends Request
             case 'POST':
             {
                 return [
-                    'identity_number' => 'required|max:10|unique:client',
+                    'identity_number' => 'required|max:10|unique:member',
                     'name' => 'required|max:30',
                     'last_name' => 'required|max:30',
-                    'email' => 'required|email|max:50|unique:client',
+                    'email' => 'required|email|max:50|unique:member',
                     'phone' => 'required|numeric',
                     'height' => 'required|numeric:4|int',
                     'weight' => 'required|numeric',
@@ -46,10 +46,10 @@ class ClientRequest extends Request
             case 'PUT':
             {
                 return [
-                    'identity_number' => 'required|max:10|unique:client,identity_number,'.$this->get('key'),
+                    'identity_number' => 'required|max:10|unique:member,identity_number,'.$this->get('key'),
                     'name' => 'required|max:30',
                     'last_name' => 'required|max:30',
-                    'email' => 'required|email|max:50|unique:client,email,'.$this->get('key'),
+                    'email' => 'required|email|max:50|unique:member,email,'.$this->get('key'),
                     'phone' => 'required|numeric',
                     'height' => 'required|numeric:4',
                     'weight' => 'required|numeric',

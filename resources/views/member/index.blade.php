@@ -1,9 +1,9 @@
 @extends('layout.master')
 
-@section('title','Clientes')
+@section('title','Miembros')
 
 @section('title-page')
-	<h3 class="animated fadeInDown">Clientes</h3>
+	<h3 class="animated fadeInDown">Miembros</h3>
 @endsection
 
 @section('content-page')
@@ -11,9 +11,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel animated fadeInUp">
 				<div class="x_title">
-					<h2>Listado <small> | Todos los clientes que se ejercitan con nosotros</small></h2> 
+					<h2>Listado</h2> 
 					<ul class="nav navbar-right panel_toolbox">
-	                    <a class="btn btn-info" href="{{ route('clients.create') }}"><i class="fa fa-plus"></i> Crear Cliente</a>
+	                    <a class="btn btn-info" href="{{ route('members.create') }}"><i class="fa fa-plus"></i> Crear Miembro</a>
 	                  </ul>
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
@@ -36,7 +36,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($clients as $client)
+							@foreach ($members as $client)
 								<tr>
 									<td>{{$client->name .' '. $client->last_name}} </td>
 									<td>{{$client->identity_number}}</td>
@@ -48,13 +48,13 @@
 										    <i class="fa fa-cog"></i> <span class="caret"></span>
 										  </button>
 										  <ul class="dropdown-menu">
-										    <li><a href="{{ route('clients.show',$client->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
+										    <li><a href="{{ route('members.show',$client->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
 										    <li>
-												<a href="{{ route('clients.edit',$client->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('members.edit',$client->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 										    <li role="separator" class="divider"></li>
 										    <li>
-												<form action="{{ route('clients.destroy',$client->id) }}" method="POST">
+												<form action="{{ route('members.destroy',$client->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>

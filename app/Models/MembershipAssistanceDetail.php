@@ -32,11 +32,11 @@ class MembershipAssistanceDetail extends Model
         setlocale(LC_TIME, \Config('app.locale'));
     }
 
-    public function getDateJobAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y');
-    }
+    // public function getDateJobAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y');
+    // }
 
     public function membership()
     {

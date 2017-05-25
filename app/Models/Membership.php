@@ -38,7 +38,7 @@ class Membership extends Model
      * @var array
      */
     protected $fillable = [
-        'client_id', 
+        'member_id', 
         'membership_type_id',
         'price', 
         'period_from',
@@ -55,27 +55,27 @@ class Membership extends Model
 
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y');
-    }
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y');
+    // }
 
-    public function getPeriodFromAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y');
-    }
+    // public function getPeriodFromAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y');
+    // }
     
-    public function getPeriodToAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y');
-    }
+    // public function getPeriodToAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y');
+    // }
 
-    public function client()
+    public function member()
     {
-        return $this->belongsTo('GymWeb\Models\Client','client_id');
+        return $this->belongsTo('GymWeb\Models\Member','client_id');
     } 
 
     public function type()

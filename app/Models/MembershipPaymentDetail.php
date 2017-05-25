@@ -33,11 +33,11 @@ class MembershipPaymentDetail extends Model
 
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y');
-    }
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y');
+    // }
 
     public function membership()
     {

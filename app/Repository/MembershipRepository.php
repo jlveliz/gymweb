@@ -23,7 +23,7 @@ class MembershipRepository implements MembershipRepositoryInterface
 
 	public function enum($params = null)
 	{
-		$memberships = Membership::where('client_id',$this->parent)->get();
+		$memberships = Membership::where('member_id',$this->parent)->get();
 		if ($memberships) return $memberships;
 	}
 
