@@ -32,7 +32,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/clients';
+    protected $redirectTo = '/members';
     
     /**
      * Where to redirect users after login / registration.

@@ -916,7 +916,7 @@ a.btn-danger {
 }
 
 .btn {
-    border-radius: 3px;
+    border-radius: 0px!important;
 }
 
 .tooltip {
@@ -3032,6 +3032,10 @@ select.parsley-error {
 
 
 /* *********  /form design  **************************** */
+
+.dropdown-menu {
+    border-radius: 0px;
+}
 
 
 /* *********  calender dropdown  **************************** */
@@ -6319,4 +6323,10 @@ ul.notifications {
 
 .no-padding-left {
     padding-left: 0px !important;
+}
+
+@media (min-width: 768px) {
+    .modal-sm {
+        width: 400px;
+    }
 }

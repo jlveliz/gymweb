@@ -14,6 +14,14 @@ body {
 
 /********* login ****************/
 
+.btn {
+    border-radius: 0px!important;
+}
+
+.form-control {
+    border-radius: 0px!important;
+}
+
 a.hiddenanchor {
     display: none;
 }
@@ -320,22 +328,21 @@ header {
     width: 100%;
 }
 
-
-.btn-submit{
-	color: #ffffff;
-	background-color: #30a8ad;
-	border-color: #30a8ad;
+.btn-submit {
+    color: #ffffff;
+    background-color: #30a8ad;
+    border-color: #30a8ad;
 }
 
-.btn-submit:hover{
-	color: #ffffff;
-	background-color: #2b989d;
-	border-color: #2b989d;
+.btn-submit:hover {
+    color: #ffffff;
+    background-color: #2b989d;
+    border-color: #2b989d;
 }
 
-.copyright{
-	font-size: 10px;
-
+.copyright {
+    font-size: 10px;
 }
+
 
 /********** end of sign in ********************/
