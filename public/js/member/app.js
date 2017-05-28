@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
     if ($(".delete-member").length) {
 
         $(".delete-member").on('click', function(event) {
-            console.log($(this));
+            console.log($(this).data('member'));
             $("#modal-delete").modal();
             event.preventDefault();
             /* Act on the event */

@@ -53,12 +53,7 @@
 												<a href="{{ route('members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 										    <li>
-										    	<a href="#" title="" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
-												{{-- <form action="{{ route('members.destroy',$member->id) }}" method="POST">
-													<input type="hidden" name="_token" value="{{ csrf_token() }}">
-													<input type="hidden" name="_method" value="DELETE">
-													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>
-												</form> --}}
+										    	<a href="#" title="Èliminar" data-member={{ $member->id }} class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
 											</li>
 										  </ul>
 										</div>
@@ -88,7 +83,11 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	        <button type="button" class="btn btn-danger"> <i class="fa fa-trash"></i> Borrar</button>
+	        <form class="form-inline" action="{{ route('members.destroy',$member->id) }}" method="POST">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="_method" value="DELETE">
+	        	<button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i> Borrar</button>
+			</form>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

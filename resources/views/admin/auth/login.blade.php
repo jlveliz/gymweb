@@ -12,12 +12,12 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                     </button>
                     @foreach ($errors->all() as $error)
-                      <strong style="color: #fff">{!!$error!!}</strong> <br>
+                      <strong>{!!$error!!}</strong> <br>
                     @endforeach
                   </div>
             @endif
               <div>
-              <input type="text" class="form-control" placeholder="Usuario" name="username" id="username" required="" autocomplete="false" autofocus />
+              <input type="text" class="form-control" placeholder="Usuario o Email" name="username" id="username" required="" autocomplete="false" autofocus />
             </div>
             <div>
               <input type="password" class="form-control" placeholder="Clave" name="password" id="password" required="" />

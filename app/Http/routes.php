@@ -13,16 +13,17 @@
 
 Route::auth();
 
-Route::get('/', function () {
-	if (Auth::guest()) return view('auth.login');
-	return redirect('/members');
-});
 
-Route::group(['middleware'=>'auth'],function(){
+
+
+Route::group(['prefix' => 'admgym'],function(){
 	
-	Route::get('/home',function(){
-		return view('home.index');
+
+	Route::get('/', function () {
+		if (Auth::guest()) return view('admin.auth.login');
+		return redirect('/members');
 	});
+
 	Route::resource('members','MemberController');
 	Route::resource('members.memberships','Membership\MembershipController',['only'=>['create','store','update']]);
 	Route::resource('members.memberships.assistances','MembershipAssistanceDetailController',['only'=>['store']]);
@@ -33,17 +34,15 @@ Route::group(['middleware'=>'auth'],function(){
 		Route::resource('types','Membership\MembershipTypeController',['except'=>['show']]);
 	});
 
-});
+	Route::group(['middleware'=>['auth','role:administrator']],function(){
+		
+		Route::resource('users','UserController',['except'=>['show']]);
+		Route::resource('permissions','PermissionController',['except'=>['show']]);
+		Route::resource('roles','RoleController',['except'=>['show']]);
 
-Route::group(['middleware'=>['auth','role:administrator']],function(){
-	
-	Route::resource('users','UserController',['except'=>['show']]);
-	Route::resource('permissions','PermissionController',['except'=>['show']]);
-	Route::resource('roles','RoleController',['except'=>['show']]);
-
-	Route::group(['prefix'=>'registers'],function(){
-		Route::resource('user-access','RegisterLog\UserAccessLogController',['only'=>['index']]);
+		Route::group(['prefix'=>'registers'],function(){
+			Route::resource('user-access','RegisterLog\UserAccessLogController',['only'=>['index']]);
+		});
 	});
+
 });
-	
-	
