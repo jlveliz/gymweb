@@ -50,8 +50,8 @@ Route::group(['prefix' => 'admgym'],function(){
 		Route::resource('permissions','Admin\User\PermissionController',['except'=>['show']]);
 		Route::resource('roles','Admin\User\RoleController',['except'=>['show']]);
 
-		Route::group(['prefix'=>'registers'],function(){
-			Route::resource('user-access','RegisterLog\UserAccessLogController',['only'=>['index']]);
+		Route::group(['prefix'=>'logs'],function(){
+			Route::resource('user-access','Admin\Log\UserAccessLogController',['only'=>['index']]);
 		});
 	});
 

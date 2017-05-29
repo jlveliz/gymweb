@@ -1,5 +1,5 @@
 <?php
-namespace GymWeb\Http\Controllers\RegisterLog;
+namespace GymWeb\Http\Controllers\Admin\Log;
 
 use GymWeb\Http\Requests;
 use Illuminate\Http\Request;
@@ -30,6 +30,6 @@ class UserAccessLogController extends Controller
     public function index()
     {
         $registers = $this->userAccess->enum();
-        return view('registers.user-access-log.index',['registers'=>$registers]);
+        return view('admin.logs.user',['registers'=>$registers]);
     }
 }

@@ -27,7 +27,7 @@
 		<li>
 			<a class="clickable"><i class="fa fa-file-text"></i> Registros</span></a>
 			<ul class="nav child_menu">
-				<li> <a href="{{route('admgym.registers.user-access.index')}}" title="Registro de accesos">Registro de accesos</a></li>
+				<li> <a href="{{route('admgym.logs.user-access.index')}}" title="Registro de accesos">Registro de accesos</a></li>
 			</ul>
 		</li>
 		
