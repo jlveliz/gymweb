@@ -36,6 +36,9 @@ class AuthAdminController extends Controller
      * @var string
      */
     protected $redirectTo = 'admgym/members';
+
+
+    protected $redirectAfterLogout = "admgym/auth/login";
     
     /**
      * Where to redirect users after login / registration.

@@ -173,7 +173,7 @@ trait GymwebAuthenticate {
      * @return \Illuminate\Http\Response
      */
     public function getLogout()
-    {
+    {    
         return $this->logout();
     }
 

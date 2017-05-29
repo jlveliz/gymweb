@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admgym'],function(){
 
 		Route::get('login','Admin\Auth\AuthAdminController@getLogin')->name('admgym.auth.login');
 		Route::post('login','Admin\Auth\AuthAdminController@postLogin')->name('admgym.auth.postlogin');
+		Route::get('logout','Admin\Auth\AuthAdminController@logout')->name('admgym.auth.logout');
 
 	});
 
