@@ -1,18 +1,17 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Admin\Membership;
 
 use Illuminate\Http\Request;
+
+use GymWeb\Http\Controllers\Controller;
 
 use GymWeb\Http\Requests\MembershipAssistanceDetailRequest;
 
 use GymWeb\RepositoryInterface\MembershipAssistanceDetailRepositoryInterface; 
 
-use Redirect;
-
 use GymWeb\Events\CheckStateMembership;
 
-use Event;
 
 class MembershipAssistanceDetailController extends Controller
 {
@@ -58,14 +57,14 @@ class MembershipAssistanceDetailController extends Controller
 			'mensaje' => '',
 		];
 		if ($membershipDetailAssis) {
-			Event::fire(new CheckStateMembership($membershipDetailAssis));
+			event(new CheckStateMembership($membershipDetailAssis));
 			$sessionData['mensaje'] = 'La membresia se ha creado satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('MemberController@show',$clientId)->with($sessionData);
+		return redirect()->route('admgym.members.show',$clientId)->with($sessionData);
 		
 	}
 

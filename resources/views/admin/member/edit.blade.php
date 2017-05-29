@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.admin')
 
 @section('title','Edición de Miembros /')
 
@@ -24,7 +24,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<form method="post" class="form-label-left animated fadeIn" action="{{ route('members.update',$member->id) }}">
+					<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.members.update',$member->id) }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="key" value="{{$member->id}}">
@@ -89,7 +89,7 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
-	                        	<a href="{{ route('members.index') }}" class="btn btn-primary">Cancelar</a>
+	                        	<a href="{{ route('admgym.members.index') }}" class="btn btn-primary">Cancelar</a>
 	                        	<button type="submit" class="btn btn-success">Guardar</button>
 	                      	</div>
                     	</div>

@@ -2,12 +2,15 @@
 
 namespace GymWeb\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Carbon\Carbon;
 
-class Member extends Model
+class Member extends Authenticatable
 {
+    
+    use EntrustUserTrait;
+
     /**
     * table
     */
@@ -32,7 +35,6 @@ class Member extends Model
         'admission_date',
         'birth_date',
         'date_admission',
-        'user_id_created',
     ];
 
     public function __construct(){

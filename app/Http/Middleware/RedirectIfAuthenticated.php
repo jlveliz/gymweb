@@ -17,8 +17,14 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/');
+        if ($guard == 'member') {
+            if (Auth::guard($guard)->check()) {
+                return redirect('/');
+            }
+        } else if (!$guard ||$guard == 'member') {
+            if (Auth::guard($guard)->check()) {
+                return redirect('/admgym/members'); //TODO : CHANGE TO DASHBOARD
+            }
         }
 
         return $next($request);

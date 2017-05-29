@@ -41,7 +41,7 @@
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <ul class="nav side-menu">
-                            @include('partial.nav')
+                            @include('admin.partial.nav')
                         </ul>
                     </div>
                     <!-- /sidebar menu -->

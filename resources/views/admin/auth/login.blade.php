@@ -4,9 +4,9 @@
 <div id="wrapper">
       <div id="login" class="animated form bounceIn">
         <section class="login_content">
-          <form method="post" action="{{ url('login') }}">
+          <form method="post" action="{{ route('admgym.auth.postlogin') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <h1>GymTai</h1>
+            <h1>GymTai | Administración</h1>
             @if (count($errors) > 0)
               <div class="alert alert-danger alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
@@ -17,7 +17,7 @@
                   </div>
             @endif
               <div>
-              <input type="text" class="form-control" placeholder="Usuario o Email" name="username" id="username" required="" autocomplete="false" autofocus />
+              <input type="text" class="form-control" placeholder="Usuario" name="username" id="username" required="" autocomplete="false" autofocus />
             </div>
             <div>
               <input type="password" class="form-control" placeholder="Clave" name="password" id="password" required="" />

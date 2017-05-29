@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.admin')
 
 @section('title','Miembros')
 
@@ -13,7 +13,7 @@
 				<div class="x_title">
 					<h2 class="animated fadeIn">Listado</h2> 
 					<ul class="nav navbar-right panel_toolbox animated fadeIn">
-	                    <a class="btn btn-info" href="{{ route('members.create') }}"><i class="fa fa-plus"></i> Crear Miembro</a>
+	                    <a class="btn btn-info" href="{{ route('admgym.members.create') }}"><i class="fa fa-plus"></i> Crear Miembro</a>
 	                  </ul>
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
@@ -38,7 +38,7 @@
 						<tbody>
 							@foreach ($members as $member)
 								<tr>
-									<td><a href="{{ route('members.show',$member->id) }}" title="Ver {{$member->name .' '. $member->last_name}}"> {{$member->name .' '. $member->last_name}} </a></td>
+									<td><a href="{{ route('admgym.members.show',$member->id) }}" title="Ver {{$member->name .' '. $member->last_name}}"> {{$member->name .' '. $member->last_name}} </a></td>
 									<td>{{$member->identity_number}}</td>
 									<td> {{ $member->current_membership() ?  $member->current_membership()->type->name : '-' }} </td>
 									<td class="text-center">{{$member->admission_date}}</td>
@@ -48,9 +48,9 @@
 										    <i class="fa fa-cog"></i> <span class="caret"></span>
 										  </button>
 										  <ul class="dropdown-menu">
-										    <li><a href="{{ route('members.show',$member->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
+										    <li><a href="{{ route('admgym.members.show',$member->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
 										    <li>
-												<a href="{{ route('members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('admgym.members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 										    <li>
 										    	<a href="#" title="Èliminar" data-member={{ $member->id }} class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
@@ -83,7 +83,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	        <form class="form-inline" action="{{ route('members.destroy',$member->id) }}" method="POST">
+	        <form class="form-inline" action="{{ route('admgym.members.destroy',$member->id) }}" method="POST">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="hidden" name="_method" value="DELETE">
 	        	<button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i> Borrar</button>

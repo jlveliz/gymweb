@@ -45,7 +45,6 @@ class MemberRepository implements MemberRepositoryInterface
 	//TODO
 	public function save($data)
 	{
-		$data['user_id_created'] = \Auth::user()->id;
 		$member = new Member();
 		$member->fill($data);
 		if ($member->save()) {

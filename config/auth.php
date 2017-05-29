@@ -39,6 +39,10 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ], 
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'members',
         ],
 
         'api' => [
@@ -70,10 +74,10 @@ return [
             'model' => GymWeb\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'members' => [
+            'driver' => 'eloquent',
+            'model' => GymWeb\Models\Member::class,
+        ],
     ],
 
     /*

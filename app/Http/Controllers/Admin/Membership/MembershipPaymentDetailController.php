@@ -1,6 +1,6 @@
 <?php
 
-namespace GymWeb\Http\Controllers\Membership;
+namespace GymWeb\Http\Controllers\Admin\Membership;
 
 use Illuminate\Http\Request;
 
@@ -8,15 +8,11 @@ use GymWeb\Http\Requests\MembershipPaymentDetailRequest;
 
 use GymWeb\RepositoryInterface\MembershipPaymentDetailRepositoryInterface; 
 
-use Redirect;
-
 use GymWeb\Events\CheckStateMembership;
 
 use GymWeb\Http\Controllers\Controller;
 
 use GymWeb\Models\Membership;
-
-use Event;
 
 class MembershipPaymentDetailController extends Controller
 {
@@ -47,7 +43,7 @@ class MembershipPaymentDetailController extends Controller
 	public function create($clientId, $membershipId)
 	{ 
 		$balance = ( Membership::find($membershipId)->price - Membership::find($membershipId)->getSumPayments());
-		return view('memberships.payment.create',['client_id'=>$clientId,'membership_id'=>$membershipId,'balance'=>$balance]);
+		return view('admin.memberships.payment.create',['client_id'=>$clientId,'membership_id'=>$membershipId,'balance'=>$balance]);
 	}
 
 	/**
@@ -64,14 +60,14 @@ class MembershipPaymentDetailController extends Controller
 			'mensaje' => '',
 		];
 		if ($membershipDetail) {
-			Event::fire(new CheckStateMembership($membershipDetail));
+			event(new CheckStateMembership($membershipDetail));
 			$sessionData['mensaje'] = 'Se ha realizado un pago a la membresia satisfactoriamente';
 		} else {
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'No se pudo realizar la transacción, intente nuevamente.';
 		}
 		
-		return Redirect::action('MemberController@show',$clientId)->with($sessionData);
+		return redirect()->route('admgym.members.show',$clientId)->with($sessionData);
 		
 	}
 

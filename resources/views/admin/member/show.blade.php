@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.admin')
 
 @section('title','Ver  Miembro /')
 
@@ -34,8 +34,8 @@
                         	<li><i class="fa fa-circle user-profile-icon"></i> {{$member->weight}} Libras</li>
                         	<li><i class="fa fa-circle-o user-profile-icon"></i> {{$member->height}} Centimetros</li>
                         </ul>
-                        <a class="btn btn-success" href="{{ route('members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar Miembro</a>
-                        <a class="btn btn-info" href="{{ route('members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
+                        <a class="btn btn-success" href="{{ route('admgym.members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar Miembro</a>
+                        <a class="btn btn-info" href="{{ route('admgym.members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -50,7 +50,7 @@
 	                          	@if (!$member->current_membership())
 	                          		<h5 class="text-center col-md-10">No tiene una membresia activa</h5>
 	                          		<div class="col-md-2">
-	                          			<a href="{{ route('members.memberships.create',$member->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Membresia</a>	
+	                          			<a href="{{ route('admgym.members.memberships.create',$member->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Membresia</a>	
 	                          		</div>	
 	                          	@else
 	                          		<div class="row">
@@ -79,7 +79,7 @@
 	                          				<?php endif ?>
 
 	                          				@if (count($member->current_membership()->assistances) > 0)
-				                          		<form action="{{ route('members.memberships.update',[$member->id,$member->current_membership()->id]) }}" method="POST">
+				                          		<form action="{{ route('admgym.members.memberships.update',[$member->id,$member->current_membership()->id]) }}" method="POST">
 				                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="PUT">
 													<input type="hidden" name="membership_state_phisical" value="0">
@@ -154,7 +154,7 @@
 		                          				</td>
 		                          				<td>
 		                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
-		                          						<a href="{{ route('members.memberships.payments.create',[$member->id,$membership->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
+		                          						<a href="{{ route('admgym.members.memberships.payments.create',[$member->id,$membership->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
 		                          					@endif
 		                          				</td>
 		                          			</tr>
@@ -179,7 +179,7 @@
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="myModalLabel">Agregar día de trabajo</h4>
 		      </div>
-			 <form action="{{ route('members.memberships.assistances.store',[$member->id,$member->current_membership()->id]) }}" method="POST">
+			 <form action="{{ route('admgym.members.memberships.assistances.store',[$member->id,$member->current_membership()->id]) }}" method="POST">
 		      <div class="modal-body">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="hidden" name="membership_id" value="{{ $member->current_membership()->id }}">

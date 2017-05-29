@@ -1,14 +1,15 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Admin\Member;
 
 use Illuminate\Http\Request;
+
+use GymWeb\Http\Controllers\Controller;
 
 use GymWeb\Http\Requests\MemberRequest;
 
 use GymWeb\RepositoryInterface\MemberRepositoryInterface; 
 
-use Redirect;
 
 class MemberController extends Controller
 {
@@ -31,7 +32,7 @@ class MemberController extends Controller
 		$data = [
 			'members' => $members
 		];
-		return view('member.index',$data);
+		return view('admin.member.index',$data);
 	}
 
 	/**
@@ -41,7 +42,7 @@ class MemberController extends Controller
 	 */
 	public function create()
 	{
-		return view('member.create');
+		return view('admin.member.create');
 	}
 
 	/**
@@ -64,7 +65,7 @@ class MemberController extends Controller
 			$sessionData['mensaje'] = 'El Miembro no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('MemberController@index')->with($sessionData);
+		return redirect()->route('admgym.members.show',$member->id)->with($sessionData);
 		
 	}
 
@@ -78,12 +79,12 @@ class MemberController extends Controller
 	{
 		$member = $this->member->find($id,false);
 		if ($member) {
-			return view('member.show',['member'=>$member]);
+			return view('admin.member.show',['member'=>$member]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Miembro no pudo ser encontrado';
-		return Redirect::action('MemberController@index')->with($sessionData); 
+		return redirect('admgym.members.show',$member->id)->route()->with($sessionData);
 	}
 
 	/**
@@ -95,7 +96,7 @@ class MemberController extends Controller
 	public function edit($id)
 	{
 		$member = $this->member->find($id);
-		return view('member.edit',['member'=>$member]);
+		return view('admin.member.edit',['member'=>$member]);
 	}
 
 	/**
@@ -119,7 +120,7 @@ class MemberController extends Controller
 			$sessionData['mensaje'] = 'El Miembro no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('MemberController@index')->with($sessionData);
+		return redirect()->route('admgym.members.edit',$member->id)->with($sessionData);
 	}
 
 	/**
@@ -145,7 +146,7 @@ class MemberController extends Controller
 			$sessionData['mensaje'] = 'El Miembro no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return Redirect::action('MemberController@index')->with($sessionData);
+		return redirect()->route('admgym.members.index')->with($sessionData);
 			
 		
 	}

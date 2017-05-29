@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.admin')
 
 @section('title','Miembros')
 
@@ -24,7 +24,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<form method="post" class="form-label-left animated fadeIn" action="{{ route('members.store') }}">
+					<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.members.store') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="row">
 							<div class="form-group col-md-4 col-sm-4 col-xs-4 @if($errors->has('name')) has-error @endif">
@@ -89,7 +89,7 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
-	                        	<a href="{{ route('members.index') }}" class="btn btn-primary">Cancelar</a>
+	                        	<a href="{{ route('admgym.members.index') }}" class="btn btn-primary">Cancelar</a>
 	                        	<button type="submit" class="btn btn-success">Guardar</button>
 	                      	</div>
                     	</div>
