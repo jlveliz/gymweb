@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.admin')
 
 @section('title','Listado de Tipo de División /')
 
@@ -13,7 +13,7 @@
 				<div class="x_title">
 					<h2>Listado <small>Tipo de División</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('memberships.divisions.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <li><a href="{{ route('admgym.memberships.divisions.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 	                  </ul>
 					<div class="clearfix"></div>
@@ -46,10 +46,10 @@
 									<td>
 										<ul class="nav navbar-right panel_toolbox">	
 											<li>
-												<a href="{{ route('memberships.divisions.edit',$division->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('admgym.memberships.divisions.edit',$division->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 											<li>
-												<form action="{{ route('memberships.divisions.destroy',$division->id) }}" method="POST">
+												<form action="{{ route('admgym.memberships.divisions.destroy',$division->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>

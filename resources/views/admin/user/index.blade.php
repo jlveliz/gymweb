@@ -1,5 +1,5 @@
 	
-@extends('layout.master')
+@extends('layout.admin')
 
 @section('title','Listado de Usuarios /')
 

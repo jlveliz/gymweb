@@ -40,8 +40,8 @@ Route::group(['prefix' => 'admgym'],function(){
 	Route::resource('members.memberships.payments','Admin\Membership\MembershipPaymentDetailController',['only'=>['create','store']]);
 
 	Route::group(['prefix'=>'memberships'],function(){
-		Route::resource('divisions','Membership\DivisionController',['except'=>['show']]);
-		Route::resource('types','Membership\MembershipTypeController',['except'=>['show']]);
+		Route::resource('divisions','Admin\Membership\DivisionController',['except'=>['show']]);
+		Route::resource('types','Admin\Membership\MembershipTypeController',['except'=>['show']]);
 	});
 
 	Route::group(['middleware'=>['auth','role:administrator']],function(){

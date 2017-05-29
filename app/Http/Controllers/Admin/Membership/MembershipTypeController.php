@@ -1,6 +1,6 @@
 <?php
 
-namespace GymWeb\Http\Controllers\Membership;
+namespace GymWeb\Http\Controllers\Admin\Membership;
 
 use Illuminate\Http\Request;
 

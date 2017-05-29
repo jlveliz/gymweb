@@ -1,6 +1,6 @@
 <?php
 
-namespace GymWeb\Http\Controllers\Membership;
+namespace GymWeb\Http\Controllers\Admin\Membership;
 
 use Illuminate\Http\Request;
 
@@ -33,7 +33,7 @@ class DivisionController extends Controller
 		$data = [
 			'divisions' => $divisions
 		];
-		return view('memberships.division.index',$data);
+		return view('admin.memberships.division.index',$data);
 	}
 
 	/**
@@ -43,7 +43,7 @@ class DivisionController extends Controller
 	 */
 	public function create()
 	{
-		return view('memberships.division.create');
+		return view('admin.memberships.division.create');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class DivisionController extends Controller
 			$sessionData['mensaje'] = 'La división no pudo ser creada, intente nuevamente';
 		}
 		
-		return Redirect::action('Membership\DivisionController@index')->with($sessionData);
+		return redirect()->route('admgym.memberships.divisions.edit',$division->id)->with($sessionData);
 		
 	}
 
@@ -80,12 +80,12 @@ class DivisionController extends Controller
 	{
 		$division = $this->division->find($id,false);
 		if ($division) {
-			return view('memberships.division.show',['division'=>$division]);
+			return view('admin.memberships.division.show',['division'=>$division]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'La división no pudo ser encontrada';
-		return Redirect::action('Membership\DivisionController@index')->with($sessionData); 
+		return redirect()->route('admgym.memberships.divisions.index')->with($sessionData);
 	}
 
 	/**
@@ -98,12 +98,12 @@ class DivisionController extends Controller
 	{
 		$division = $this->division->find($id);
 		if ($division) {
-			return view('memberships.division.edit',['division'=>$division]);
+			return view('admin.memberships.division.edit',['division'=>$division]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'La división no pudo ser encontrada';
-		return Redirect::action('Membership\DivisionController@index')->with($sessionData); 
+		return redirect()->route('admgym.memberships.divisions.index')->with($sessionData);
 	}
 
 	/**
@@ -126,8 +126,7 @@ class DivisionController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'La división no pudo ser actualizada, intente nuevamente';
 		}
-		
-		return Redirect::action('Membership\DivisionController@index')->with($sessionData);
+		return redirect()->route('admgym.memberships.divisions.edit',$division->id)->with($sessionData);
 	}
 
 	/**
@@ -152,9 +151,7 @@ class DivisionController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'La división no pudo ser eliminada, intente nuevamente';
 		}
-		
-		return Redirect::action('Membership\DivisionController@index')->with($sessionData);
-			
+		return redirect()->route('admgym.memberships.divisions.index')->with($sessionData);			
 		
 	}
 }
