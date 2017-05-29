@@ -13,7 +13,7 @@
 				<div class="x_title">
 					<h2>Listado <small>Permisos</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('permissions.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <li><a href="{{ route('admgym.permissions.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 	                  </ul>
 					<div class="clearfix"></div>
@@ -48,10 +48,10 @@
 									<td>
 										<ul class="nav navbar-right panel_toolbox">
 											<li>
-												<a href="{{ route('permissions.edit',$permission->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('admgym.permissions.edit',$permission->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 											<li>
-												<form action="{{ route('permissions.destroy',$permission->id) }}" method="POST">
+												<form action="{{ route('admgym.permissions.destroy',$permission->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>
