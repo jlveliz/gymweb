@@ -1,14 +1,15 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Admin\User;
 
 use Illuminate\Http\Request;
+
+use GymWeb\Http\Controllers\Controller;
 
 use GymWeb\Http\Requests\PermissionRequest;
 
 use GymWeb\RepositoryInterface\PermissionRepositoryInterface; 
 
-use Redirect;
 
 class PermissionController extends Controller
 {
@@ -31,7 +32,7 @@ class PermissionController extends Controller
 		$data = [
 			'permissions' => $permissions
 		];
-		return view('permission.index',$data);
+		return view('admin.permission.index',$data);
 	}
 
 	/**
@@ -41,7 +42,7 @@ class PermissionController extends Controller
 	 */
 	public function create()
 	{
-		return view('permission.create');
+		return view('admin.permission.create');
 	}
 
 	/**
@@ -63,8 +64,8 @@ class PermissionController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Permiso no pudo ser creado, intente nuevamente';
 		}
-		
-		return Redirect::action('PermissionController@index')->with($sessionData);
+
+		return redirect()->route('admgym.permissions.edit',$permission->id)->with($sessionData);
 		
 	}
 
@@ -88,7 +89,7 @@ class PermissionController extends Controller
 	public function edit($id)
 	{
 		$permission = $this->permission->find($id);
-		return view('permission.edit',['permission'=>$permission]);
+		return view('admin.permission.edit',['permission'=>$permission]);
 	}
 
 	/**
@@ -112,7 +113,7 @@ class PermissionController extends Controller
 			$sessionData['mensaje'] = 'El Permiso no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('PermissionController@index')->with($sessionData);
+		return redirect()->route('admgym.permissions.edit',$permission->id)->with($sessionData);
 	}
 
 	/**
@@ -138,7 +139,7 @@ class PermissionController extends Controller
 			$sessionData['mensaje'] = 'El Permiso no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return Redirect::action('PermissionController@index')->with($sessionData);
+		return redirect()->route('admgym.permissions.index')->with($sessionData);
 			
 		
 	}

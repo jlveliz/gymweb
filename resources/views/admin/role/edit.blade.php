@@ -15,7 +15,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<form method="post" class="form-horizontal form-label-left" action="{{ route('roles.update',$role->id) }}">
+					<form method="post" class="form-horizontal form-label-left" action="{{ route('admgym.roles.update',$role->id) }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="key" value="{{$role->id}}">
@@ -57,7 +57,7 @@
 						</div>
 						<div class="form-group">
 	                      	<div class="col-md-6 col-sm-6 col-xs-12">
-	                        	<a href="{{ route('roles.index') }}" class="btn btn-primary">Cancelar</a>
+	                        	<a href="{{ route('admgym.roles.index') }}" class="btn btn-primary">Cancelar</a>
 	                        	<button type="submit" class="btn btn-success">Guardar</button>
 	                      	</div>
                     	</div>
