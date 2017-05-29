@@ -13,7 +13,7 @@
 				<div class="x_title">
 					<h2>Listado <small>Tipo de Membresia</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('memberships.types.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <li><a href="{{ route('admgym.memberships.types.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 	                  </ul>
 					<div class="clearfix"></div>
@@ -48,10 +48,10 @@
 									<td>
 										<ul class="nav navbar-right panel_toolbox">	
 											<li>
-												<a href="{{ route('memberships.types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												<a href="{{ route('admgym.memberships.types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 											</li>
 											<li>
-												<form action="{{ route('memberships.types.destroy',$membershipType->id) }}" method="POST">
+												<form action="{{ route('admgym.memberships.types.destroy',$membershipType->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>
