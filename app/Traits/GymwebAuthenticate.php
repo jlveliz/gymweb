@@ -81,7 +81,7 @@ trait GymwebAuthenticate {
 
         if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
         	//insert access log
-        	UserAccessLog::add(Auth::user()->id);
+            UserAccessLog::add(Auth::guard($this->getGuard())->user()->id);
 
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -151,6 +151,7 @@ trait GymwebAuthenticate {
      */
     protected function getFailedLoginMessage()
     {
+       
         return Lang::has('auth.failed')
                 ? Lang::get('auth.failed')
                 : 'These credentials do not match our records.';

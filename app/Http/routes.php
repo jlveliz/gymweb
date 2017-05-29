@@ -14,7 +14,18 @@
 // Route::auth();
 
 
+Route::get('/','Client\HomeController@showHome');
 
+Route::group(['prefix' => 'auth'],function(){
+
+	Route::get('login','Client\Auth\AuthController@getLogin')->name('client.auth.login');
+	Route::post('login','Client\Auth\AuthController@postLogin')->name('client.auth.postlogin');
+
+});
+
+
+
+/********admin********/
 
 Route::group(['prefix' => 'admgym'],function(){
 	
@@ -22,7 +33,7 @@ Route::group(['prefix' => 'admgym'],function(){
 		if (Auth::guard('web')->guest()) {
 			return redirect()->route('admgym.auth.login');	
 		} else {
-			return redirect()->route('admgym.members.index');
+			return redirect()->route('admgym.dashboard');
 		}
 	});
 
@@ -33,6 +44,9 @@ Route::group(['prefix' => 'admgym'],function(){
 		Route::get('logout','Admin\Auth\AuthAdminController@logout')->name('admgym.auth.logout');
 
 	});
+
+
+	Route::get('/dashboard','Admin\DashboardController@showDashboard')->name('admgym.dashboard');
 
 
 	Route::resource('members','Admin\Member\MemberController');

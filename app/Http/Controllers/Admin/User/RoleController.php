@@ -20,6 +20,7 @@ class RoleController extends Controller
 
     public function __construct(RoleRepositoryInterface $role, PermissionRepositoryInterface $permission)
     {
+    	$this->middleware('auth');
     	$this->role = $role;
     	$this->permission = $permission;
     }

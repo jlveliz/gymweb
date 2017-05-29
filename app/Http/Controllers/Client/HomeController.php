@@ -1,7 +1,8 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Client;
 
+use GymWeb\Http\Controllers\Controller;
 use GymWeb\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:member');
     }
 
     /**
@@ -22,8 +23,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showHome()
     {
-        return view('home');
+        return view('client.home.index');
     }
 }

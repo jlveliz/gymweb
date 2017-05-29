@@ -18,6 +18,7 @@ class MemberController extends Controller
 
     public function __construct(MemberRepositoryInterface $member)
     {
+    	$this->middleware('auth');
     	$this->member = $member;
     }
 

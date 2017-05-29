@@ -23,6 +23,7 @@ class MembershipTypeController extends Controller
 
     public function __construct(MembershipTypeRepositoryInterface $membershipType, DivisionRepositoryInterface $division)
     {
+    	$this->middleware('auth');
     	$this->membershipType = $membershipType;
     	$this->division = $division;
     }

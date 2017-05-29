@@ -1,6 +1,6 @@
 <?php
 
-namespace GymWeb\Http\Controllers\Auth;
+namespace GymWeb\Http\Controllers\Client\Auth;
 
 use GymWeb\User;
 use Validator;
@@ -11,9 +11,6 @@ use GymWeb\Traits\GymwebAuthenticate;
 class AuthController extends Controller
 {
     
-    
-    protected $username ="username";
-
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -27,19 +24,27 @@ class AuthController extends Controller
 
     use GymwebAuthenticate, ThrottlesLogins;
 
+    
+    /**
+     * guarded type for auth.
+     *
+     * @var string
+     */
+    protected $guard = 'member';
+
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/members';
+    protected $redirectTo = '/';
     
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $loginView = 'admin.auth.login';
+    protected $loginView = 'client.auth.login';
 
     /**
      * Create a new authentication controller instance.
@@ -60,8 +65,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:member',
             'password' => 'required|min:6|confirmed',
         ]);
     }
