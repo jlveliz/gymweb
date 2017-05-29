@@ -14,7 +14,7 @@
 				<div class="x_title">
 					<h2>Listado <small>Usuarios</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('users.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    <li><a href="{{ route('admgym.users.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 	                  </ul>
 					<div class="clearfix"></div>
@@ -45,10 +45,10 @@
 									<td>
 										<ul class="nav navbar-right panel_toolbox">
 											<li>
-												<a href="{{ route('users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span></a>
+												<a href="{{ route('admgym.users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span></a>
 											</li>
 											<li>
-												<form action="{{ route('users.destroy',$user->id) }}" method="POST">
+												<form action="{{ route('admgym.users.destroy',$user->id) }}" method="POST">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>

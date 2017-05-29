@@ -46,7 +46,7 @@ Route::group(['prefix' => 'admgym'],function(){
 
 	Route::group(['middleware'=>['auth','role:administrator']],function(){
 		
-		Route::resource('users','UserController',['except'=>['show']]);
+		Route::resource('users','Admin\User\UserController',['except'=>['show']]);
 		Route::resource('permissions','PermissionController',['except'=>['show']]);
 		Route::resource('roles','RoleController',['except'=>['show']]);
 

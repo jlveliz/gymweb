@@ -1,10 +1,12 @@
 <?php
 
-namespace GymWeb\Http\Controllers;
+namespace GymWeb\Http\Controllers\Admin\User;
 
 use Illuminate\Http\Request;
 
 use GymWeb\Http\Requests\UserRequest;
+
+use GymWeb\Http\Controllers\Controller;
 
 use GymWeb\RepositoryInterface\UserRepositoryInterface;
 
@@ -12,7 +14,6 @@ use GymWeb\RepositoryInterface\RoleRepositoryInterface;
 
 use Response;
 
-use Redirect;
 
 class UserController extends Controller
 {
@@ -39,7 +40,7 @@ class UserController extends Controller
 		$data = [
 			'users' => $users
 		];
-		return view('user.index',$data);
+		return view('admin.user.index',$data);
 	}
 
 	/**
@@ -50,7 +51,7 @@ class UserController extends Controller
 	public function create()
 	{
 		$roles = $this->role->enum();
-		return view('user.create',compact('roles'));
+		return view('admin.user.create',compact('roles'));
 	}
 
 	/**
@@ -73,7 +74,7 @@ class UserController extends Controller
 			$sessionData['mensaje'] = 'El usuario no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('UserController@index')->with($sessionData);
+		return redirect()->route('admgym.users.edit',$user->id)->with($sessionData);
 		
 	}
 
@@ -107,7 +108,7 @@ class UserController extends Controller
 			}
 		}
 
-		return view('user.edit',[
+		return view('admin.user.edit',[
 			'user'=>$user,
 			'roles'=>$roles
 			]);
@@ -134,7 +135,7 @@ class UserController extends Controller
 			$sessionData['mensaje'] = 'El usuario no pudo ser creado, intente nuevamente';
 		}
 		
-		return Redirect::action('UserController@index')->with($sessionData);
+		return redirect()->route('admgym.users.edit',$user->id)->with($sessionData);
 	}
 
 	/**
@@ -159,9 +160,7 @@ class UserController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El usuario no pudo ser eliminado, intente nuevamente';
 		}
-		
-		return Redirect::action('UserController@index')->with($sessionData);
-			
+		return redirect()->route('admgym.users.index')->with($sessionData);	
 		
 	}
 }
