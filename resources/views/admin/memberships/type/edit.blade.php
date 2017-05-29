@@ -20,8 +20,15 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Crear <small>Tipo de Membresia</small></h2>
+					<h2>Editar <small>Tipo de Membresia</small></h2>
 					<div class="clearfix"></div>
+					@if (Session::has('mensaje'))
+						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+							{{session('mensaje')}}
+					    </div>
+						<div class="clearfix"></div>
+					@endif
 				</div>
 				<div class="x_content">
 					<form method="post" class="form-horizontal form-label-left" action="{{ route('admgym.memberships.types.update',$membershipType->id) }}">

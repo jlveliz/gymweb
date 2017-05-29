@@ -22,6 +22,13 @@
 				<div class="x_title">
 					<h2 class="animated fadeIn">Editar Miembro</h2>
 					<div class="clearfix"></div>
+					@if (Session::has('mensaje'))
+						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+							{{session('mensaje')}}
+					    </div>
+						<div class="clearfix"></div>
+					@endif
 				</div>
 				<div class="x_content">
 					<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.members.update',$member->id) }}">

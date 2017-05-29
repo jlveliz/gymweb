@@ -13,6 +13,13 @@
 				<div class="x_title">
 					<h2>Editar <small>Usuarios</small></h2>
 					<div class="clearfix"></div>
+					@if (Session::has('mensaje'))
+						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+							{{session('mensaje')}}
+					    </div>
+						<div class="clearfix"></div>
+					@endif
 				</div>
 				<div class="x_content">
 					<form method="post" class="form-horizontal form-label-left" action="{{ route('admgym.users.update',$user->id) }}">
