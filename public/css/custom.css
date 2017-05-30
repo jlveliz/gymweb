@@ -698,7 +698,7 @@ a:focus {
 }
 
 body.nav-md ul.nav.child_menu li:before {
-    background: #425668;
+    background: #e62b2b;
     bottom: auto;
     content: "";
     height: 8px;
@@ -714,7 +714,7 @@ body.nav-md ul.nav.child_menu li:before {
 }
 
 body.nav-md ul.nav.child_menu li:after {
-    border-left: 1px solid #425668;
+    border-left: 1px solid #e62b2b;
     bottom: 0;
     content: "";
     left: 27px;
@@ -740,18 +740,17 @@ body.nav-md ul.nav.child_menu li:after {
 }
 
 li.current-page {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .nav.side-menu> li.active > a {
     color: #ff0000;
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5b6479), color-stop(100%, #4c5566)), #686e78;
-    background: -webkit-linear-gradient(#334556, #2C4257), #000000;
-    background: -moz-linear-gradient(#334556, #2C4257), #000000;
-    background: -o-linear-gradient(#334556, #2C4257), #000000;
-    background: linear-gradient(#334556, #2C4257), #000000;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+    background: -webkit-linear-gradient(#151414, #292929), #000000;
+    background: -moz-linear-gradient(#151414, #292929), #000000;
+    background: -o-linear-gradient(#151414, #292929), #000000;
+    background: linear-gradient(#151414, #292929), #000000 -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
     -moz-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
 }
@@ -6307,18 +6306,18 @@ ul.notifications {
 
 .btn-submit {
     color: #ffffff;
-    background-color: #30a8ad;
-    border-color: #30a8ad;
-}
-
-.btn-submit:hover {
-    color: #ffffff;
     background-color: #e72b2b;
     border-color: #e72b2b;
 }
 
+.btn-submit:hover {
+    color: #ffffff;
+    background-color: #bf2626;
+    border-color: #bf2626;
+}
+
 .table-gym > thead > tr > th {
-    color: #2a979c
+    color: #e72b2b
 }
 
 .no-padding-left {
@@ -6329,4 +6328,16 @@ ul.notifications {
     .modal-sm {
         width: 400px;
     }
+}
+.nav-tabs>li>a,
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.tab-gym-index {
+    padding: 15px 0px;
 }

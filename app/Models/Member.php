@@ -37,6 +37,16 @@ class Member extends Authenticatable
         'date_admission',
     ];
 
+     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+
     public function __construct(){
 
         setlocale(LC_TIME, \Config('app.locale'));

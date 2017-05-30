@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
     if ($('#member-datatable').length) {
         $('#member-datatable').DataTable({
             "language": {
-                "url": 'public/js/datatables/json/es.json'
+                "url": '/public/js/datatables/json/es.json'
             },
             "columnDefs": [{
                 "orderable": false,
@@ -20,6 +20,7 @@ jQuery(document).ready(function($) {
                 [2, 'asc'],
                 [3, 'asc']
             ],
+            "responsive": true
         });
     }
 

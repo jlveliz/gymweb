@@ -245,7 +245,7 @@ form:after {
     -o-box-shadow: 0 0 2px #ed1c24 inset;
     box-shadow: 0 0 2px #A97AAD inset;
     background-color: #fff;
-    border: 1px solid #30a8ad;
+    border: 1px solid #e72b2b;
     outline: none;
 }
 
@@ -330,14 +330,14 @@ header {
 
 .btn-submit {
     color: #ffffff;
-    background-color: #30a8ad;
-    border-color: #30a8ad;
+    background-color: #e72b2b;
+    border-color: #e72b2b;
 }
 
 .btn-submit:hover {
     color: #ffffff;
-    background-color: #2b989d;
-    border-color: #2b989d;
+    background-color: #bf2626;
+    border-color: #bf2626;
 }
 
 .copyright {
