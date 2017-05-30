@@ -6329,6 +6329,7 @@ ul.notifications {
         width: 400px;
     }
 }
+
 .nav-tabs>li>a,
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
@@ -6337,7 +6338,10 @@ ul.notifications {
     font-weight: bold;
 }
 
-
 .tab-gym-index {
     padding: 15px 0px;
+}
+
+.form-inline {
+    /*display: inline;*/
 }

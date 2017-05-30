@@ -7,7 +7,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>{{$member->name}} {{$member->last_name}}</h2>
+					<h2 class="animated fadeIn">Miembros</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -17,13 +17,13 @@
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="showMember">
+							<h3 class="">{{$member->name}} {{$member->last_name}}</h3>
 							<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
 								<div class="profile_img">
 									<div id="crop-avatar">
 										<img class="img-responsive avatar-view" src="{{ asset('public/img/default-user.png') }}" alt="Avatar" title="Change the avatar">
 									</div>
 								</div>
-								<h3>{{explode(' ', $member->name)[0]}} {{explode(' ', $member->last_name)[0]}}</h3>
 								<ul class="list-unstyled user_data">
 		                        	<li><i class="fa fa-key user-profile-icon"></i> {{$member->identity_number}}</li>
 		                        	<li><i class="fa fa-birthday-cake user-profile-icon"></i> {{$member->birth_date}}</li>

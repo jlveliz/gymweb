@@ -27,8 +27,10 @@ jQuery(document).ready(function($) {
     if ($(".delete-member").length) {
 
         $(".delete-member").on('click', function(event) {
-            console.log($(this).data('member'));
+            var member = $(this).data('member');
             $("#modal-delete").modal();
+            $("#modal-delete > p#member").text('');
+            $("#member_delete").text(member);
             event.preventDefault();
             /* Act on the event */
         });

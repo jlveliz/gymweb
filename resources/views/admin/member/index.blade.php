@@ -52,7 +52,7 @@
 														<a href="{{ route('admgym.members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 													</li>
 												    <li>
-												    	<a href="#" title="Èliminar" data-member={{ $member->id }} class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
+												    	<a href="#" title="Èliminar" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
 													</li>
 												  </ul>
 												</div>
@@ -79,7 +79,13 @@
 	        <h4 class="modal-title">Atención</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p class="col-md-6 col-sm-6 col-xs-hidden "><i class="fa fa-exclamation fa-5x text-danger" aria-hidden="true"></i></p>
+	        <p class="col-md-1 col-sm-1 col-xs-hidden ">
+	        	<i class="fa fa-exclamation fa-5x text-danger" aria-hidden="true"></i>
+	        </p>
+
+	        <p class="col-md-11 col-sm-11 col-xs-12">
+	        	Está seguro de eliminar al miembro <b id="member_delete"></b>
+	        </p>
 	        <div class="clearfix"></div>
 	      </div>
 	      <div class="modal-footer">
