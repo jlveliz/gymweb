@@ -60,6 +60,42 @@ jQuery(document).ready(function($) {
     }
 
 
+    if ($("#date_job").length) {
+        $("#date_job").val(moment().format('YYYY-MM-DD'));
+        $("#date_job").datetimepicker({
+            locale: "es",
+            format: "YYYY-MM-DD",
+            maxDate: moment().format('YYYY-MM-DD'),
+        });
+    }
+
+    if ($("#memberships").length) {
+        $('#memberships').DataTable({
+            "language": {
+                "url": '/public/js/datatables/json/es.json'
+            },
+            "columnDefs": [{
+                "orderable": false,
+                "targets": 4
+            }],
+            "orderable": false,
+            "order": [
+                [0, 'asc'],
+                [1, 'asc'],
+                [2, 'asc'],
+                [3, 'asc'],
+            ],
+            "responsive": true
+        });
+    }
+
+    if ($(".add-assistance").length) {
+        $(".add-assistance").on('click', function(event) {
+            event.preventDefault();
+            $("#jobModal").modal();
+        });
+    }
+
 
     /******** PROFILE ********/
     if ($("#profile-section").length) {
@@ -88,4 +124,6 @@ jQuery(document).ready(function($) {
         });
     }
     /******** PROFILE ********/
+
+
 });

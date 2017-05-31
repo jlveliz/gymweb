@@ -30,8 +30,6 @@ class Member extends Authenticatable
         'email',
         'phone',
         'mobile',
-        'weight',
-        'height',
         'admission_date',
         'birth_date',
         'date_admission',

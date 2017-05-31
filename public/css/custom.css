@@ -4129,8 +4129,8 @@ html > body > .ui-pnotify {
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
-    background-color: #e72b2b;
-    border-color: #e72b2b;
+    /*background-color: #e72b2b;*/
+    /*border-color: #e72b2b;*/
     color: #FFFFFF;
 }
 

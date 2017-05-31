@@ -17,155 +17,148 @@
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="showMember">
-							<h3 class="">{{$member->name}} {{$member->last_name}}</h3>
-							<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-								<div class="profile_img">
-									<div id="crop-avatar">
-										<img class="img-responsive avatar-view" src="{{ asset('public/img/default-user.png') }}" alt="Avatar" title="Change the avatar">
+							<h3 class="animated fadeIn">{{$member->name}} {{$member->last_name}}</h3>
+							<div class="row">
+								<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+									<div class="profile-img" style="background-image:url(@if($member->photo)'{{ asset($member->photo) }}'@else'{{ asset("public/img/default-user.png") }}'@endif) " alt="{{$member->name}} {{$member->last_name}}" title="{{$member->name}} {{$member->last_name}}">
+							    	</div>
+								</div>
+								<div class="col-md-9 col-sm-9 col-xs-12">
+									<div class="col-md-6 col-sm-6">
+								    	<table class="table">
+								    		<tbody>
+								    			<tr>
+								    				<td><i class="fa fa-key user-profile-icon"></i> <b> Cédula:</b> {{$member->identity_number}}</td>
+								    			</tr>
+								    			<tr>
+								    				<td><i class="fa fa-envelope-o user-profile-icon"></i> <b> Email:</b>  {{$member->email}}</td>
+								    			</tr>
+								    			@if ($member->gender == 'male')
+								    				<tr>
+								    					<td><i class="fa fa-mars"></i> <b> Género:</b>  Masculino</td>
+								    				</tr>
+								    			@endif
+								    			@if ($member->gender == 'female')
+								    				<tr>
+								    					<td><i class="fa fa-venus"></i> <b> Género:</b>  Femenino</td>
+								    				</tr>
+								    			@endif
+								    			<tr>
+								    				<td><i class="fa fa-birthday-cake user-profile-icon"></i>  <b> Fecha de Nacimiento:</b> {{$member->birth_date}}</td>
+								    			</tr>
+								    			<tr>
+								    				<td><i class="fa fa-sign-in user-profile-icon"></i> <b> Fecha de Ingreso:</b>{{$member->admission_date}}</td>
+								    			</tr>
+								    			<tr>
+								    				<td>
+								    					<i class="fa fa-phone user-profile-icon"></i> <b>Telefono:</b> {{$member->phone}}  
+								    					@if ($member->mobile)
+								    					/ <i class="fa fa-mobile user-profile-icon"></i> <b>Móvil:</b> {{$member->mobile}}</td>
+				                        				@endif
+								    				</td>
+								    			</tr>
+								    		</tbody>
+								    	</table>
+									</div>
+									<div class="col-md-6 col-sm-6">
+								    	<table class="table">
+								    		<tbody>
+								    			<tr>
+								    				<td><i class="fa fa-users"></i> <b>Membresía: </b> {{$member->current_membership() ? $member->current_membership()->type->name : '-' }}</td>
+								    			</tr>
+								    			<tr>
+								    				<td><i class="fa fa-power-off"></i> <b>Estado Membresía: </b> {{$member->current_membership() ? $member->current_membership()->membership_state_phisical == 0? 'Caducado' : 'Activo'  : '-'}}</td>
+								    			</tr>
+								    		</tbody>
+								    	</table>
 									</div>
 								</div>
-								<ul class="list-unstyled user_data">
-		                        	<li><i class="fa fa-key user-profile-icon"></i> {{$member->identity_number}}</li>
-		                        	<li><i class="fa fa-birthday-cake user-profile-icon"></i> {{$member->birth_date}}</li>
-		                        	<li><i class="fa fa-sign-in user-profile-icon"></i> {{$member->admission_date}}</li>
-		                        	<li><i class="fa fa-envelope-o user-profile-icon"></i> {{$member->email}}</li>
-		                        	<li><i class="fa fa-phone user-profile-icon"></i> {{$member->phone}}</li>
-		                        	@if ($member->mobile)
-		                        		<li><i class="fa fa-mobile user-profile-icon"></i> {{$member->mobile}}</li>
-		                        	@endif
-		                        	<li><i class="fa fa-circle user-profile-icon"></i> {{$member->weight}} Libras</li>
-		                        	<li><i class="fa fa-circle-o user-profile-icon"></i> {{$member->height}} Centimetros</li>
-		                        </ul>
-		                        <a class="btn btn-success" href="{{ route('admgym.members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar Miembro</a>
-		                        <a class="btn btn-info" href="{{ route('admgym.members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
 							</div>
-							<div class="col-md-9 col-sm-9 col-xs-12">
-								<div class="" role="tabpanel" data-example-id="togglable-tabs">
-			                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-			                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Membresia</a>
-			                          </li>
-			                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Historial</a>
-			                          </li>
-			                        </ul>
-			                        <div id="myTabContent" class="tab-content">
-			                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-			                          	@if (!$member->current_membership())
-			                          		<h5 class="text-center col-md-10">No tiene una membresia activa</h5>
-			                          		<div class="col-md-2">
-			                          			<a href="{{ route('admgym.members.memberships.create',$member->id) }}" class="btn btn-success pull-right"><i class="fa fa-plus"> </i> Crear Membresia</a>	
-			                          		</div>	
-			                          	@else
-			                          		<div class="row">
-			                          			<div class="col-md-12 col-sm-12 col-xs-12">
-			                          				<ul class="list-unstyled list-inline" style="font-size: 16px">
-			                          					<li><i class="fa fa-membership"></i> Membresia: {{$member->current_membership()->type->name}}  </li>
-			                          					<li><i class="fa fa-calendar user-profile-icon"></i> Periodos: {!!$member->current_membership()->period_from!!} / {!!$member->current_membership()->period_to!!}</li>
-			                          					<li class="@if($member->current_membership()->membership_state_phisical == 0) text-danger @else text-success @endif"><i class="fa fa-check user-profile-icon"></i> @if($member->current_membership()->membership_state_phisical == 0) Caducado @else  Activo  @endif</li>
-			                          					<li class="@if($member->current_membership()->membership_state_economic > 1) text-success @else text-danger  @endif"><i class="fa fa-usd user-profile-icon"></i> @if($member->current_membership()->membership_state_economic == 1) Impago @endif @if($member->current_membership()->membership_state_economic == 2) Abonado @endif 
-			                          						@if($member->current_membership()->membership_state_economic == 3) Pagado @endif
-			                          					</li>
-			                          				</ul>
-			                          			</div>
-			                          		</div>
-			                          		<hr>
-			                          		<div class="row">
-			                          			<div class="text-right">
-				                          			<?php 
-				                          			
-				                          				$lastDayJob =   count($member->current_membership()->assistances) > 0 ? $member->current_membership()->assistances()->orderBy('length_secuence_day','desc')->first()->date_job : null;  
-				                          			?>
-				                          			<?php if ($lastDayJob != $member->currentDate()): ?>
-				                          			<div class="col-md-9 col-sm-3 col-xs-12">
-					                          			<button data-toggle="modal" data-target="#jobModal" type="button" class="btn btn-success "><i class="fa fa-plus"> </i> Agregar día de trabajo</button>
-			                          				</div>
-			                          				<?php endif ?>
-
-			                          				@if (count($member->current_membership()->assistances) > 0)
-						                          		<form action="{{ route('admgym.members.memberships.update',[$member->id,$member->current_membership()->id]) }}" method="POST">
-						                          			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-															<input type="hidden" name="_method" value="PUT">
-															<input type="hidden" name="membership_state_phisical" value="0">
-						                          			<button type="submit" class="btn btn-danger pull-right"><i class="fa fa-times"> </i> Cerrar Membresia</button>	
-						                          		</form>
-				                          			@endif
-						                        </div>
-			                          		</div>	
-			                          				
-			                          		<table class="table table-striped">
-			                          			<thead>
-			                          				<tr>
-			                          					<th>#</th>
-			                          					<th>Día Ejercitado</th>
-			                          				</tr>
-			                          			</thead>
-			                          			<tbody>
-			                          				@if (count($member->current_membership()->assistances) > 0)
-			                          					@foreach ($member->current_membership()->assistances as $dDetail)
-				                          				<tr>
-				                          					<td>{{$dDetail->length_secuence_day}}</td>
-				                          					<td>{!!$dDetail->date_job!!} </td>
-				                          				</tr>
-			                          					@endforeach
-			                          				@else
-			                          					<tr>
-			                          						<td colspan="2" class="text-center">No tiene días de trabajo</td>
-			                          					</tr>
-			                          				@endif
-			                          			</tbody>
-			                          		</table>
-			                          	@endif
-			                          
-			                          </div>
-			                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-			                          	<h2>Membresias anteriores</h2>
-			                          	<hr>
-			                          	<table class="table table-striped">
-			                          		<thead>
-			                          			<tr>
-			                          				<th>Periodo desde</th>
-			                          				<th>Periodo hasta</th>
-			                          				<th>Tipo de membresia</th>
-			                          				<th>Estado físico</th>
-			                          				<th>Estado economico</th>
-			                          				<th>Acción</th>
-			                          			</tr>
-			                          		</thead>
-			                          		<tbody>
-			                          			@foreach ($member->memberships()->orderBy('id','desc')->get() as $membership)
-				                          			<tr>
-				                          				<td>{!!$membership->period_from!!}</td>
-				                          				<td>{!!$membership->period_to!!}</td>
-				                          				<td>{!!$membership->type->name!!}</td>
-				                          				<td @if ($membership->membership_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
-				                          					@if ($membership->membership_state_phisical == '1')
-				                          					Activa
-				                          					@else
-				                          					Caducada
-				                          					@endif 
-				                          				</td>
-				                          				<td @if($membership->membership_state_economic == '1') class="text-danger" @endif @if($membership->membership_state_economic == '2') class="text-warning" @endif @if($membership->membership_state_economic == '3') class="text-success" @endif>
-				                          					@if($membership->membership_state_economic == '1')
-				                          						Impago
-				                          					@endif
-				                          					@if($membership->membership_state_economic == '2')
-				                          						Abonado
-				                          					@endif
-				                          					@if($membership->membership_state_economic == '3')
-				                          						Pagado
-				                          					@endif
-				                          				</td>
-				                          				<td>
-				                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
-				                          						<a href="{{ route('admgym.members.memberships.payments.create',[$member->id,$membership->id]) }}" class="btn btn-success" title="Pagar"> <i class="fa fa-dollar"></i> Pagar</a>
-				                          					@endif
-				                          				</td>
-				                          			</tr>
-			                          			@endforeach
-			                          		</tbody>
-			                          	</table>
-			                          </div>
-			                        </div>
+							<div class="row">
+								<hr>
+								<div class="clearfix"></div>
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<h4><b>Membresias</b></h4>
+									<div class="" role="tabpanel" data-example-id="togglable-tabs">
+				                        <ul id="myTab" class="nav nav-tabs" role="tablist">
+				                          <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="tab_content2" data-toggle="tab" aria-expanded="false">Historial</a>
+				                          </li>
+				                          @if (!$member->current_membership())
+				                          	<li role="presentation" >
+				                          		<a href="{{ route('admgym.members.memberships.create',$member->id) }}" aria-expanded="true">Crear</a>
+				                          	</li>
+				                          	@endif
+				                        </ul>
+				                        <div id="myTabContent" class="tab-content tab-gym-index">
+				                        	<div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">
+					                          	<table id="memberships" class="table table-striped">
+					                          		<thead>
+					                          			<tr>
+					                          				<th>Tipo de membresia</th>
+					                          				<th>Estado físico</th>
+					                          				<th>Estado economico</th>
+					                          				<th>Periodo desde / hasta</th>
+					                          				<th colspan="2">Acción</th>
+					                          			</tr>
+					                          		</thead>
+					                          		<tbody>
+					                          			@foreach ($member->memberships()->orderBy('id','desc')->get() as $membership)
+						                          			<tr>
+						                          				<td>{!!$membership->type->name!!}</td>
+						                          				<td @if($membership->membership_state_economic == '1') class="text-danger" @endif @if($membership->membership_state_economic == '2') class="text-warning" @endif @if($membership->membership_state_economic == '3') class="text-success" @endif>
+						                          					@if($membership->membership_state_economic == '1')
+						                          						Impago
+						                          					@endif
+						                          					@if($membership->membership_state_economic == '2')
+						                          						Abonado
+						                          					@endif
+						                          					@if($membership->membership_state_economic == '3')
+						                          						Pagado
+						                          					@endif
+						                          				</td>
+						                          				<td @if ($membership->membership_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
+						                          					@if ($membership->membership_state_phisical == '1')
+						                          					Activa
+						                          					@else
+						                          					Caducada
+						                          					@endif 
+						                          				</td>
+						                          				<td>{!!$membership->period_from!!} / {!!$membership->period_to!!}</td>
+						                          				
+						                          				<td colspan="2">
+						                          					<div class="btn-group">
+						                          						<button  data-toggle="dropdown" id="dropdownAssistance" type="button" class="btn btn-default"> <i class="fa fa-calendar"></i> Asistencias <span class="caret"></span></button>
+						                          						<ul role="menu" class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownAssistance">
+						                          							<li><a href="" class="add-assistance" title="Agregar Asistencia">Agregar</a></li>
+						                          						</ul>
+						                          					</div>
+						                          					<div class="btn-group">
+							                          					<button data-toggle="dropdown"  type="button" class="btn btn-success dropdown-toggle" id="dropdownPay"><i class="fa fa-dollar" alt="Menú de pagos" title="Menú de pagos"></i> Pagos <span class="caret"></span></button>
+							                          					<ul role="menu" class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownPay">
+							                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
+							                          						<li><a href="{{ route('admgym.members.memberships.payments.create',[$member->id,$membership->id]) }}" title="Pagar o abonar la membresia">Pagar</a>
+							                          						</li>
+							                          					@endif
+							                          						<li>
+							                          							<a href="" title="Ver el historial de pagos realizados a la membresia">Ver Pagos</a>
+							                          						</li>
+							                          					</ul>
+						                          					</div>
+						                          				</td>
+						                          			</tr>
+					                          			@endforeach
+					                          		</tbody>
+					                          	</table>
+				                          </div>
+				                        </div>
+									</div>
 								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="ln_solid"></div>
+							<div class="form-group">
+		                     <a class="btn btn-info" href="{{ route('admgym.members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
+							 <a class="btn btn-submit" href="{{ route('admgym.members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar</a>
 							</div>
 						</div>
 					</div>
@@ -207,6 +200,11 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/jquery.dataTables.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/buttons.bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/fixedHeader.bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/responsive.bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/scroller.bootstrap.min.css') }}" />
 
 <style type="text/css">
 	.daterangepicker{
@@ -217,14 +215,19 @@
 
 @section('js')
 <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#date_job").val(moment().format('YYYY-MM-DD'));
-		$("#date_job").datetimepicker({
-	        locale: "es",
-	        format: "YYYY-MM-DD",
-	        maxDate: moment().format('YYYY-MM-DD'),
-    	});
-	})
-</script>
+ <script src="{{ asset('public/js/datatables/jquery.dataTables.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/dataTables.bootstrap.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/dataTables.buttons.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/buttons.bootstrap.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/jszip.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/pdfmake.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/vfs_fonts.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/buttons.html5.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/buttons.print.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/dataTables.fixedHeader.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/dataTables.keyTable.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/dataTables.responsive.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/responsive.bootstrap.min.js') }}"></script>
+ <script src="{{ asset('public/js/datatables/dataTables.scroller.min.js') }}"></script>
+ <script src="{{ asset('public/js/member/app.js') }}"></script>
 @endsection
