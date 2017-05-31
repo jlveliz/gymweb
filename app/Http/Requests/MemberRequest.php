@@ -41,6 +41,7 @@ class MemberRequest extends Request
                     'weight' => 'required|numeric',
                     'birth_date' => 'required|date',
                     'admission_date' => 'required|date',
+                    'photo'=> 'image'
                 ];
             }
             case 'PUT':
@@ -55,6 +56,7 @@ class MemberRequest extends Request
                     'weight' => 'required|numeric',
                     'birth_date' => 'required|date',
                     'admission_date' => 'required|date',
+                    'photo'=> 'image'
                 ];   
             }
             default:
@@ -96,6 +98,7 @@ class MemberRequest extends Request
                     'birth_date.date' => 'Fecha de nacimiento inválida',
                     'admission_date.required' => 'Fecha de ingreso requerida',
                     'admission_date.date' => 'Fecha de ingreso inválida',
+                    'photo.image'=>'Foto inválida'
                 ];
             }
             case 'PUT':
@@ -121,6 +124,7 @@ class MemberRequest extends Request
                     'birth_date.date' => 'Fecha de nacimiento inválida',
                     'admission_date.required' => 'Fecha de ingreso requerida',
                     'admission_date.date' => 'Fecha de ingreso inválida',
+                    'photo.image'=>'Foto inválida'
                 ];
             default:
                 # code...

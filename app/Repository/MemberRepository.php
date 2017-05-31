@@ -80,4 +80,51 @@ class MemberRepository implements MemberRepositoryInterface
 		return false;
 	}
 
+
+	private function pathUplod() {
+		return public_path().'/uploads';
+	}
+
+
+	public function uploadPhoto($missId,$photo)
+	{
+		$arrayModel=[];
+		if ($photo->isValid()) {
+			
+			$realPath = $photo->getRealPath();
+			$image = Image::make($realPath);
+			$isLandScape = true;
+
+			if ($image->width() >= $image->height()) {
+				$isLandScape = false;
+			}
+			//is landscape
+			if ($isLandScape) {
+				$image->resize(309,482,function($constraint){
+					$constraint->aspectRatio();
+				});
+			} else {
+				//is portrait
+				$image->resize(722,482,function($constraint){
+					$constraint->aspectRatio();
+				});				
+			}
+
+
+			$imageName = $missId.'_'.str_random().'.'. $photo->getClientOriginalExtension();
+			if($image->save($this->pathUplod().'/'.$imageName)){
+				$arrayModel['path'] = 'public/uploads/'.$imageName;
+				// $paths[$key]['miss_id'] = $keyMiss;
+			}
+		}
+
+		if ($arrayModel) {
+			$miss = $this->find($missId);
+			$arrayModel['is_landscape'] = $isLandScape;
+			$modelRelation = new \MissVote\Models\MissPhoto($arrayModel);
+			$miss->photos()->save($modelRelation);
+			return $miss;
+		}
+	}
+
 }

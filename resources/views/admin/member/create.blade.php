@@ -27,65 +27,86 @@
 
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="createMember">
-							<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.members.store') }}">
+							<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.members.store') }}" enctype="multipart/form-data">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<div class="row">
-									<div class="form-group col-md-4 col-sm-4 col-xs-4 @if($errors->has('name')) has-error @endif">
-										<label class="control-label">Nombre: <span class="text-danger">*</span></label>
-									    <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}" autofocus>
-									    @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif 
-									</div>
-									<div class="form-group col-md-4 col-sm-4 col-xs-4 @if ($errors->has('last_name')) has-error @endif">
-										<label class="control-label">Apellido: <span class="text-danger">*</span></label>
-									    <input type="text" class="form-control" placeholder="Apellido" name="last_name" value="{{ old('last_name') }}">
-									    @if ($errors->has('last_name')) <p class="help-block">{{ $errors->first('last_name') }}</p> @endif
-									</div>
-									<div class="form-group col-md-4 col-sm-4 col-xs-4 @if ($errors->has('identity_number')) has-error @endif">
-										<label class="control-label">Cédula: <span class="text-danger">*</span></label>
-									     <input type="text" class="form-control" placeholder="Cédula" name="identity_number" value="{{ old('identity_number') }}">
-									     @if ($errors->has('identity_number')) <p class="help-block">{{ $errors->first('identity_number') }}</p> @endif
-									</div>
+								<div class="col-md-3 col-sm-3 col-xs-12">
+						    		<a href="#" id="profile-section">
+						    			<div class="profile-img" style="background-image:url('{{ asset("public/img/default-user.png") }}') " alt="" title="">
+						    			</div>
+						    			<div class="middle">
+				                        	<div class="text">Subir una imagen</div>
+				                    	</div>
+						    		</a>
+						    		<input type="file" id="file-profile-upload" name="photo" type="file" accept="image/*"/ style="display: none">
+						    		@if ($errors->has('photo')) <p class="help-block">{{ $errors->first('photo') }}</p> @endif
 								</div>
-								<div class="row">
-									<div class="form-group col-md-4 col-sm-4 col-xs-4 @if ($errors->has('email')) has-error @endif">
-										<label class="control-label">Email: <span class="text-danger">*</span></label>
-									    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
-									    @if ($errors->has('email')) <p class="help-block">{{ $errors->first('email') }}</p> @endif 
-									</div>
-									<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('phone')) has-error @endif">
-										<label class="control-label">Teléfono: <span class="text-danger">*</span></label>
-								     	<input type="text" class="form-control" placeholder="Teléfono" name="phone" value="{{ old('phone') }}">
-								     	@if ($errors->has('phone')) <p class="help-block">{{ $errors->first('phone') }}</p> @endif
-									</div>
-									<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('mobile')) has-error @endif">
-										<label class="control-label">Móvil:</label>
-								     	<input type="text" class="form-control" placeholder="Móvil" name="mobile" value="{{ old('mobile') }}">
-								     	@if ($errors->has('mobile')) <p class="help-block">{{ $errors->first('mobile') }}</p> @endif
-									</div>
-									<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('height') || $errors->has('weight')) has-error @endif">
-										<label class="control-label col-md-12 col-sm-12 col-xs-12 no-padding">Medidas:  <small>(cm - lb)</small>  <span class="text-danger">*</span></label>
-										<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding-left ">
-									     	<input type="text" class="form-control" placeholder="Altura" name="height" value="{{ old('height') }}">
-									     	@if ($errors->has('height')) <p class="help-block">{{ $errors->first('height') }}</p> @endif
+								<div class="col-md-9 col-sm-9 col-xs-12">
+									<div class="row">
+										<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('identity_number')) has-error @endif">
+											<label class="control-label">Cédula: <span class="text-danger">*</span></label>
+										     <input type="text" class="form-control" placeholder="Cédula" name="identity_number" value="{{ old('identity_number') }}" autofocus>
+										     @if ($errors->has('identity_number')) <p class="help-block">{{ $errors->first('identity_number') }}</p> @endif
 										</div>
-										<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding">
-									     	<input type="text" class="form-control" placeholder="Peso" name="weight" value="{{ old('weight') }}">
-									     	@if ($errors->has('weight')) <p class="help-block">{{ $errors->first('weight') }}</p> @endif
+										<div class="form-group col-md-4 col-sm-4 col-xs-4 @if($errors->has('name')) has-error @endif">
+											<label class="control-label">Nombre: <span class="text-danger">*</span></label>
+										    <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}">
+										    @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif 
+										</div>
+										<div class="form-group col-md-4 col-sm-4 col-xs-4 @if ($errors->has('last_name')) has-error @endif">
+											<label class="control-label">Apellido: <span class="text-danger">*</span></label>
+										    <input type="text" class="form-control" placeholder="Apellido" name="last_name" value="{{ old('last_name') }}">
+										    @if ($errors->has('last_name')) <p class="help-block">{{ $errors->first('last_name') }}</p> @endif
+										</div>
+										<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('gender')) has-error @endif">
+											<label class="control-label">Género: <span class="text-danger">*</span></label>
+											<select name="gender" id="gender" class="form-control">
+												<option value="null" @if(old('gender') == 'null') selected @endif>--Seleccione--</option>
+												<option value="male" @if(old('gender') == 'male') selected @endif>Masculino</option>
+												<option value="female" @if(old('gender') == 'female') selected @endif>Femenino</option>
+											</select>
+										    @if ($errors->has('gender')) <p class="help-block">{{ $errors->first('gender') }}</p> @endif
 										</div>
 									</div>
-								</div>
-								
-								<div class="row">
-									
-									<div class="form-group col-md-2 col-sm-2 col-xs-6 @if ($errors->has('birth_date')) has-error @endif">
-										<label class="control-label">F. nacimiento:<span class="text-danger">*</span> </label>
-								     	<input type="text" class="form-control" placeholder="F. de nacimiento" name="birth_date" value="{{ old('birth_date') }}" id="birth_date">
-								     	@if ($errors->has('birth_date')) <p class="help-block">{{ $errors->first('birth_date') }}</p> @endif
+									<div class="row">
+										<div class="form-group col-md-4 col-sm-4 col-xs-4 @if ($errors->has('email')) has-error @endif">
+											<label class="control-label">Email: <span class="text-danger">*</span></label>
+										    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
+										    @if ($errors->has('email')) <p class="help-block">{{ $errors->first('email') }}</p> @endif 
+										</div>
+										<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('phone')) has-error @endif">
+											<label class="control-label">Teléfono: <span class="text-danger">*</span></label>
+									     	<input type="text" class="form-control" placeholder="Teléfono" name="phone" value="{{ old('phone') }}">
+									     	@if ($errors->has('phone')) <p class="help-block">{{ $errors->first('phone') }}</p> @endif
+										</div>
+										<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('mobile')) has-error @endif">
+											<label class="control-label">Móvil:</label>
+									     	<input type="text" class="form-control" placeholder="Móvil" name="mobile" value="{{ old('mobile') }}">
+									     	@if ($errors->has('mobile')) <p class="help-block">{{ $errors->first('mobile') }}</p> @endif
+										</div>
+										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('height') || $errors->has('weight')) has-error @endif">
+											<label class="control-label col-md-12 col-sm-12 col-xs-12 no-padding">Medidas:  <small>(cm - lb)</small>  <span class="text-danger">*</span></label>
+											<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding-left ">
+										     	<input type="text" class="form-control" placeholder="Altura" name="height" value="{{ old('height') }}">
+										     	@if ($errors->has('height')) <p class="help-block">{{ $errors->first('height') }}</p> @endif
+											</div>
+											<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding">
+										     	<input type="text" class="form-control" placeholder="Peso" name="weight" value="{{ old('weight') }}">
+										     	@if ($errors->has('weight')) <p class="help-block">{{ $errors->first('weight') }}</p> @endif
+											</div>
+										</div>
 									</div>
-									<div class="form-group col-md-2 col-sm-2 col-xs-5 @if ($errors->has('admission_date')) has-error @endif">
-										<label class="control-label">Fecha de ingreso: <span class="text-danger">*</span></label>
-								     	<input type="text" class="form-control" placeholder="F. de ingreso" name="admission_date" id="admission_date" value="{{ old('admission_date') }}">
-								     	@if ($errors->has('admission_date')) <p class="help-block">{{ $errors->first('admission_date') }}</p> @endif
+									<div class="row">
+										
+										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('birth_date')) has-error @endif">
+											<label class="control-label">F. nacimiento:<span class="text-danger">*</span> </label>
+									     	<input type="text" class="form-control" placeholder="F. de nacimiento" name="birth_date" value="{{ old('birth_date') }}" id="birth_date">
+									     	@if ($errors->has('birth_date')) <p class="help-block">{{ $errors->first('birth_date') }}</p> @endif
+										</div>
+										<div class="form-group col-md-4 col-sm-4 col-xs-5 @if ($errors->has('admission_date')) has-error @endif">
+											<label class="control-label">Fecha de ingreso: <span class="text-danger">*</span></label>
+									     	<input type="text" class="form-control" placeholder="F. de ingreso" name="admission_date" id="admission_date" value="{{ old('admission_date') }}">
+									     	@if ($errors->has('admission_date')) <p class="help-block">{{ $errors->first('admission_date') }}</p> @endif
+										</div>
 									</div>
 								</div>
 								<div class="clearfix"></div>
