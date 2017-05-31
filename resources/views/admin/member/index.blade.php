@@ -27,6 +27,7 @@
 							<table id="member-datatable" class="table table-striped dt-responsive nowrap table-gym animated fadeIn" cellspacing="0">
 								<thead>
 									<tr>
+										<th class="text-center">Foto</th>
 										<th class="text-center">Nombre</th>
 										<th class="text-center">Cédula</th>
 										<th class="text-center">Membresia</th>
@@ -37,6 +38,10 @@
 								<tbody>
 									@foreach ($members as $member)
 										<tr>
+											<td>
+												<div class="thumb-index" style="background-image: url(@if($member->photo)'{{ asset($member->photo) }}'@else'{{ asset("public/img/default-user.png") }}'@endif);">
+												</div>
+											</td>
 											<td><a href="{{ route('admgym.members.show',$member->id) }}" title="Ver {{$member->name .' '. $member->last_name}}"> {{$member->name .' '. $member->last_name}} </a></td>
 											<td>{{$member->identity_number}}</td>
 											<td> {{ $member->current_membership() ?  $member->current_membership()->type->name : '-' }} </td>
@@ -52,7 +57,7 @@
 														<a href="{{ route('admgym.members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 													</li>
 												    <li>
-												    	<a href="#" title="Èliminar" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
+												    	<a href="#" title="Èliminar" data-id="{{$member->id}}" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
 													</li>
 												  </ul>
 												</div>
@@ -89,8 +94,8 @@
 	        <div class="clearfix"></div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	        <form class="form-inline" action="{{ route('admgym.members.destroy',$member->id) }}" method="POST">
+	        <form class="form-inline" action="" method="POST">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="hidden" name="_method" value="DELETE">
 	        	<button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i> Borrar</button>
@@ -105,7 +110,6 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/jquery.dataTables.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/buttons.bootstrap.min.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('/public/js/datatables/bootstrap.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/fixedHeader.bootstrap.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/responsive.bootstrap.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/js/datatables/scroller.bootstrap.min.css') }}" />

@@ -11,14 +11,17 @@ jQuery(document).ready(function($) {
             },
             "columnDefs": [{
                 "orderable": false,
-                "targets": 4
+                "targets": 0
+            }, {
+                "orderable": false,
+                "targets": 5
             }],
             "orderable": false,
             "order": [
-                [0, 'asc'],
                 [1, 'asc'],
                 [2, 'asc'],
-                [3, 'asc']
+                [3, 'asc'],
+                [4, 'asc']
             ],
             "responsive": true
         });
@@ -28,18 +31,14 @@ jQuery(document).ready(function($) {
 
         $(".delete-member").on('click', function(event) {
             var member = $(this).data('member');
+            var memberId = $(this).data('id');
             $("#modal-delete").modal();
             $("#modal-delete > p#member").text('');
             $("#member_delete").text(member);
+            $("#modal-delete").find('form').attr('action', window.location.href + '/' + memberId);
             event.preventDefault();
             /* Act on the event */
         });
-
-        $("#modal-delete").on('show.bs.modal', function(event) {
-            console.log(event);
-        });
-
-
 
     }
 

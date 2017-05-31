@@ -6370,7 +6370,7 @@ ul.notifications {
 #profile-section > .middle > .text {
     background: #e72b2b;
     color: #ffffff;
-    padding: 20px; 
+    padding: 20px;
 }
 
 #profile-section:hover > .middle {
@@ -6384,4 +6384,12 @@ ul.notifications {
     background-size: cover;
     width: 250px;
     height: 250px;
+}
+
+.thumb-index {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
 }

@@ -11,5 +11,5 @@ use GymWeb\RepositoryInterface\CoreRepositoryInterface;
 */
 interface MemberRepositoryInterface extends CoreRepositoryInterface
 {
-	
+	public function uploadPhoto($memberId,$photo);
 }

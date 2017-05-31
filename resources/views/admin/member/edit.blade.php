@@ -40,7 +40,7 @@
 								<input type="hidden" name="key" value="{{$member->id}}">
 								<div class="col-md-3 col-sm-3 col-xs-12">
 						    		<a href="#" id="profile-section">
-						    			<div class="profile-img" style="background-image:url('{{ asset("public/img/default-user.png") }}') " alt="" title="">
+						    			<div class="profile-img" style="background-image:url(@if($member->photo)'{{ asset($member->photo) }}'@else'{{ asset("public/img/default-user.png") }}'@endif) " alt="" title="">
 						    			</div>
 						    			<div class="middle">
 				                        	<div class="text">Subir una imagen</div>
@@ -105,12 +105,12 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="form-group col-md-2 col-sm-2 col-xs-6 @if ($errors->has('birth_date')) has-error @endif">
+										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('birth_date')) has-error @endif">
 											<label class="control-label">F. nacimiento:<span class="text-danger">*</span> </label>
 									     	<input type="text" class="form-control" placeholder="F. de nacimiento" name="birth_date" value="{{ $member->birth_date }}" id="birth_date">
 									     	@if ($errors->has('birth_date')) <p class="help-block">{{ $errors->first('birth_date') }}</p> @endif
 										</div>
-										<div class="form-group col-md-2 col-sm-2 col-xs-5 @if ($errors->has('admission_date')) has-error @endif">
+										<div class="form-group col-md-4 col-sm-4 col-xs-5 @if ($errors->has('admission_date')) has-error @endif">
 											<label class="control-label">Fecha de ingreso: <span class="text-danger">*</span></label>
 									     	<input type="text" class="form-control" placeholder="F. de ingreso" name="admission_date" id="admission_date" value="{{ $member->admission_date }}">
 									     	@if ($errors->has('admission_date')) <p class="help-block">{{ $errors->first('admission_date') }}</p> @endif

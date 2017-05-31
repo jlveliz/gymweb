@@ -3,6 +3,7 @@ namespace GymWeb\Repository;
 
 use GymWeb\RepositoryInterface\MemberRepositoryInterface;
 use GymWeb\Models\Member;
+use Image;
 
 /**
 * 
@@ -45,10 +46,19 @@ class MemberRepository implements MemberRepositoryInterface
 	//TODO
 	public function save($data)
 	{
+		$photo = null;
+		if (array_key_exists('photo', $data)) {
+			$photo = $data['photo'];
+		}
+
 		$member = new Member();
 		$member->fill($data);
 		if ($member->save()) {
 			$key = $member->getKey();
+			if ($photo) {
+				$member->photo = $this->uploadPhoto($key,$photo);
+				$member->update();
+			}
 			return  $this->find($key);
 		} 
 		return false;
@@ -60,6 +70,9 @@ class MemberRepository implements MemberRepositoryInterface
 		$member = $this->find($id);
 
 		if ($member) {
+			if (array_key_exists('photo', $data)) {
+				$data['photo'] = $this->uploadPhoto($id,$data['photo']);
+			}
 			$member->fill($data);
 			if($member->update()){
 				$key = $member->getKey();
@@ -81,49 +94,29 @@ class MemberRepository implements MemberRepositoryInterface
 	}
 
 
-	private function pathUplod() {
-		return public_path().'/uploads';
+	private function pathUpload() {
+		return public_path().'/uploads/members';
 	}
 
 
-	public function uploadPhoto($missId,$photo)
+	public function uploadPhoto($memberId,$photo)
 	{
 		$arrayModel=[];
 		if ($photo->isValid()) {
 			
 			$realPath = $photo->getRealPath();
 			$image = Image::make($realPath);
-			$isLandScape = true;
-
-			if ($image->width() >= $image->height()) {
-				$isLandScape = false;
-			}
-			//is landscape
-			if ($isLandScape) {
-				$image->resize(309,482,function($constraint){
+			$image->resize(550,550,function($constraint){
 					$constraint->aspectRatio();
-				});
+			});
+
+
+			$imageName = $memberId.'_'.str_random().'.'. $photo->getClientOriginalExtension();
+			if($image->save($this->pathUpload().'/'.$imageName)){
+				return 'public/uploads/members/'.$imageName;			
 			} else {
-				//is portrait
-				$image->resize(722,482,function($constraint){
-					$constraint->aspectRatio();
-				});				
+				return false;
 			}
-
-
-			$imageName = $missId.'_'.str_random().'.'. $photo->getClientOriginalExtension();
-			if($image->save($this->pathUplod().'/'.$imageName)){
-				$arrayModel['path'] = 'public/uploads/'.$imageName;
-				// $paths[$key]['miss_id'] = $keyMiss;
-			}
-		}
-
-		if ($arrayModel) {
-			$miss = $this->find($missId);
-			$arrayModel['is_landscape'] = $isLandScape;
-			$modelRelation = new \MissVote\Models\MissPhoto($arrayModel);
-			$miss->photos()->save($modelRelation);
-			return $miss;
 		}
 	}
 
