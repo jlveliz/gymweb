@@ -145,8 +145,15 @@
 							                          						</li>
 							                          					</ul>
 						                          					</div>
-						                          					@if($membership->membership_state_phisical == '1')
-						                          						<button class="btn btn-warning"><i class="fa fa-window-close"></i> Caducar</button>
+						                          					{{ count($membership->daysDetail) }}
+						                          					@if($membership->membership_state_phisical == '1' && count($membership->daysDetail) > 0)
+						                          						<form action="{{ route('clients.books.update',[$client->id,$membership->id]) }}" method="POST">
+				                          								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+																		<input type="hidden" name="_method" value="PUT">
+																		<input type="hidden" name="book_state_phisical" value="0">
+						                          						<button type="submit" class="btn btn-warning"><i class="fa fa-window-close"></i> Caducar</button>
+																		</form>
+
 						                          					@endif
 						                          				</td>
 						                          			</tr>
