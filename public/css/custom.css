@@ -6393,3 +6393,14 @@ ul.notifications {
     background-position: top center;
     background-repeat: no-repeat;
 }
+
+.tab-primary {
+    background-color: #e72b2b;
+    color: #fff;
+}
+
+.tab-primary:hover {
+    color: #ffffff!important;
+    background-color: #bf2626!important;
+    border-color: #bf2626!important;
+}

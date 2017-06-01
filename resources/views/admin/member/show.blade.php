@@ -81,24 +81,24 @@
 									<h4><b>Membresias</b></h4>
 									<div class="" role="tabpanel" data-example-id="togglable-tabs">
 				                        <ul id="myTab" class="nav nav-tabs" role="tablist">
-				                          <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="tab_content2" data-toggle="tab" aria-expanded="false">Historial</a>
+				                          <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="tab_content2" data-toggle="tab" aria-expanded="false"> <i class="fa fa-history"></i> Historial</a>
 				                          </li>
 				                          @if (!$member->current_membership())
 				                          	<li role="presentation" >
-				                          		<a href="{{ route('admgym.members.memberships.create',$member->id) }}" aria-expanded="true">Crear</a>
+				                          		<a class="tab-primary" href="{{ route('admgym.members.memberships.create',$member->id) }}" aria-expanded="true"> <i class="fa fa-plus"></i> Crear</a>
 				                          	</li>
 				                          	@endif
 				                        </ul>
 				                        <div id="myTabContent" class="tab-content tab-gym-index">
 				                        	<div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">
-					                          	<table id="memberships" class="table table-striped">
+					                          	<table id="memberships" class="table table-gym table-striped">
 					                          		<thead>
 					                          			<tr>
-					                          				<th>Tipo de membresia</th>
-					                          				<th>Estado físico</th>
-					                          				<th>Estado economico</th>
-					                          				<th>Periodo desde / hasta</th>
-					                          				<th colspan="2">Acción</th>
+					                          				<th class="text-center">Tipo de membresia</th>
+					                          				<th class="text-center">Estado físico</th>
+					                          				<th class="text-center">Estado economico</th>
+					                          				<th class="text-center">Periodo desde / hasta</th>
+					                          				<th class="text-center">Acción</th>
 					                          			</tr>
 					                          		</thead>
 					                          		<tbody>
@@ -125,11 +125,12 @@
 						                          				</td>
 						                          				<td>{!!$membership->period_from!!} / {!!$membership->period_to!!}</td>
 						                          				
-						                          				<td colspan="2">
+						                          				<td>
 						                          					<div class="btn-group">
 						                          						<button  data-toggle="dropdown" id="dropdownAssistance" type="button" class="btn btn-default"> <i class="fa fa-calendar"></i> Asistencias <span class="caret"></span></button>
 						                          						<ul role="menu" class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownAssistance">
 						                          							<li><a href="" class="add-assistance" title="Agregar Asistencia">Agregar</a></li>
+						                          							<li><a href="" class="" title="Listado de asistencias">Listado</a></li>
 						                          						</ul>
 						                          					</div>
 						                          					<div class="btn-group">
@@ -144,6 +145,9 @@
 							                          						</li>
 							                          					</ul>
 						                          					</div>
+						                          					@if($membership->membership_state_phisical == '1')
+						                          						<button class="btn btn-warning"><i class="fa fa-window-close"></i> Caducar</button>
+						                          					@endif
 						                          				</td>
 						                          			</tr>
 					                          			@endforeach

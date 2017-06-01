@@ -35,6 +35,7 @@ class Member extends Authenticatable
         'date_admission',
         'photo',
         'gender',
+        'address',
     ];
 
      /**

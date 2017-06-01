@@ -83,20 +83,13 @@
 									     	<input type="text" class="form-control" placeholder="Móvil" name="mobile" value="{{ old('mobile') }}">
 									     	@if ($errors->has('mobile')) <p class="help-block">{{ $errors->first('mobile') }}</p> @endif
 										</div>
-										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('height') || $errors->has('weight')) has-error @endif">
-											<label class="control-label col-md-12 col-sm-12 col-xs-12 no-padding">Medidas:  <small>(cm - lb)</small>  <span class="text-danger">*</span></label>
-											<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding-left ">
-										     	<input type="text" class="form-control" placeholder="Altura" name="height" value="{{ old('height') }}">
-										     	@if ($errors->has('height')) <p class="help-block">{{ $errors->first('height') }}</p> @endif
-											</div>
-											<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding">
-										     	<input type="text" class="form-control" placeholder="Peso" name="weight" value="{{ old('weight') }}">
-										     	@if ($errors->has('weight')) <p class="help-block">{{ $errors->first('weight') }}</p> @endif
-											</div>
+										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('address')) has-error @endif">
+											<label class="control-label col-md-12 col-sm-12 col-xs-12 no-padding">Dirección: <span class="text-danger">*</span></label>
+											<input type="text" class="form-control" placeholder="Dirección" name="address" value="{{ old('address') }}">
+											@if ($errors->has('address')) <p class="help-block">{{ $errors->first('address') }}</p> @endif
 										</div>
 									</div>
 									<div class="row">
-										
 										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('birth_date')) has-error @endif">
 											<label class="control-label">F. nacimiento:<span class="text-danger">*</span> </label>
 									     	<input type="text" class="form-control" placeholder="F. de nacimiento" name="birth_date" value="{{ old('birth_date') }}" id="birth_date">

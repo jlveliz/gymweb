@@ -92,16 +92,11 @@
 									     	<input type="text" class="form-control" placeholder="Móvil" name="mobile" value="{{ $member->mobile }}">
 									     	@if ($errors->has('mobile')) <p class="help-block">{{ $errors->first('mobile') }}</p> @endif
 										</div>
-										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('height') || $errors->has('weight')) has-error @endif">
-											<label class="control-label col-md-12 col-sm-12 col-xs-12 no-padding">Medidas:  <small>(cm - lb)</small>  <span class="text-danger">*</span></label>
-											<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding-left ">
-										     	<input type="text" class="form-control" placeholder="Altura" name="height" value="{{ $member->height }}">
-										     	@if ($errors->has('height')) <p class="help-block">{{ $errors->first('height') }}</p> @endif
-											</div>
-											<div class="form-group col-md-6 col-sm-6 col-xs-4 no-padding">
-										     	<input type="text" class="form-control" placeholder="Peso" name="weight" value="{{ $member->weight }}">
-										     	@if ($errors->has('weight')) <p class="help-block">{{ $errors->first('weight') }}</p> @endif
-											</div>
+										<div class="form-group col-md-4 col-sm-4 col-xs-6 @if ($errors->has('address')) has-error @endif">
+											<label class="control-label col-md-12 col-sm-12 col-xs-12 no-padding">Dirección: <span class="text-danger">*</span></label>
+											<input type="text" class="form-control" placeholder="Dirección" name="address" value="{{ $member->address
+											 }}">
+											@if ($errors->has('address')) <p class="help-block">{{ $errors->first('address') }}</p> @endif
 										</div>
 									</div>
 									<div class="row">

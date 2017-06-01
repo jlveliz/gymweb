@@ -37,10 +37,9 @@ class MemberRequest extends Request
                     'last_name' => 'required|max:30',
                     'email' => 'required|email|max:50|unique:member',
                     'phone' => 'required|numeric',
-                    'height' => 'required|numeric:4|int',
-                    'weight' => 'required|numeric',
                     'birth_date' => 'required|date',
                     'admission_date' => 'required|date',
+                    'address'=>'required',
                     'photo'=> 'image'
                 ];
             }
@@ -52,10 +51,9 @@ class MemberRequest extends Request
                     'last_name' => 'required|max:30',
                     'email' => 'required|email|max:50|unique:member,email,'.$this->get('key'),
                     'phone' => 'required|numeric',
-                    'height' => 'required|numeric:4',
-                    'weight' => 'required|numeric',
                     'birth_date' => 'required|date',
                     'admission_date' => 'required|date',
+                    'address'=>'required',
                     'photo'=> 'image'
                 ];   
             }
@@ -90,15 +88,12 @@ class MemberRequest extends Request
                     'email.unique' => 'Email existente',
                     'phone.required' => 'Teléfono requerido',
                     'phone.numeric' => 'Teléfono inválido',
-                    'height.required' => 'Altura requerida',
-                    'height.numeric' => 'Altura inválida',
-                    'weight.required' => 'Peso requerido',
-                    'weight.numeric' => 'Peso inválido',
                     'birth_date.required' => 'Fecha de nacimiento requerida',
                     'birth_date.date' => 'Fecha de nacimiento inválida',
                     'admission_date.required' => 'Fecha de ingreso requerida',
                     'admission_date.date' => 'Fecha de ingreso inválida',
-                    'photo.image'=>'Foto inválida'
+                    'photo.image'=>'Foto inválida',
+                    'address.required'=>'Dirección requerida',
                 ];
             }
             case 'PUT':
@@ -116,15 +111,12 @@ class MemberRequest extends Request
                     'email.unique' => 'Email existente',
                     'phone.required' => 'Teléfono requerido',
                     'phone.numeric' => 'Teléfono inválido',
-                    'height.required' => 'Altura requerida',
-                    'height.numeric' => 'Altura inválida',
-                    'weight.required' => 'Peso requerido',
-                    'weight.numeric' => 'Peso inválido',
                     'birth_date.required' => 'Fecha de nacimiento requerida',
                     'birth_date.date' => 'Fecha de nacimiento inválida',
                     'admission_date.required' => 'Fecha de ingreso requerida',
                     'admission_date.date' => 'Fecha de ingreso inválida',
-                    'photo.image'=>'Foto inválida'
+                    'photo.image'=>'Foto inválida',
+                    'address.required'=>'Dirección requerida',
                 ];
             default:
                 # code...
