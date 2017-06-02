@@ -96,6 +96,14 @@ jQuery(document).ready(function($) {
         });
     }
 
+    if ($(".view-asissistance").length) {
+        $(".view-asissistance").on('click', function(event) {
+            event.preventDefault();
+            $("#assistanceModal").modal();
+        });
+    }
+
+
 
     /******** PROFILE ********/
     if ($("#profile-section").length) {

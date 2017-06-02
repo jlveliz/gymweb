@@ -105,6 +105,13 @@
 					                          			@foreach ($member->memberships()->orderBy('id','desc')->get() as $membership)
 						                          			<tr>
 						                          				<td>{!!$membership->type->name!!}</td>
+						                          				<td @if ($membership->membership_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
+						                          					@if ($membership->membership_state_phisical == '1')
+						                          					Activa
+						                          					@else
+						                          					Caducada
+						                          					@endif 
+						                          				</td>
 						                          				<td @if($membership->membership_state_economic == '1') class="text-danger" @endif @if($membership->membership_state_economic == '2') class="text-warning" @endif @if($membership->membership_state_economic == '3') class="text-success" @endif>
 						                          					@if($membership->membership_state_economic == '1')
 						                          						Impago
@@ -116,25 +123,20 @@
 						                          						Pagado
 						                          					@endif
 						                          				</td>
-						                          				<td @if ($membership->membership_state_phisical == '1' ) class="text-success" @else class="text-danger"  @endif> 
-						                          					@if ($membership->membership_state_phisical == '1')
-						                          					Activa
-						                          					@else
-						                          					Caducada
-						                          					@endif 
-						                          				</td>
 						                          				<td>{!!$membership->period_from!!} / {!!$membership->period_to!!}</td>
 						                          				
 						                          				<td>
 						                          					<div class="btn-group">
-						                          						<button  data-toggle="dropdown" id="dropdownAssistance" type="button" class="btn btn-default"> <i class="fa fa-calendar"></i> Asistencias <span class="caret"></span></button>
+						                          						<button  data-toggle="dropdown" id="dropdownAssistance" type="button" class="btn btn-default btn-xs"> <i class="fa fa-calendar"></i> Asistencias <span class="caret"></span></button>
 						                          						<ul role="menu" class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownAssistance">
-						                          							<li><a href="" class="add-assistance" title="Agregar Asistencia">Agregar</a></li>
-						                          							<li><a href="" class="" title="Listado de asistencias">Listado</a></li>
+						                          							@if ($membership->membership_state_phisical == '1')
+						                          								<li><a href="" class="add-assistance" title="Agregar Asistencia">Agregar</a></li>
+						                          							@endif
+						                          							<li><a  href="" class="view-asissistance" title="Listado de asistencias">Listado</a></li>
 						                          						</ul>
 						                          					</div>
 						                          					<div class="btn-group">
-							                          					<button data-toggle="dropdown"  type="button" class="btn btn-success dropdown-toggle" id="dropdownPay"><i class="fa fa-dollar" alt="Menú de pagos" title="Menú de pagos"></i> Pagos <span class="caret"></span></button>
+							                          					<button data-toggle="dropdown"  type="button" class="btn btn-success dropdown-toggle btn-xs" id="dropdownPay"><i class="fa fa-dollar" alt="Menú de pagos" title="Menú de pagos"></i> Pagos <span class="caret"></span></button>
 							                          					<ul role="menu" class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownPay">
 							                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
 							                          						<li><a href="{{ route('admgym.members.memberships.payments.create',[$member->id,$membership->id]) }}" title="Pagar o abonar la membresia">Pagar</a>
@@ -145,14 +147,15 @@
 							                          						</li>
 							                          					</ul>
 						                          					</div>
-						                          					{{ count($membership->daysDetail) }}
-						                          					@if($membership->membership_state_phisical == '1' && count($membership->daysDetail) > 0)
-						                          						<form action="{{ route('clients.books.update',[$client->id,$membership->id]) }}" method="POST">
-				                          								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-																		<input type="hidden" name="_method" value="PUT">
-																		<input type="hidden" name="book_state_phisical" value="0">
-						                          						<button type="submit" class="btn btn-warning"><i class="fa fa-window-close"></i> Caducar</button>
-																		</form>
+						                          					@if($membership->membership_state_phisical == '1' && count($membership->assistances) > 0)
+						                          						<div class="btn-group">
+							                          						<form action="{{route('admgym.members.memberships.update',[$member->id,$membership->id]) }}" method="POST">
+					                          								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+																			<input type="hidden" name="_method" value="PUT">
+																			<input type="hidden" name="membership_state_phisical" value="0">
+							                          						<button type="submit" class="btn btn-warning btn-xs"><i class="fa fa-window-close"></i> Caducar</button>
+																			</form>
+						                          						</div>
 
 						                          					@endif
 						                          				</td>
@@ -207,6 +210,36 @@
 		  </div>
 		</div>
 	@endif
+		<div class="modal fade" id="assistanceModal" tabindex="-1" role="dialog" aria-labelledby="assistanceModal">
+		  <div class="modal-dialog modal-sm" role="document">
+		    <div class="modal-content ">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Días de asistencia</h4>
+		      </div>
+		      <div class="modal-body">
+		      		<table class="table">
+		      			<thead>
+		      				<tr>
+		      					<th>Fecha</th>
+		      				</tr>
+		      			</thead>
+		      			<tbody>
+							@foreach ($array as $element)
+		      				<tr>
+		      					<td>data</td>
+		      				</tr>
+							@endforeach
+		      			</tbody>
+		      		</table>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+		      </div>
+			
+		    </div>
+		  </div>
+		</div>
 @endsection
 
 @section('css')
