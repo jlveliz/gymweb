@@ -13,11 +13,13 @@ class MembershipAssistanceDetailRepository implements MembershipAssistanceDetail
 	protected $parent;
 
 	public function setParent($parent){
-
+		$this->parent = $parent;
+		return $this;
 	}
 
 	public function enum($params = null){
-
+		$assistances = MembershipAssistanceDetail::where('membership_id',$this->parent)->orderBy('date_job','desc')->get();
+		return $assistances;
 	}
 
 	public function find($field, $returnException = true){

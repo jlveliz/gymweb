@@ -132,7 +132,7 @@
 						                          							@if ($membership->membership_state_phisical == '1')
 						                          								<li><a href="" class="add-assistance" title="Agregar Asistencia">Agregar</a></li>
 						                          							@endif
-						                          							<li><a  href="" class="view-asissistance" title="Listado de asistencias">Listado</a></li>
+						                          							<li><a  data-toggle="modal" data-target="#assistanceModal"  href="{{ route('admgym.members.memberships.assistances.index',[$member->id,$membership->id]) }}" class="view-asissistance" title="Listado de asistencias">Listado</a></li>
 						                          						</ul>
 						                          					</div>
 						                          					<div class="btn-group">
@@ -143,7 +143,7 @@
 							                          						</li>
 							                          					@endif
 							                          						<li>
-							                          							<a href="" title="Ver el historial de pagos realizados a la membresia">Ver Pagos</a>
+							                          							<a data-toggle="modal" data-target="#paymentModal" href="{{ route('admgym.members.memberships.payments.index',[$member->id,$membership->id]) }}" title="Ver el historial de pagos realizados a la membresia">Ver Pagos</a>
 							                          						</li>
 							                          					</ul>
 						                          					</div>
@@ -213,29 +213,16 @@
 		<div class="modal fade" id="assistanceModal" tabindex="-1" role="dialog" aria-labelledby="assistanceModal">
 		  <div class="modal-dialog modal-sm" role="document">
 		    <div class="modal-content ">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Días de asistencia</h4>
-		      </div>
-		      <div class="modal-body">
-		      		<table class="table">
-		      			<thead>
-		      				<tr>
-		      					<th>Fecha</th>
-		      				</tr>
-		      			</thead>
-		      			<tbody>
-							@foreach ($array as $element)
-		      				<tr>
-		      					<td>data</td>
-		      				</tr>
-							@endforeach
-		      			</tbody>
-		      		</table>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-		      </div>
+		     
+			
+		    </div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="payModal">
+		  <div class="modal-dialog modal-sm" role="document">
+		    <div class="modal-content ">
+		     
 			
 		    </div>
 		  </div>

@@ -28,8 +28,11 @@ class MembershipAssistanceDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function index($parent)
+	public function index($memberId,$membershipId)
 	{
+		
+		$assistances = $this->membershipDetailAssis->setParent($membershipId)->enum();
+		return view("admin.memberships.assistance.index",compact('assistances'));
 		
 	}
 

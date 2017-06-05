@@ -21,7 +21,7 @@ class MembershipPaymentDetailController extends Controller
 
     public function __construct(MembershipPaymentDetailRepositoryInterface $membershipDetail)
     {
-    	$this->middleware('pay');
+    	// $this->middleware('pay');
     	$this->membershipDetail = $membershipDetail;
     }
 
@@ -30,9 +30,10 @@ class MembershipPaymentDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function index($parent)
+	public function index($memberId, $membershipId)
 	{
-		
+		$payments = $this->membershipDetail->setParent($membershipId)->enum();
+		return view("admin.memberships.payment.index",compact('payments'));
 	}
 
 	/**
@@ -40,10 +41,10 @@ class MembershipPaymentDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function create($clientId, $membershipId)
+	public function create($memberId, $membershipId)
 	{ 
 		$balance = ( Membership::find($membershipId)->price - Membership::find($membershipId)->getSumPayments());
-		return view('admin.memberships.payment.create',['client_id'=>$clientId,'membership_id'=>$membershipId,'balance'=>$balance]);
+		return view('admin.memberships.payment.create',['client_id'=>$memberId,'membership_id'=>$membershipId,'balance'=>$balance]);
 	}
 
 	/**
@@ -51,7 +52,7 @@ class MembershipPaymentDetailController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store($clientId, $membershipId, MembershipPaymentDetailRequest $request)
+	public function store($memberId, $membershipId, MembershipPaymentDetailRequest $request)
 	{
 		$data = $request->all();
 		$membershipDetail = $this->membershipDetail->save($data);
@@ -67,7 +68,7 @@ class MembershipPaymentDetailController extends Controller
 			$sessionData['mensaje'] = 'No se pudo realizar la transacción, intente nuevamente.';
 		}
 		
-		return redirect()->route('admgym.members.show',$clientId)->with($sessionData);
+		return redirect()->route('admgym.members.show',$memberId)->with($sessionData);
 		
 	}
 

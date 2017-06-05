@@ -51,8 +51,8 @@ Route::group(['prefix' => 'admgym'],function(){
 
 	Route::resource('members','Admin\Member\MemberController');
 	Route::resource('members.memberships','Admin\Membership\MembershipController',['only'=>['create','store','update']]);
-	Route::resource('members.memberships.assistances','Admin\Membership\MembershipAssistanceDetailController',['only'=>['store']]);
-	Route::resource('members.memberships.payments','Admin\Membership\MembershipPaymentDetailController',['only'=>['create','store']]);
+	Route::resource('members.memberships.assistances','Admin\Membership\MembershipAssistanceDetailController',['only'=>['index','store']]);
+	Route::resource('members.memberships.payments','Admin\Membership\MembershipPaymentDetailController',['only'=>['index','create','store']]);
 
 	Route::group(['prefix'=>'memberships'],function(){
 		Route::resource('divisions','Admin\Membership\DivisionController',['except'=>['show']]);

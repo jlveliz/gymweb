@@ -44,8 +44,8 @@
 				<div class="ln_solid"></div>
 				<div class="form-group">
                   	<div class="col-md-6 col-sm-6 col-xs-12">
-                    	<a href="{{ route('admgym.members.show',$client_id) }}" class="btn btn-primary">Cancelar</a>
-                    	<button type="submit" class="btn btn-success">Guardar</button>
+                    	<a href="{{ route('admgym.members.show',$client_id) }}" class="btn btn-info"><i class="fa fa-arrow-left m-right-xs"></i> Cancelar</a>
+                    	<button type="submit" class="btn btn-submit"><i class="fa fa-money"></i> Pagar</button>
                   	</div>
             	</div>
 				</form>

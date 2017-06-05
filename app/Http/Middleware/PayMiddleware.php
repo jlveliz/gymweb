@@ -18,11 +18,11 @@ class PayMiddleware
     public function handle($request, Closure $next)
     {
         $membershipId = $request->route()->getParameter('memberships');
-        $clientId = $request->route()->getParameter('clients');
-        if (!$membershipId) return redirect()->route('clients.show',$clientId);
+        $memberId = $request->route()->getParameter('members');
+        if (!$membershipId) return redirect()->route('admgym.members.show',$memberId);
         $membership = Membership::find($membershipId);
         if (!$membership || ($membership->membership_state_economic == (new Membership())->stateEconomics['pagado'])) {
-            return redirect()->route('clients.show',$clientId);
+            return redirect()->route('admgym.members.show',$memberId);
         }
         return $next($request);
     }

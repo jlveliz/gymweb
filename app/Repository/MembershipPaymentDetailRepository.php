@@ -13,11 +13,13 @@ class MembershipPaymentDetailRepository implements MembershipPaymentDetailReposi
 	protected $parent;
 
 	public function setParent($parent){
-
+		$this->parent = $parent;
+		return $this;
 	}
 
 	public function enum($params = null){
-
+		$payments = MembershipPaymentDetail::where('membership_id',$this->parent)->orderBy('created_at','desc')->get();
+		return $payments;
 	}
 
 	public function find($field, $returnException = true){

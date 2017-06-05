@@ -96,12 +96,7 @@ jQuery(document).ready(function($) {
         });
     }
 
-    if ($(".view-asissistance").length) {
-        $(".view-asissistance").on('click', function(event) {
-            event.preventDefault();
-            $("#assistanceModal").modal();
-        });
-    }
+
 
 
 
@@ -125,13 +120,13 @@ jQuery(document).ready(function($) {
         });
 
         $("#file-profile-upload").on('change', function(event) {
-            debugger;
             readURL(this);
             $("#form-update-photo").submit();
 
         });
     }
     /******** PROFILE ********/
+
 
 
 });
