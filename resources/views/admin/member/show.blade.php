@@ -20,12 +20,12 @@
 							<h3 class="animated fadeIn">{{$member->name}} {{$member->last_name}}</h3>
 							<div class="row">
 								<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-									<div class="profile-img" style="background-image:url(@if($member->photo)'{{ asset($member->photo) }}'@else'{{ asset("public/img/default-user.png") }}'@endif) " alt="{{$member->name}} {{$member->last_name}}" title="{{$member->name}} {{$member->last_name}}">
+									<div class="profile-img animated fadeIn" style="background-image:url(@if($member->photo)'{{ asset($member->photo) }}'@else'{{ asset("public/img/default-user.png") }}'@endif) " alt="{{$member->name}} {{$member->last_name}}" title="{{$member->name}} {{$member->last_name}}">
 							    	</div>
 								</div>
 								<div class="col-md-9 col-sm-9 col-xs-12">
 									<div class="col-md-6 col-sm-6">
-								    	<table class="table">
+								    	<table class="table animated fadeIn">
 								    		<tbody>
 								    			<tr>
 								    				<td><i class="fa fa-key user-profile-icon"></i> <b> Cédula:</b> {{$member->identity_number}}</td>
@@ -61,7 +61,7 @@
 								    	</table>
 									</div>
 									<div class="col-md-6 col-sm-6">
-								    	<table class="table">
+								    	<table class="table animated fadeIn">
 								    		<tbody>
 								    			<tr>
 								    				<td><i class="fa fa-users"></i> <b>Membresía: </b> {{$member->current_membership() ? $member->current_membership()->type->name : '-' }}</td>
@@ -80,7 +80,7 @@
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<h4><b>Membresias</b></h4>
 									<div class="" role="tabpanel" data-example-id="togglable-tabs">
-				                        <ul id="myTab" class="nav nav-tabs" role="tablist">
+				                        <ul id="myTab" class="nav nav-tabs animated fadeIn" role="tablist">
 				                          <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="tab_content2" data-toggle="tab" aria-expanded="false"> <i class="fa fa-history"></i> Historial</a>
 				                          </li>
 				                          @if (!$member->current_membership())
@@ -91,7 +91,7 @@
 				                        </ul>
 				                        <div id="myTabContent" class="tab-content tab-gym-index">
 				                        	<div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">
-					                          	<table id="memberships" class="table table-gym table-striped">
+					                          	<table id="memberships" class="table table-gym table-striped animated fadeIn">
 					                          		<thead>
 					                          			<tr>
 					                          				<th class="text-center">Tipo de membresia</th>
@@ -170,7 +170,7 @@
 							</div>
 							<div class="clearfix"></div>
 							<div class="ln_solid"></div>
-							<div class="form-group">
+							<div class="form-group animated fadeIn">
 		                     <a class="btn btn-info" href="{{ route('admgym.members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
 							 <a class="btn btn-submit" href="{{ route('admgym.members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar</a>
 							</div>

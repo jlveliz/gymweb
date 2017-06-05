@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title','Edición de Miembros /')
+@section('title','Edición de Miembros')
 
 @section('js')
  <script src="{{ asset('public/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>

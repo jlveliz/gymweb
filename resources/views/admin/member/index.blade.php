@@ -57,10 +57,11 @@
 														<a href="{{ route('admgym.members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 													</li>
 												    <li>
-												    	<a href="#" title="Èliminar" data-id="{{$member->id}}" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
+												    	<a href="#" title="Eliminar" data-id="{{$member->id}}" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
 													</li>
 												  </ul>
-												</div>
+												  </div>
+												
 											</td>
 										</tr>
 									@endforeach
@@ -131,8 +132,4 @@
  <script src="{{ asset('public/js/datatables/responsive.bootstrap.min.js') }}"></script>
  <script src="{{ asset('public/js/datatables/dataTables.scroller.min.js') }}"></script>
  <script src="{{ asset('public/js/member/app.js') }}"></script>
-
- <script type="text/javascript">
- 	
- </script>
 @endsection
