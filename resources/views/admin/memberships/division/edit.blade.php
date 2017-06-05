@@ -1,26 +1,13 @@
 @extends('layout.admin')
 
-@section('title','Actualización de División /')
-
-@section('title-page')
-	<h3>División <small> Contiene la descripción y detalle de una división.</small></h3>
-@endsection
-
-@section('js')
- <script src="{{ asset('public//js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
- <script src="{{ asset('public//js/client/app.js') }}" type="text/javascript"></script>
-@endsection
-
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('public//css/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
-@endsection
+@section('title','División')
 
 @section('content-page')
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Editar <small>División</small></h2>
+					<<h2 class="animated fadeIn">División</h2>
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
 						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
@@ -31,6 +18,10 @@
 					@endif
 				</div>
 				<div class="x_content">
+					<ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" ><a href="{{ route('admgym.memberships.types.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li role="presentation" class="active"><a href="#editType" aria-controls="editType" role="tab" data-toggle="tab"><i class="fa fa-pencil"></i> Editar</a></li>
+					</ul>
 					<form method="post" class="form-horizontal form-label-left" action="{{ route('admgym.memberships.divisions.update',$division->id) }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="_method" value="PUT">

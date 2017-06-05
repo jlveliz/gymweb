@@ -1,11 +1,7 @@
 	
 @extends('layout.admin')
 
-@section('title','Listado de Usuarios /')
-
-@section('title-page')
-	<h3>Usuarios <small> personas que administran el sistema.</small></h3>
-@endsection
+@section('title','Usuarios')
 
 @section('content-page')
 	<div class="row">
