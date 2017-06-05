@@ -25,7 +25,7 @@
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="editMember">
-							<form method="post" class="form-horizontal form-label-left" action="{{ route('admgym.memberships.divisions.update',$division->id) }}">
+							<form method="post" class="form-horizontal form-label-left animated fadeIn" action="{{ route('admgym.memberships.divisions.update',$division->id) }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="PUT">
 								<div class="row">

@@ -8,11 +8,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listado <small>Usuarios</small></h2>
-					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('admgym.users.create') }}"><i class="fa fa-plus"></i> Crear</a>
-	                    </li>
-	                  </ul>
+					<h2 class="animated fadeIn">Usuarios</h2> 
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
 						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
@@ -23,44 +19,86 @@
 					@endif
 				</div>
 				<div class="x_content">
-					<table id="user-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th class="text-center">Usuario</th>
-								<th class="text-center">Fecha de creación</th>
-								<th class="text-center">Fecha de actualización</th>
-								<th class="text-center col-md-2 col-sm-2 col-xs-6">Acción</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach ($users as $user)
-								<tr>
-									<td>{{$user->username}}</td>
-									<td>{{$user->created_at}}</td>
-									<td>{{$user->updated_at}}</td>
-									<td>
-										<ul class="nav navbar-right panel_toolbox">
-											<li>
-												<a href="{{ route('admgym.users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span></a>
-											</li>
-											<li>
-												<form action="{{ route('admgym.users.destroy',$user->id) }}" method="POST">
-													<input type="hidden" name="_token" value="{{ csrf_token() }}">
-													<input type="hidden" name="_method" value="DELETE">
-													<button type="submit" title="Eliminar" class="btn btn-link" ><i class="fa fa-trash"></i> Eliminar</button>
-												</form>
-											</li>
-										</ul>
-									</td>
-								</tr>
-							@endforeach
-						</tbody>
-					</table>
+					<ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" class="active"><a href="#listMembership" aria-controls="listMember" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Listado</a></li>
+					     <li><a href="{{ route('admgym.users.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    </li>
+					</ul>
+					<div class="tab-content tab-gym-index">
+						<div role="tabpanel" class="tab-pane active" id="listMembership">
+							<table id="user-datatable" class="table table-striped dt-responsive nowrap table-gym animated fadeIn" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th class="text-center">Usuario</th>
+										<th class="text-center">Fecha de creación</th>
+										<th class="text-center">Fecha de actualización</th>
+										<th class="text-center col-md-2 col-sm-2 col-xs-6">Acción</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($users as $user)
+										<tr>
+											<td>{{$user->username}}</td>
+											<td>{{$user->created_at}}</td>
+											<td>{{$user->updated_at}}</td>
+											<td class="text-center">
+												<div class="btn-group">
+													<button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    	<i class="fa fa-cog"></i> <span class="caret"></span>
+												  	</button>
+													<ul class="dropdown-menu">
+														<li>
+															<a href="{{ route('admgym.users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+														</li>
+														<li>
+															<a href="#" title="Eliminar" data-id="{{$user->id}}" data-user="{{$user->username}}" class="delete-user"> <i class="fa fa-trash"></i> Eliminar</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+									@endforeach
+								</tbody>
+							</table>
+							
+						</div>
+					</div>
 					
 				</div>
 			</div>
 		</div>
 	</div>
+
+		{{-- MODALS --}}
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-delete">
+	  <div class="modal-dialog modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Atención</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p class="col-md-1 col-sm-1 col-xs-hidden ">
+	        	<i class="fa fa-exclamation fa-5x text-danger" aria-hidden="true"></i>
+	        </p>
+
+	        <p class="col-md-11 col-sm-11 col-xs-12">
+	        	Está seguro de eliminar El usuario <b id="user_delete"></b> ? 
+	        </p>
+	        <div class="clearfix"></div>
+	      </div>
+	      <div class="modal-footer">
+	        <form class="form-inline" action="" method="POST">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="_method" value="DELETE">
+	        	<button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i> Borrar</button>
+			</form>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	{{-- MODALS --}}
 @endsection
 
 @section('css')
@@ -86,15 +124,6 @@
  <script src="{{ asset('public/js/datatables/dataTables.responsive.min.js') }}"></script>
  <script src="{{ asset('public/js/datatables/responsive.bootstrap.min.js') }}"></script>
  <script src="{{ asset('public/js/datatables/dataTables.scroller.min.js') }}"></script>
-
- <script type="text/javascript">
- 	$(document).ready(function(){
-    	$('#user-datatable').DataTable({
-    		"language": {
-          		"url": "{{ asset('public/js/datatables/json/es.json') }} "
-        	}
-    	});
-	});
- </script>
+ <script src="{{ asset('public/js/user/app.js') }}" type="text/javascript"></script>
 @endsection
 

@@ -44,7 +44,7 @@
 									<div class="row">
 										<div class="form-group col-md-2 col-sm-2 col-xs-4 @if ($errors->has('identity_number')) has-error @endif">
 											<label class="control-label">Cédula: <span class="text-danger">*</span></label>
-										     <input type="text" class="form-control" placeholder="Cédula" name="identity_number" value="{{ old('identity_number') }}" autofocus>
+										    <input type="text" class="form-control" placeholder="Cédula" name="identity_number" value="{{ old('identity_number') }}" autofocus>
 										     @if ($errors->has('identity_number')) <p class="help-block">{{ $errors->first('identity_number') }}</p> @endif
 										</div>
 										<div class="form-group col-md-4 col-sm-4 col-xs-4 @if($errors->has('name')) has-error @endif">
