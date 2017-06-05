@@ -1,21 +1,13 @@
 @extends('layout.admin')
 
-@section('title','Listado de Roles /')
-
-@section('title-page')
-	<h3>Roles <small> grupo de permisos que contiene un rol de usuario.</small></h3>
-@endsection
+@section('title','Roles')
 
 @section('content-page')
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Listado <small>Roles</small></h2>
-					<ul class="nav navbar-right panel_toolbox">
-	                    <li><a href="{{ route('admgym.roles.create') }}"><i class="fa fa-plus"></i> Crear</a>
-	                    </li>
-	                  </ul>
+					<h2 class="animated fadeIn">Miembros</h2> 
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
 						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
@@ -26,6 +18,10 @@
 					@endif
 				</div>
 				<div class="x_content">
+					<ul class="nav navbar-right panel_toolbox">
+	                    <li><a href="{{ route('admgym.roles.create') }}"><i class="fa fa-plus"></i> Crear</a>
+	                    </li>
+	                </ul>
 					<table id="role-datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 						<thead>
 							<tr>
