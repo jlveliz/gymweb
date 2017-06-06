@@ -30,15 +30,15 @@ class Permission extends EntrustPermission
 
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y - %H:%M');
-    } 
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y - %H:%M');
+    // } 
 
-    public function getUpdatedAtAttribute($value)
-    {
-        $date = Carbon::parse($value);
-        return $date->formatLocalized('%A %d %B %Y - %H:%M');
-    }
+    // public function getUpdatedAtAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->formatLocalized('%A %d %B %Y - %H:%M');
+    // }
 }

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    if ($('#role-datatable').length) {
-        $('#role-datatable').DataTable({
+    if ($('#permission-datatable').length) {
+        $('#permission-datatable').DataTable({
             "language": {
                 "url": "/public/js/datatables/json/es.json"
             },
@@ -21,15 +21,15 @@ $(document).ready(function() {
     }
 
 
-    if ($(".delete-role").length) {
+    if ($(".delete-permission").length) {
 
-        $(".delete-role").on('click', function(event) {
-            var role = $(this).data('role');
-            var roleId = $(this).data('id');
+        $(".delete-permission").on('click', function(event) {
+            var permission = $(this).data('permission');
+            var permissionId = $(this).data('id');
             $("#modal-delete").modal();
             $("#modal-delete > p#user_delete").text('');
-            $("#role_delete").text(role);
-            $("#modal-delete").find('form').attr('action', window.location.href + '/' + roleId);
+            $("#permission_delete").text(permission);
+            $("#modal-delete").find('form').attr('action', window.location.href + '/' + permissionId);
             event.preventDefault();
             /* Act on the event */
         });
