@@ -22,7 +22,6 @@ $(document).ready(function() {
     if ($(".delete-user").length) {
 
         $(".delete-user").on('click', function(event) {
-        	debugger;
             var user = $(this).data('user');
             var userId = $(this).data('id');
             $("#modal-delete").modal();

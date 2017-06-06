@@ -59,6 +59,8 @@
 										</div>
 									@endforeach
 								</div>
+								<div class="clearfix"></div>
+								<div class="ln_solid"></div>
 								<div class="form-group">
 			                      	<div class="col-md-6 col-sm-6 col-xs-12">
 			                        	<a href="{{ route('admgym.users.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
