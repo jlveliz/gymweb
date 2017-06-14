@@ -2,6 +2,7 @@
 namespace GymWeb\Traits;
 
 use GymWeb\Models\UserAccessLog;
+use GymWeb\Models\MemberAccessLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
@@ -81,7 +82,11 @@ trait GymwebAuthenticate {
 
         if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
         	//insert access log
-            UserAccessLog::add(Auth::guard($this->getGuard())->user()->id);
+            if ($this->getGuard() == 'member') {
+                MemberAccessLog::add(Auth::guard($this->getGuard())->user()->id);
+            } else {
+                UserAccessLog::add(Auth::guard($this->getGuard())->user()->id);
+            }
 
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
