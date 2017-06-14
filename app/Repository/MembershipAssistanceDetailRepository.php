@@ -48,4 +48,23 @@ class MembershipAssistanceDetailRepository implements MembershipAssistanceDetail
 		
 	}
 
+	public function totalAssistanceToday()
+	{
+		$query = MembershipAssistanceDetail::selectRaw('IFNULL(count(length_secuence_day),"0") as count')->whereRaw('date_job = date_format(now(),"%Y-%m-%d")')->first();
+		return $query->count;
+	}
+
+	public function totalCurrentMonth()
+	{
+		$query = MembershipAssistanceDetail::selectRaw('date_job, count(date_job) as counter')->whereRaw('DATE_FORMAT(date_job, "%m") = DATE_FORMAT(now(), "%m")')->groupBy('date_job')->orderBy('date_job')->get();
+
+		$arrayFormated = [];
+		foreach ($query as $key => $value) {
+			$arrayFormated['dates'][] = $value->date_job;
+			$arrayFormated['counters'][] = $value->counter;
+		}
+		
+		return $arrayFormated;
+	}
+
 }

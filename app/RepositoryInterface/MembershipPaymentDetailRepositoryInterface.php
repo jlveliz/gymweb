@@ -11,5 +11,5 @@ use GymWeb\RepositoryInterface\NestedRepositoryInterface;
 */
 interface MembershipPaymentDetailRepositoryInterface extends NestedRepositoryInterface
 {
-	
+	public function totalPayToday();
 }

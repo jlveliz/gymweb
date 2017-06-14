@@ -20,7 +20,7 @@
 				<div class="x_content">
 					 <ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#listPermission" aria-controls="listPermission" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Listado</a></li>
-					     <li><a href="{{ route('admgym.permissions.create') }}"><i class="fa fa-plus"></i> Crear</a>
+					     <li><a href="{{ route('permissions.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 					</ul>
 					<div class="tab-content tab-gym-index">
@@ -49,7 +49,7 @@
 												    </button>
 													<ul class="dropdown-menu">
 														<li>
-															<a href="{{ route('admgym.permissions.edit',$permission->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
+															<a href="{{ route('permissions.edit',$permission->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
 														</li>
 														<li>
 															<a href="#" title="Eliminar" data-id="{{$permission->id}}" data-permission="{{ $permission->display_name }}" class="delete-permission"> <i class="fa fa-trash"></i> Eliminar</a>

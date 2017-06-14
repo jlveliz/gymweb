@@ -48,4 +48,10 @@ class MembershipPaymentDetailRepository implements MembershipPaymentDetailReposi
 		
 	}
 
+	public function totalPayToday()
+	{
+		$query = MembershipPaymentDetail::selectRaw('IFNULL(SUM(value),"0.00") as sum')->whereRaw('date_format(created_at,"%Y-%m-%d") = date_format(now(),"%Y-%m-%d")')->first();
+		return $query->sum;
+	}
+
 }

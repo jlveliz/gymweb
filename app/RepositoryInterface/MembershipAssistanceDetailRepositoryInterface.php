@@ -11,5 +11,7 @@ use GymWeb\RepositoryInterface\NestedRepositoryInterface;
 */
 interface MembershipAssistanceDetailRepositoryInterface extends NestedRepositoryInterface
 {
-	
+	public function totalAssistanceToday();
+
+	public function totalCurrentMonth();
 }
