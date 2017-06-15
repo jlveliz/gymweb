@@ -19,10 +19,10 @@ class PayMiddleware
     {
         $membershipId = $request->route()->getParameter('memberships');
         $memberId = $request->route()->getParameter('members');
-        if (!$membershipId) return redirect()->route('admgym.members.show',$memberId);
+        if (!$membershipId) return redirect()->route('members.show',$memberId);
         $membership = Membership::find($membershipId);
         if (!$membership || ($membership->membership_state_economic == (new Membership())->stateEconomics['pagado'])) {
-            return redirect()->route('admgym.members.show',$memberId);
+            return redirect()->route('members.show',$memberId);
         }
         return $next($request);
     }

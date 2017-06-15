@@ -70,7 +70,7 @@ class RoleController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Rol no pudo ser creado, intente nuevamente';
 		}
-		return redirect()->route('admgym.roles.edit',$role->id)->with($sessionData);
+		return redirect()->route('roles.edit',$role->id)->with($sessionData);
 		
 	}
 
@@ -130,7 +130,7 @@ class RoleController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Rol no pudo ser creado, intente nuevamente';
 		}
-		return redirect()->route('admgym.roles.edit',$role->id)->with($sessionData);
+		return redirect()->route('roles.edit',$role->id)->with($sessionData);
 
 	}
 
@@ -156,6 +156,6 @@ class RoleController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Rol no pudo ser eliminado, intente nuevamente';
 		}
-		return redirect()->route('admgym.roles.index')->with($sessionData);
+		return redirect()->route('roles.index')->with($sessionData);
 	}
 }

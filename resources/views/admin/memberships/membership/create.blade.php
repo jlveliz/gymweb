@@ -16,7 +16,7 @@
 					@endif
 				</div>
 			<div class="x_content"></div>
-				<form action="{{ route('admgym.members.memberships.store',$member_id) }}" id="form-create-membership" method="POST">
+				<form action="{{ route('members.memberships.store',$member_id) }}" id="form-create-membership" method="POST">
 				  <input type="hidden" name="membership_state_phisical" id="membership_state_phisical" value="1">
 				  <input type="hidden" name="member_id" id="member_id" value="{{$member_id}}">
 				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -98,7 +98,7 @@
 				<div class="ln_solid"></div>
 				<div class="form-group">
                   	<div class="col-md-6 col-sm-6 col-xs-12">
-                    	<a href="{{ route('admgym.members.show',$member_id) }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
+                    	<a href="{{ route('members.show',$member_id) }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
                     	<button type="submit" class="btn btn-submit"><i class="fa fa-save"></i> Guardar</button>
                   	</div>
             	</div>

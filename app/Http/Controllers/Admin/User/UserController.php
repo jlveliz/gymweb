@@ -74,7 +74,7 @@ class UserController extends Controller
 			$sessionData['mensaje'] = 'El usuario no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.users.edit',$user->id)->with($sessionData);
+		return redirect()->route('users.edit',$user->id)->with($sessionData);
 		
 	}
 
@@ -135,7 +135,7 @@ class UserController extends Controller
 			$sessionData['mensaje'] = 'El usuario no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.users.edit',$user->id)->with($sessionData);
+		return redirect()->route('users.edit',$user->id)->with($sessionData);
 	}
 
 	/**
@@ -160,7 +160,7 @@ class UserController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El usuario no pudo ser eliminado, intente nuevamente';
 		}
-		return redirect()->route('admgym.users.index')->with($sessionData);	
+		return redirect()->route('users.index')->with($sessionData);	
 		
 	}
 }

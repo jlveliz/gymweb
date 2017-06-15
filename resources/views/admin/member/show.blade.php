@@ -12,7 +12,7 @@
 				</div>
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" ><a href="{{ route('admgym.members.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li role="presentation" ><a href="{{ route('members.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
 					    <li role="presentation" class="active"><a href="#showMember" aria-controls="showMember" role="tab" data-toggle="tab"><i class="fa fa-eye"></i> Ver</a></li>
 					</ul>
 					<div class="tab-content tab-gym-index">
@@ -85,7 +85,7 @@
 				                          </li>
 				                          @if (!$member->current_membership())
 				                          	<li role="presentation" >
-				                          		<a class="tab-primary" href="{{ route('admgym.members.memberships.create',$member->id) }}" aria-expanded="true"> <i class="fa fa-plus"></i> Crear</a>
+				                          		<a class="tab-primary" href="{{ route('members.memberships.create',$member->id) }}" aria-expanded="true"> <i class="fa fa-plus"></i> Crear</a>
 				                          	</li>
 				                          	@endif
 				                        </ul>
@@ -132,24 +132,24 @@
 						                          							@if ($membership->membership_state_phisical == '1')
 						                          								<li><a href="" class="add-assistance" title="Agregar Asistencia">Agregar</a></li>
 						                          							@endif
-						                          							<li><a  data-toggle="modal" data-target="#assistanceModal"  href="{{ route('admgym.members.memberships.assistances.index',[$member->id,$membership->id]) }}" class="view-asissistance" title="Listado de asistencias">Listado</a></li>
+						                          							<li><a  data-toggle="modal" data-target="#assistanceModal"  href="{{ route('members.memberships.assistances.index',[$member->id,$membership->id]) }}" class="view-asissistance" title="Listado de asistencias">Listado</a></li>
 						                          						</ul>
 						                          					</div>
 						                          					<div class="btn-group">
 							                          					<button data-toggle="dropdown"  type="button" class="btn btn-success dropdown-toggle btn-xs" id="dropdownPay"><i class="fa fa-dollar" alt="Menú de pagos" title="Menú de pagos"></i> Pagos <span class="caret"></span></button>
 							                          					<ul role="menu" class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownPay">
 							                          					@if ($membership->membership_state_economic == '1' || $membership->membership_state_economic == '2')
-							                          						<li><a href="{{ route('admgym.members.memberships.payments.create',[$member->id,$membership->id]) }}" title="Pagar o abonar la membresia">Pagar</a>
+							                          						<li><a href="{{ route('members.memberships.payments.create',[$member->id,$membership->id]) }}" title="Pagar o abonar la membresia">Pagar</a>
 							                          						</li>
 							                          					@endif
 							                          						<li>
-							                          							<a data-toggle="modal" data-target="#paymentModal" href="{{ route('admgym.members.memberships.payments.index',[$member->id,$membership->id]) }}" title="Ver el historial de pagos realizados a la membresia">Ver Pagos</a>
+							                          							<a data-toggle="modal" data-target="#paymentModal" href="{{ route('members.memberships.payments.index',[$member->id,$membership->id]) }}" title="Ver el historial de pagos realizados a la membresia">Ver Pagos</a>
 							                          						</li>
 							                          					</ul>
 						                          					</div>
 						                          					@if($membership->membership_state_phisical == '1' && count($membership->assistances) > 0)
 						                          						<div class="btn-group">
-							                          						<form action="{{route('admgym.members.memberships.update',[$member->id,$membership->id]) }}" method="POST">
+							                          						<form action="{{route('members.memberships.update',[$member->id,$membership->id]) }}" method="POST">
 					                          								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 																			<input type="hidden" name="_method" value="PUT">
 																			<input type="hidden" name="membership_state_phisical" value="0">
@@ -171,8 +171,8 @@
 							<div class="clearfix"></div>
 							<div class="ln_solid"></div>
 							<div class="form-group animated fadeIn">
-		                     <a class="btn btn-info" href="{{ route('admgym.members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
-							 <a class="btn btn-submit" href="{{ route('admgym.members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar</a>
+		                     <a class="btn btn-info" href="{{ route('members.index') }}"><i class="fa fa-arrow-left m-right-xs"></i> Retornar</a>
+							 <a class="btn btn-submit" href="{{ route('members.edit',$member->id) }}"><i class="fa fa-edit m-right-xs"></i>Editar</a>
 							</div>
 						</div>
 					</div>
@@ -190,7 +190,7 @@
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="myModalLabel">Agregar día de trabajo</h4>
 		      </div>
-			 <form action="{{ route('admgym.members.memberships.assistances.store',[$member->id,$member->current_membership()->id]) }}" method="POST">
+			 <form action="{{ route('members.memberships.assistances.store',[$member->id,$member->current_membership()->id]) }}" method="POST">
 		      <div class="modal-body">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="hidden" name="membership_id" value="{{ $member->current_membership()->id }}">

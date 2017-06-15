@@ -66,7 +66,7 @@ class PermissionController extends Controller
 			$sessionData['mensaje'] = 'El Permiso no pudo ser creado, intente nuevamente';
 		}
 
-		return redirect()->route('admgym.permissions.edit',$permission->id)->with($sessionData);
+		return redirect()->route('permissions.edit',$permission->id)->with($sessionData);
 		
 	}
 
@@ -114,7 +114,7 @@ class PermissionController extends Controller
 			$sessionData['mensaje'] = 'El Permiso no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.permissions.edit',$permission->id)->with($sessionData);
+		return redirect()->route('permissions.edit',$permission->id)->with($sessionData);
 	}
 
 	/**
@@ -140,7 +140,7 @@ class PermissionController extends Controller
 			$sessionData['mensaje'] = 'El Permiso no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.permissions.index')->with($sessionData);
+		return redirect()->route('permissions.index')->with($sessionData);
 			
 		
 	}

@@ -20,7 +20,7 @@
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#listMember" aria-controls="listMember" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Listado</a></li>
-					    <li role="presentation"><a href="{{ route('admgym.members.create') }}"><i class="fa fa-plus"></i> Crear</a></li>
+					    <li role="presentation"><a href="{{ route('members.create') }}"><i class="fa fa-plus"></i> Crear</a></li>
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="listMember">
@@ -42,7 +42,7 @@
 												<div class="thumb-index" style="background-image: url(@if($member->photo)'{{ asset($member->photo) }}'@else'{{ asset("public/img/default-user.png") }}'@endif);">
 												</div>
 											</td>
-											<td><a href="{{ route('admgym.members.show',$member->id) }}" title="Ver {{$member->name .' '. $member->last_name}}"> {{$member->name .' '. $member->last_name}} </a></td>
+											<td><a href="{{ route('members.show',$member->id) }}" title="Ver {{$member->name .' '. $member->last_name}}"> {{$member->name .' '. $member->last_name}} </a></td>
 											<td>{{$member->identity_number}}</td>
 											<td> {{ $member->current_membership() ?  $member->current_membership()->type->name : '-' }} </td>
 											<td class="text-center">{{$member->admission_date}}</td>
@@ -52,9 +52,9 @@
 												    <i class="fa fa-cog"></i> <span class="caret"></span>
 												  </button>
 												  <ul class="dropdown-menu">
-												    <li><a href="{{ route('admgym.members.show',$member->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
+												    <li><a href="{{ route('members.show',$member->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
 												    <li>
-														<a href="{{ route('admgym.members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+														<a href="{{ route('members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 													</li>
 												    <li>
 												    	<a href="#" title="Eliminar" data-id="{{$member->id}}" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>

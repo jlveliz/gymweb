@@ -67,7 +67,7 @@ class MembershipAssistanceDetailController extends Controller
 			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.show',$clientId)->with($sessionData);
+		return redirect()->route('members.show',$clientId)->with($sessionData);
 		
 	}
 

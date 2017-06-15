@@ -19,13 +19,13 @@
 				</div>
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
-					    <li><a href="{{ route('admgym.users.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li><a href="{{ route('users.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
 					      <li role="presentation" class="active"><a href="#" aria-controls="listUser" role="tab" data-toggle="tab"><i class="fa fa-edit"></i> Editar</a>
 	                    </li>
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="listUser">
-							<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.users.update',$user->id) }}">
+							<form method="post" class="form-label-left animated fadeIn" action="{{ route('users.update',$user->id) }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="PUT">
 								<input type="hidden" name="key" value="{{$user->id}}">
@@ -61,7 +61,7 @@
 								<div class="ln_solid"></div>
 								<div class="form-group">
 			                      	<div class="col-md-6 col-sm-6 col-xs-12">
-			                        	<a href="{{ route('admgym.users.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
+			                        	<a href="{{ route('users.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
 			                        	<button type="submit" class="btn btn-submit"><i class="fa fa-save"></i> Guardar</button>
 			                      	</div>
 		                    	</div>

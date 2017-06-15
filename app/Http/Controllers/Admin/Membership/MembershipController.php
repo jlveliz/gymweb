@@ -74,7 +74,7 @@ class MembershipController extends Controller
 			$sessionData['mensaje'] = 'La membresia del cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.show',$parent)->with($sessionData);		
+		return redirect()->route('members.show',$parent)->with($sessionData);		
 	}
 
 	/**
@@ -92,7 +92,7 @@ class MembershipController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Cliente no pudo ser encontrado';
-		return redirect()->route('admgym.members.index')->with($sessionData);
+		return redirect()->route('members.index')->with($sessionData);
 	}
 
 	/**
@@ -104,7 +104,7 @@ class MembershipController extends Controller
 	public function edit($id)
 	{
 		$membership = $this->membership->find($id);
-		return view('memberships.membership.edit',['membership'=>$membership]);
+		return view('membership.edit',['membership'=>$membership]);
 	}
 
 	/**
@@ -128,7 +128,7 @@ class MembershipController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.show',$parent)->with($sessionData);
+		return redirect()->route('members.show',$parent)->with($sessionData);
 	}
 
 	/**
@@ -154,7 +154,7 @@ class MembershipController extends Controller
 			$sessionData['mensaje'] = 'El Cliente no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.index')->with($sessionData);	
+		return redirect()->route('members.index')->with($sessionData);	
 		
 	}
 }

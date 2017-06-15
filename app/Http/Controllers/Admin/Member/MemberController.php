@@ -66,7 +66,7 @@ class MemberController extends Controller
 			$sessionData['mensaje'] = 'El Miembro no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.show',$member->id)->with($sessionData);
+		return redirect()->route('members.show',$member->id)->with($sessionData);
 		
 	}
 
@@ -85,7 +85,7 @@ class MemberController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Miembro no pudo ser encontrado';
-		return redirect('admgym.members.show',$member->id)->route()->with($sessionData);
+		return redirect('members.show',$member->id)->route()->with($sessionData);
 	}
 
 	/**
@@ -121,7 +121,7 @@ class MemberController extends Controller
 			$sessionData['mensaje'] = 'El Miembro no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.edit',$member->id)->with($sessionData);
+		return redirect()->route('members.edit',$member->id)->with($sessionData);
 	}
 
 	/**
@@ -147,7 +147,7 @@ class MemberController extends Controller
 			$sessionData['mensaje'] = 'El Miembro no pudo ser eliminado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.members.index')->with($sessionData);
+		return redirect()->route('members.index')->with($sessionData);
 			
 		
 	}

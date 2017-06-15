@@ -12,12 +12,12 @@
 				</div>
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" ><a href="{{ route('admgym.roles.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li role="presentation" ><a href="{{ route('roles.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
 					    <li role="presentation" class="active"><a href="#createRole" aria-controls="createRole" role="tab" data-toggle="tab"><i class="fa fa-plus"></i> Crear</a></li>
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="listMember">
-							<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.roles.store') }}">
+							<form method="post" class="form-label-left animated fadeIn" action="{{ route('roles.store') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="row">
 									<div class="form-group col-md-3 col-sm-3 col-xs-4 @if($errors->has('name')) has-error @endif">
@@ -59,7 +59,7 @@
 								<div class="ln_solid"></div>
 								<div class="form-group">
 			                      	<div class="col-md-6 col-sm-6 col-xs-12">
-			                        	<a href="{{ route('admgym.roles.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
+			                        	<a href="{{ route('roles.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
 			                        	<button type="submit" class="btn btn-submit"><i class="fa fa-save"></i> Guardar</button>
 			                      	</div>
 		                    	</div>

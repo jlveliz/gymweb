@@ -21,13 +21,13 @@
 				</div>
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" ><a href="{{ route('admgym.members.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li role="presentation" ><a href="{{ route('members.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
 					    <li role="presentation" class="active"><a href="#createMember" aria-controls="createMember" role="tab" data-toggle="tab"><i class="fa fa-plus"></i> Crear</a></li>
 					</ul>
 
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="createMember">
-							<form method="post" class="form-label-left animated fadeIn" action="{{ route('admgym.members.store') }}" enctype="multipart/form-data">
+							<form method="post" class="form-label-left animated fadeIn" action="{{ route('members.store') }}" enctype="multipart/form-data">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="col-md-3 col-sm-3 col-xs-12">
 						    		<a href="#" id="profile-section">
@@ -106,7 +106,7 @@
 								<div class="ln_solid"></div>
 								<div class="form-group">
 			                      	<div class="col-md-6 col-sm-6 col-xs-12">
-			                        	<a href="{{ route('admgym.members.index') }}" class="btn btn-primary"> <i class="fa fa-ban"></i> Cancelar</a>
+			                        	<a href="{{ route('members.index') }}" class="btn btn-primary"> <i class="fa fa-ban"></i> Cancelar</a>
 			                        	<button type="submit" class="btn btn-submit"><i class="fa fa-save"></i> Guardar</button>
 			                      	</div>
 		                    	</div>

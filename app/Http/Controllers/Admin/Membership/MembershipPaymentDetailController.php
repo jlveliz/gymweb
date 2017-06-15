@@ -68,7 +68,7 @@ class MembershipPaymentDetailController extends Controller
 			$sessionData['mensaje'] = 'No se pudo realizar la transacción, intente nuevamente.';
 		}
 		
-		return redirect()->route('admgym.members.show',$memberId)->with($sessionData);
+		return redirect()->route('members.show',$memberId)->with($sessionData);
 		
 	}
 

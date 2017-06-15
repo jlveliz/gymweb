@@ -67,7 +67,7 @@ class DivisionController extends Controller
 			$sessionData['mensaje'] = 'La división no pudo ser creada, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.memberships.divisions.edit',$division->id)->with($sessionData);
+		return redirect()->route('divisions.edit',$division->id)->with($sessionData);
 		
 	}
 
@@ -86,7 +86,7 @@ class DivisionController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'La división no pudo ser encontrada';
-		return redirect()->route('admgym.memberships.divisions.index')->with($sessionData);
+		return redirect()->route('divisions.index')->with($sessionData);
 	}
 
 	/**
@@ -104,7 +104,7 @@ class DivisionController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'La división no pudo ser encontrada';
-		return redirect()->route('admgym.memberships.divisions.index')->with($sessionData);
+		return redirect()->route('divisions.index')->with($sessionData);
 	}
 
 	/**
@@ -127,7 +127,7 @@ class DivisionController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'La división no pudo ser actualizada, intente nuevamente';
 		}
-		return redirect()->route('admgym.memberships.divisions.edit',$division->id)->with($sessionData);
+		return redirect()->route('divisions.edit',$division->id)->with($sessionData);
 	}
 
 	/**
@@ -152,7 +152,7 @@ class DivisionController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'La división no pudo ser eliminada, intente nuevamente';
 		}
-		return redirect()->route('admgym.memberships.divisions.index')->with($sessionData);			
+		return redirect()->route('divisions.index')->with($sessionData);			
 		
 	}
 }

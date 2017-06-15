@@ -20,7 +20,7 @@
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#listMembership" aria-controls="listMember" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Listado</a></li>
-					     <li><a href="{{ route('admgym.memberships.types.create') }}"><i class="fa fa-plus"></i> Crear</a>
+					     <li><a href="{{ route('types.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 					</ul>
 					<div class="tab-content tab-gym-index">
@@ -51,7 +51,7 @@
 												  	</button>
 													<ul class="dropdown-menu">	
 														<li>
-															<a href="{{ route('admgym.memberships.types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+															<a href="{{ route('types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 														</li>
 														<li>
 															<a href="#" title="Eliminar" data-id="{{$membershipType->id}}" data-membership="{{ $membershipType->name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>

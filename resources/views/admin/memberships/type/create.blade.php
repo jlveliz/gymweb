@@ -12,12 +12,12 @@
 				</div>
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" ><a href="{{ route('admgym.memberships.types.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li role="presentation" ><a href="{{ route('types.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
 					    <li role="presentation" class="active"><a href="#createMember" aria-controls="createMember" role="tab" data-toggle="tab"><i class="fa fa-plus"></i> Crear</a></li>
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="createDivision">
-							<form method="post" class="form-horizontal form-label-left  animated fadeIn" action="{{ route('admgym.memberships.types.store') }}">
+							<form method="post" class="form-horizontal form-label-left  animated fadeIn" action="{{ route('types.store') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 								<div class="form-group col-md-3 col-sm-3 col-xs-6 @if($errors->has('division_id')) has-error @endif">
@@ -71,7 +71,7 @@
 								<div class="ln_solid"></div>
 								<div class="form-group">
 			                      	<div class="col-md-6 col-sm-6 col-xs-12">
-			                        	<a href="{{ route('admgym.memberships.types.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
+			                        	<a href="{{ route('types.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
 			                        	<button type="submit" class="btn btn-submit"><i class="fa fa-save"></i> Guardar</button>
 			                      	</div>
 		                    	</div>

@@ -74,7 +74,7 @@ class MembershipTypeController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Subscripción no pudo ser creado, intente nuevamente';
 		}
-		return redirect()->route('admgym.memberships.types.edit',$membershipType->id)->with($sessionData);
+		return redirect()->route('types.edit',$membershipType->id)->with($sessionData);
 		
 	}
 
@@ -93,7 +93,7 @@ class MembershipTypeController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser encontrado';
-		return redirect()->route('admgym.memberships.types.index')->with($sessionData);
+		return redirect()->route('types.index')->with($sessionData);
 	}
 
 	/**
@@ -111,7 +111,7 @@ class MembershipTypeController extends Controller
 
 		$sessionData['tipo_mensaje'] = 'error';
 		$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser encontrado';
-		return redirect()->route('admgym.memberships.types.edit',$membershipType->id)->with($sessionData);
+		return redirect()->route('types.edit',$membershipType->id)->with($sessionData);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class MembershipTypeController extends Controller
 			$sessionData['mensaje'] = 'El tipo de membresia no pudo ser creado, intente nuevamente';
 		}
 		
-		return redirect()->route('admgym.memberships.types.edit',$membershipType->id)->with($sessionData);
+		return redirect()->route('types.edit',$membershipType->id)->with($sessionData);
 	}
 
 	/**
@@ -160,7 +160,7 @@ class MembershipTypeController extends Controller
 			$sessionData['tipo_mensaje'] = 'error';
 			$sessionData['mensaje'] = 'El Tipo de membresia no pudo ser eliminado, intente nuevamente';
 		}
-		return redirect()->route('admgym.memberships.types.index')->with($sessionData);	
+		return redirect()->route('types.index')->with($sessionData);	
 		
 	}
 }
