@@ -120,4 +120,10 @@ class MemberRepository implements MemberRepositoryInterface
 		}
 	}
 
+	public function recentMemberMonth()
+	{
+		$recents = Member::whereRaw('DATE_FORMAT(admission_date ,"%Y-%m") = DATE_FORMAT(now(),"%Y-%m")')->get();
+		return $recents;
+	}
+
 }

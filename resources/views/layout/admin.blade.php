@@ -90,7 +90,7 @@
     <script src="{{ asset('public/js/nicescroll/jquery.nicescroll.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/js/nprogress/nprogress.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/js/bg_switcher/jquery.bgswitcher.js') }}" type="text/javascript"></script>
-    @yield('js')
     <script src="{{ asset('public/js/custom.js') }}" type="text/javascript"></script>
+    @yield('js')
 </body>
 </html>

@@ -6,6 +6,10 @@
 
 /** ******  left menu  *********************** **/
 $(function() {
+
+    moment.locale('es');
+
+
     $('#sidebar-menu li ul').slideUp();
     $('#sidebar-menu li').removeClass('active');
 

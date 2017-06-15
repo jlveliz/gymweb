@@ -43,6 +43,7 @@ class DashboardController extends Controller
         $typesMembership = $this->typeMembership->enum();
         $totalAssistance = $this->assistance->totalAssistanceToday();
         $totalAssistanceCurrentMonth = $this->assistance->totalCurrentMonth();
+        $recentMembers = $this->members->recentMemberMonth();
 
         return view('admin.dashboard.index',[
             'totalMembers' => count($totalMembers), 
@@ -50,6 +51,7 @@ class DashboardController extends Controller
             'totalTypeMembership' => count($typesMembership),
             'totalAssistance' => $totalAssistance,
             'totalAssistanceCurrentMonth' => $totalAssistanceCurrentMonth,
+            'recentMembers' => $recentMembers
         ]);
     }
 }

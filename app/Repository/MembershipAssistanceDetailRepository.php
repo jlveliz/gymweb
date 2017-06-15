@@ -56,14 +56,19 @@ class MembershipAssistanceDetailRepository implements MembershipAssistanceDetail
 
 	public function totalCurrentMonth()
 	{
-		$query = MembershipAssistanceDetail::selectRaw('date_job, count(date_job) as counter')->whereRaw('DATE_FORMAT(date_job, "%m") = DATE_FORMAT(now(), "%m")')->groupBy('date_job')->orderBy('date_job')->get();
+		$query = MembershipAssistanceDetail::selectRaw('date_job, count(date_job) as counter')->whereRaw('DATE_FORMAT(date_job, "%Y-%m") = DATE_FORMAT(now(), "%Y-%m")')->groupBy('date_job')->orderBy('date_job')->get();
 
 		$arrayFormated = [];
+		$dates = '';
+		$counter = '';
+		//format for chart.js
 		foreach ($query as $key => $value) {
-			$arrayFormated['dates'][] = $value->date_job;
-			$arrayFormated['counters'][] = $value->counter;
+			$coma = $key == (count($query) - 1) ?   ''  :  ','  ;
+			$dates.=  $value->date_job . $coma;
+			$counter.= $value->counter . $coma;
 		}
-		
+		$arrayFormated['dates'] = $dates;
+		$arrayFormated['counters']= $counter;
 		return $arrayFormated;
 	}
 
