@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="row">
-	<div class="col-md-7 col-lg-7 col-sm-7 col-xs-12">
+	<div class="col-md-7 col-lg-7 col-sm-7 col-xs-12 animated fadeIn">
 		<div class="x_panel">
 			<div class="x_title">
 				<h2>Asistencias del mes corriente</h2>
@@ -53,7 +53,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-5 col-lg-5 col-sm-5 col-xs-12">
+	<div class="col-md-5 col-lg-5 col-sm-5 col-xs-12 animated fadeIn">
 		<div class="x_panel">
 			<div class="panel panel-default">
 			  <div class="panel-heading"><h2>Miembros Recientes</h2></div>
