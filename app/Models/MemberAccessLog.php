@@ -24,7 +24,7 @@ class MemberAccessLog extends Model
 
     }
 
-    public function user()
+    public function member()
     {
         return $this->belongsTo('GymWeb\Models\Member','member_id');
     }

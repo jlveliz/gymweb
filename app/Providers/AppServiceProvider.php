@@ -33,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
             'GymWeb\Repository\UserAccessLogRepository'
         );
 
+        ///MEMBERS ACCESS LOG
+        $this->app->bind(
+            'GymWeb\RepositoryInterface\MemberAccessLogRepositoryInterface',
+            'GymWeb\Repository\MemberAccessLogRepository'
+        );
+
         ///END LOGS
 
         //USERS

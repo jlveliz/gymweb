@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admgym'],function(){
 
 		Route::group(['prefix'=>'logs'],function(){
 			Route::resource('user-access','Admin\Log\UserAccessLogController',['only'=>['index']]);
+			Route::resource('member-access','Admin\Log\MemberAccessLogController',['only'=>['index']]);
 		});
 	});
 

@@ -28,7 +28,8 @@
 		<li>
 			<a class="clickable"><i class="fa fa-file-text"></i> Registros</span></a>
 			<ul class="nav child_menu">
-				<li> <a href="{{route('user-access.index')}}" title="Registro de accesos">Registro de accesos</a></li>
+				<li> <a href="{{route('user-access.index')}}" title="Accesos a Usuarios">Accesos a Usuarios</a></li>
+				<li> <a href="{{route('member-access.index')}}" title="Acceso de Miembros">Acceso de Miembros</a></li>
 			</ul>
 		</li>
 		
