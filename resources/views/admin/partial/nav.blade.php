@@ -15,6 +15,9 @@
 				</li>
 			</ul>
 		</li>
+		<li>
+			<a class="clickable" title="Reportes"><i class="fa fa-pie-chart"></i> Reportes</a>
+		</li>
 	</ul>
 </div>
 @endrole

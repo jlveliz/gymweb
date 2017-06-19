@@ -157,7 +157,9 @@ return [
         GymWeb\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         GymWeb\Providers\ExtendValidatorServiceProvider::class,
+
 
     ],
 
@@ -206,6 +208,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
         // if use middleware
         // 'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         // 'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
