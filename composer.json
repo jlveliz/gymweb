@@ -10,7 +10,7 @@
         "zizaco/entrust": "5.2.x-dev",
         "intervention/image": "^2.3",
         "barryvdh/laravel-dompdf": "^0.8.0",
-        "maatwebsite/excel": "~2.1.0"
+        "maatwebsite/excel": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

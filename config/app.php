@@ -158,6 +158,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         GymWeb\Providers\ExtendValidatorServiceProvider::class,
 
 
@@ -209,6 +210,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // if use middleware
         // 'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         // 'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
