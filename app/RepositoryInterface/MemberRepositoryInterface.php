@@ -14,7 +14,5 @@ interface MemberRepositoryInterface extends CoreRepositoryInterface
 	public function uploadPhoto($memberId,$photo);
 
 	public function recentMemberMonth();
-
-	public function countAssistances($params);
 	
 }

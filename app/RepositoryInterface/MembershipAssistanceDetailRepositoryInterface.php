@@ -3,6 +3,7 @@ namespace  GymWeb\RepositoryInterface;
 
 use GymWeb\RepositoryInterface\NestedRepositoryInterface;
 
+
 /**
 * Autor: 
 * Jorge Luis Veliz
@@ -14,4 +15,6 @@ interface MembershipAssistanceDetailRepositoryInterface extends NestedRepository
 	public function totalAssistanceToday();
 
 	public function totalCurrentMonth();
+
+	public function reportCountAssistances($params);
 }

@@ -126,9 +126,4 @@ class MemberRepository implements MemberRepositoryInterface
 		return $recents;
 	}
 
-
-	public function countAssistances($params) {
-
-	}
-
 }

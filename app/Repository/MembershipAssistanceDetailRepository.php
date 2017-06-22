@@ -72,4 +72,21 @@ class MembershipAssistanceDetailRepository implements MembershipAssistanceDetail
 		return $arrayFormated;
 	}
 
+
+	public function reportCountAssistances($params)
+	{
+		$query = MembershipAssistanceDetail::selectRaw("CONCAT(member.`name`,' ',member.`last_name`) as name_member, member.email,IFNULL(count(length_secuence_day) ,0) counter")
+		->rightJoin('membership','membership.id','=','membership_assistance_detail.membership_id')
+		->rightJoin('member','member.id','=','membership.member_id')
+		->whereBetween('membership_assistance_detail.date_job',[$params['date_from'],$params['date_to']]);
+		if (array_key_exists('member', $params) && $params['member']) {
+			$query->where('member.id',$params['member']);
+		}
+		$query->groupBy('name_member');
+		$query->orderBy('name_member','asc');
+		$query->orderBy('counter','desc');
+		$result = $query->get();
+		return $result;
+	}
+
 }
