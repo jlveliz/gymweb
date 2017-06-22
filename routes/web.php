@@ -59,6 +59,11 @@ Route::group(['prefix' => 'admgym'],function(){
 		Route::resource('types','Admin\Membership\MembershipTypeController',['except'=>['show']]);
 	});
 
+	Route::group(['prefix'=>'admreports'],function(){
+		Route::get('members','Admin\Report\MemberReportController@showReports')->name('admreports.members');
+		Route::get('get-assistance/{params?}','Admin\Report\MemberReportController@getAssistance')->name('admreports.members.assistances');
+	});
+
 	Route::group(['middleware'=>['auth','role:administrator']],function(){
 		
 		Route::resource('users','Admin\User\UserController',['except'=>['show']]);

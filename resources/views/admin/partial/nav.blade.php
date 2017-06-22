@@ -17,6 +17,9 @@
 		</li>
 		<li>
 			<a class="clickable" title="Reportes"><i class="fa fa-pie-chart"></i> Reportes</a>
+			<ul class="nav child_menu">
+				<li> <a href="{{route('admreports.members')}}" title="Accesos a Usuarios">Miembros</a></li>
+			</ul>
 		</li>
 	</ul>
 </div>
