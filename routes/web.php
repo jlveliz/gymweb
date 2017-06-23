@@ -62,6 +62,7 @@ Route::group(['prefix' => 'admgym'],function(){
 	Route::group(['prefix'=>'admreports'],function(){
 		Route::get('members','Admin\Report\MemberReportController@showReports')->name('admreports.members');
 		Route::get('get-assistance/{params?}','Admin\Report\MemberReportController@getAssistance')->name('admreports.members.assistances');
+		Route::post('get-assistance/{format}','Admin\Report\MemberReportController@printAssistance')->name('admreports.members.assistances.print');
 	});
 
 	Route::group(['middleware'=>['auth','role:administrator']],function(){

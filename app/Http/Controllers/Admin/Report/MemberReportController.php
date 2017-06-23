@@ -30,4 +30,9 @@ class MemberReportController extends Controller
     	$asisstances = $this->assistance->reportCountAssistances($request->all());
         return response()->json($asisstances,200);
     }
+
+    public function printAssistance($format)
+    {
+        dd($format);
+    }
 }

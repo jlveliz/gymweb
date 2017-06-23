@@ -72,39 +72,45 @@
 										</div>
 									</div>
 								</form>
-							</div>
-						</div>
-
-						<hr>
-						<div class="row">
-							<div class="col-xs-12 col-md-6 col-lg-6 col-sm-6 pull-left text-left">
-								<div class="btn-group">
-								  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    <i class="fa fa-share-square-o" aria-hidden="true"></i> Exportar <span class="caret"></span>
-								  </button>
-								  <ul class="dropdown-menu">
-								    <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Pdf</a></li>
-								    <li><a href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
-								  </ul>
+								<hr>
+								<div class="row">
+									<div class="col-xs-12 col-md-6 col-lg-6 col-sm-6" style="position: static!important;">
+										<div class="btn-group">
+										  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <i class="fa fa-share-square-o" aria-hidden="true"></i> Exportar <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu">
+										  	<form action="{{ route('admreports.members.assistances.print','pdf') }}" method="POST">
+										  		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+										    	<li><button class="btn btn-link" type="submit"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Pdf</button></li>
+										  	</form>
+										  	<form action="{{ route('admreports.members.assistances.print','excel') }}" method="POST">
+										  		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+										   		<li><button class="btn btn-link" type="submit"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</button></li>
+										  	</form>
+										  </ul>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="position: static!important;">
+										<table class="table table-striped table-gym animated fadeIn" id="report-members-assistance">
+											<thead>
+												<tr>
+													<th>Miembro</th>
+													<th>Correo</th>
+													<th>Total Asistencias</th>
+												</tr>
+											</thead>
+											<tbody id="assistance_results">
+												<tr>
+													<td colspan='3' class='text-center'>No existen datos a mostrar, Seleccione los filtros para buscar.</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>	
 								</div>
 							</div>
-							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-								<table class="table table-striped table-gym animated fadeIn" id="report-members-assistance">
-									<thead>
-										<tr>
-											<th>Miembro</th>
-											<th>Correo</th>
-											<th>Total Asistencias</th>
-										</tr>
-									</thead>
-									<tbody id="assistance_results">
-										<tr>
-											<td colspan='3' class='text-center'>No existen datos a mostrar, Seleccione los filtros para buscar.</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>	
 						</div>
+						
 					</div>
 				</div>
 			</div>
