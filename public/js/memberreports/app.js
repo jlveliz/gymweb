@@ -47,7 +47,6 @@ $(document).ready(function() {
                 .done(function(data) {
 
                     $("#assistance_results").html('');
-
                     var html = "";
                     if (data.length) {
                         for (var i = 0; i < data.length; i++) {
@@ -57,10 +56,15 @@ $(document).ready(function() {
                             html += "<td>" + data[i].counter + "</td>"
                             html += "</tr>";
                         }
+                        $(".export-member").removeClass('disabled');
+
                     } else {
                         html += "<tr>";
                         html += "<td colspan='3' class='text-center'>No existen datos a mostrar, Seleccione los filtros para buscar.</td>";
                         html += "</tr>";
+
+                        $(".export-member").addClass('disabled');
+
                     }
 
                     $("#assistance_results").append(html)
@@ -74,6 +78,17 @@ $(document).ready(function() {
                     _this.html('<i class="fa fa-search"></i> Buscar');
                 });
         });
+    }
+
+
+    if ($(".export-member").length) {
+        $(".export-member").on('click', function(event) {
+            event.preventDefault();
+            var format = $(this).data('format');
+            var form = $("#report-form-assistances").serialize();
+            window.open('/admgym/admreports/print-assistance/?' + form + 'format='+format,'_blank')
+        });        
+
     }
 
 

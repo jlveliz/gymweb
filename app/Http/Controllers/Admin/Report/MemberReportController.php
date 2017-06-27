@@ -15,8 +15,10 @@ class MemberReportController extends Controller
 
     function __construct(MemberRepositoryInterface $member, MembershipAssistanceDetailRepositoryInterface $assistance)
     {
+        $this->middleware('auth');
         $this->member = $member;
-    	$this->assistance = $assistance;
+        $this->assistance = $assistance;
+
     }
 
     public function showReports()
@@ -31,8 +33,10 @@ class MemberReportController extends Controller
         return response()->json($asisstances,200);
     }
 
-    public function printAssistance($format)
+    public function printAssistance(Request $request)
     {
-        dd($format);
+        dd($request->all());
+        $asisstances = $this->assistance->reportCountAssistances($request->all());
+        dd($asisstances);
     }
 }

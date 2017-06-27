@@ -71,25 +71,13 @@
 											<button class="btn btn-submit" style="margin-top: 4px" id="search_asistance"><i class="fa fa-search"></i> Buscar</button>
 										</div>
 									</div>
-								</form>
 								<hr>
 								<div class="row">
 									<div class="col-xs-12 col-md-6 col-lg-6 col-sm-6" style="position: static!important;">
-										<div class="btn-group">
-										  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										    <i class="fa fa-share-square-o" aria-hidden="true"></i> Exportar <span class="caret"></span>
-										  </button>
-										  <ul class="dropdown-menu">
-										  	<form action="{{ route('admreports.members.assistances.print','pdf') }}" method="POST">
-										  		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-										    	<li><button class="btn btn-link" type="submit"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Pdf</button></li>
-										  	</form>
-										  	<form action="{{ route('admreports.members.assistances.print','excel') }}" method="POST">
-										  		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-										   		<li><button class="btn btn-link" type="submit"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</button></li>
-										  	</form>
-										  </ul>
-										</div>
+										<p><b>Exportar</b></p>
+										<a class="btn btn-default export-member disabled" data-format="pdf" target="_blank" href="{{ route('admreports.members.assistances.print','pdf') }}"  role="button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Pdf</a>
+										<a class="btn btn-default export-member disabled" data-format="excel" target="_blank" href="{{ route('admreports.members.assistances.print','excel') }}" role="button"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a>
+											
 									</div>
 									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="position: static!important;">
 										<table class="table table-striped table-gym animated fadeIn" id="report-members-assistance">
@@ -108,6 +96,7 @@
 										</table>
 									</div>	
 								</div>
+								</form>
 							</div>
 						</div>
 						
