@@ -86,7 +86,7 @@ $(document).ready(function() {
             event.preventDefault();
             var format = $(this).data('format');
             var form = $("#report-form-assistances").serialize();
-            window.open('/admgym/admreports/print-assistance/?' + form + 'format='+format,'_blank')
+            window.open('/admgym/admreports/print-assistance/' + form + '&format='+format,'_blank')
         });        
 
     }
