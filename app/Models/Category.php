@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 
-class Division extends Model
+class Category extends Model
 {
    
 
     /**
     * table
     */
-    protected $table = "division";
+    protected $table = "category";
 
     public $timestamp = true;
 
