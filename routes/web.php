@@ -55,7 +55,7 @@ Route::group(['prefix' => 'admgym'],function(){
 	Route::resource('members.memberships.payments','Admin\Membership\MembershipPaymentDetailController',['only'=>['index','create','store']]);
 
 	Route::group(['prefix'=>'memberships'],function(){
-		Route::resource('divisions','Admin\Membership\DivisionController',['except'=>['show']]);
+		Route::resource('categories','Admin\Membership\CategoryController',['except'=>['show']]);
 		Route::resource('types','Admin\Membership\MembershipTypeController',['except'=>['show']]);
 	});
 

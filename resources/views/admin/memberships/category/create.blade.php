@@ -1,23 +1,23 @@
 @extends('layout.admin')
 
-@section('title','División')
+@section('title','Categorías')
 
 @section('content-page')
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2 class="animated fadeIn">División</h2>
+					<h2 class="animated fadeIn">Categorías</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" ><a href="{{ route('divisions.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
+					    <li role="presentation" ><a href="{{ route('categories.index') }}"> <i class="fa fa-list"></i> Listado</a></li>
 					    <li role="presentation" class="active"><a href="#createDivision" aria-controls="createDivision" role="tab" data-toggle="tab"><i class="fa fa-plus"></i> Crear</a></li>
 					</ul>
 					<div class="tab-content tab-gym-index">
 						<div role="tabpanel" class="tab-pane active" id="createDivision">
-							<form method="post" class="form-horizontal form-label-left animated fadeIn" action="{{ route('divisions.store') }}">
+							<form method="post" class="form-horizontal form-label-left animated fadeIn" action="{{ route('categories.store') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="row">
 									<div class="form-group col-md-3 col-sm-3 col-xs-4 if @if($errors->has('name')) has-error @endif">
@@ -36,7 +36,7 @@
 								<div class="ln_solid"></div>
 								<div class="form-group">
 			                      	<div class="col-md-6 col-sm-6 col-xs-12">
-			                        	<a href="{{ route('divisions.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
+			                        	<a href="{{ route('categories.index') }}" class="btn btn-primary"><i class="fa fa-ban"></i> Cancelar</a>
 			                        	<button type="submit" class="btn btn-submit"><i class="fa fa-save"></i> Guardar</button>
 			                      	</div>
 		                    	</div>

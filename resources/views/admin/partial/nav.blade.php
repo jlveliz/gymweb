@@ -11,7 +11,7 @@
 					<a href="{{ route('types.index') }}" title="Tipos"> Tipos</span></a>
 				</li>
 				<li>
-					<a href="{{ route('divisions.index') }}" title="Divisiones"> Divisiones</span></a>
+					<a href="{{ route('categories.index') }}" title="Categorías"> Categorías</span></a>
 				</li>
 			</ul>
 		</li>

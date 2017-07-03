@@ -1,13 +1,13 @@
 @extends('layout.admin')
 
-@section('title','División')
+@section('title','Categoría')
 
 @section('content-page')
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2 class="animated fadeIn">División</h2>
+					<h2 class="animated fadeIn">Categorías</h2>
 					<div class="clearfix"></div>
 					@if (Session::has('mensaje'))
 						<div class="alert alert-dismissible @if(Session::get('tipo_mensaje') == 'success') alert-info  @endif @if(Session::get('tipo_mensaje') == 'error') alert-danger  @endif" role="alert">
@@ -20,7 +20,7 @@
 				<div class="x_content">
 					<ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#listDivision" aria-controls="listDivision" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Listado</a></li>
-					    <li><a href="{{ route('divisions.create') }}"><i class="fa fa-plus"></i> Crear</a>
+					    <li><a href="{{ route('categories.create') }}"><i class="fa fa-plus"></i> Crear</a>
 	                    </li>
 					</ul>
 					<div class="tab-content tab-gym-index">
@@ -36,12 +36,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach ($divisions as $division)
+									@foreach ($categories as $category)
 										<tr>
-											<td>{{$division->name}} </td>
-											<td>{{$division->description}}</td>
-											<td>{{$division->created_at}}</td>
-											<td>{{$division->updated_at}}</td>
+											<td>{{$category->name}} </td>
+											<td>{{$category->description}}</td>
+											<td>{{$category->created_at}}</td>
+											<td>{{$category->updated_at}}</td>
 											<td class="text-center">
 												<div class="btn-group">
 													<button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,10 +49,10 @@
 												  	</button>
 													<ul class="dropdown-menu">	
 														<li>
-															<a href="{{ route('divisions.edit',$division->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+															<a href="{{ route('categories.edit',$category->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
 														</li>
 														<li>
-															<a href="#" title="Eliminar" data-id="{{$division->id}}" data-division="{{ $division->name }}" class="delete-division"> <i class="fa fa-trash"></i> Eliminar</a>
+															<a href="#" title="Eliminar" data-id="{{$category->id}}" data-category="{{ $category->name }}" class="delete-category"> <i class="fa fa-trash"></i> Eliminar</a>
 														</li>
 													</ul>
 												</div>
@@ -82,7 +82,7 @@
 	        </p>
 
 	        <p class="col-md-11 col-sm-11 col-xs-12">
-	        	Está seguro de eliminar la división <b id="division_delete"></b> ? 
+	        	Está seguro de eliminar la categoría <b id="category_delete"></b> ? 
 	        </p>
 	        <div class="clearfix"></div>
 	      </div>
@@ -123,5 +123,5 @@
  <script src="{{ asset('public/js/datatables/dataTables.responsive.min.js') }}"></script>
  <script src="{{ asset('public/js/datatables/responsive.bootstrap.min.js') }}"></script>
  <script src="{{ asset('public/js/datatables/dataTables.scroller.min.js') }}"></script>
- <script src="{{ asset('public/js/division/app.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('public/js/category/app.js') }}" type="text/javascript"></script>
 @endsection
