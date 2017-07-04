@@ -48,24 +48,23 @@ jQuery(document).ready(function($) {
     if ($("#birth_date").length) {
         $("#birth_date").datetimepicker({
             locale: "es",
-            format: "YYYY-MM-DD",
-            maxDate: new Date((new Date()).setDate((new Date()).getDate())),
+            format: "DD-MM-YYYY",
+
         });
 
         $("#admission_date").datetimepicker({
             locale: "es",
-            format: "YYYY-MM-DD",
-            maxDate: new Date((new Date()).setDate((new Date()).getDate())),
+            format: "DD-MM-YYYY",
         });
     }
 
 
     if ($("#date_job").length) {
-        $("#date_job").val(moment().format('YYYY-MM-DD'));
+        $("#date_job").val(moment().format('DD-MM-YYYY'));
         $("#date_job").datetimepicker({
             locale: "es",
-            format: "YYYY-MM-DD",
-            maxDate: moment().format('YYYY-MM-DD'),
+            format: "DD-MM-YYYY",
+            maxDate: moment().format('DD-MM-YYYY'),
         });
     }
 

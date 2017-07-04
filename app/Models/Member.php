@@ -82,6 +82,34 @@ class Member extends Authenticatable
         }
     }
 
+
+    public function setAdmissionDateAttribute($value)
+    {
+       
+        $this->attributes['admission_date'] =  (new Carbon($value))->format('Y-m-d');
+        // dd( $this->attributes['admission_date']);
+    }
+
+    public function setBirthDateAttribute($value)
+    {
+        $this->attributes['birth_date'] =  (new Carbon($value))->format('Y-m-d');
+       
+    }
+
+    public function getAdmissionDateAttribute($value)
+    {
+       
+        return (new Carbon($value))->format('d-m-Y');
+    }
+
+    public function getBirthDateAttribute($value)
+    {
+       
+        return (new Carbon($value))->format('d-m-Y');
+    }
+
+   
+
     public function current_membership()
     {
         $this->disableMembershipsWithPeriodTo();
