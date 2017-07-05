@@ -79,7 +79,7 @@ trait GymwebAuthenticate {
         }
 
         $credentials = $this->getCredentials($request);
-
+       
         if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
         	//insert access log
             if ($this->getGuard() == 'member') {

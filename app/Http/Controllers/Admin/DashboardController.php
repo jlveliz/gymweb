@@ -24,7 +24,7 @@ class DashboardController extends Controller
      */
     public function __construct(MemberRepositoryInterface $members,MembershipPaymentDetailRepositoryInterface $payments, MembershipTypeRepositoryInterface $typeMembership, MembershipAssistanceDetailRepositoryInterface $assistance)
     {
-        $this->middleware('auth');
+        $this->middleware('auth:web');
         $this->members = $members;
         $this->payments = $payments;
         $this->typeMembership = $typeMembership;

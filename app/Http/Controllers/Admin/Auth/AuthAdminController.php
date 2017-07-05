@@ -28,7 +28,7 @@ class AuthAdminController extends Controller
     use GymwebAuthenticate, ThrottlesLogins;
 
 
-    // protected $guard = "web";
+    protected $guard = "web";
 
     /**
      * Where to redirect users after login / registration.
@@ -59,7 +59,7 @@ class AuthAdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+       $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
     /**
