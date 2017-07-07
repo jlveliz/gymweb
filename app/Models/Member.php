@@ -108,6 +108,19 @@ class Member extends Authenticatable
         return (new Carbon($value))->format('d-m-Y');
     }
 
+
+    public function getBirthDayStringFormated()
+    {
+        $date = Carbon::parse($this->birth_date);
+        return $date->formatLocalized('%A %d %B %Y');
+    }
+
+    public function getAdmissionDateStringFormated()
+    {
+        $date = Carbon::parse($this->admission_date);
+        return $date->formatLocalized('%A %d %B %Y');
+    }
+
    
 
     public function current_membership()

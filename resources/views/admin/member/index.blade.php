@@ -31,8 +31,7 @@
 										<th class="text-center">Nombre</th>
 										<th class="text-center">Cédula</th>
 										<th class="text-center">Membresia</th>
-										<th class="text-center">Fecha de ingreso</th>
-										<th class="text-center col-md-2 col-sm-2 col-xs-6">Acción</th>
+										<th class="text-center col-md-3 col-sm-3 col-xs-6">Acción</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -45,23 +44,12 @@
 											<td><a href="{{ route('members.show',$member->id) }}" title="Ver {{$member->name .' '. $member->last_name}}"> {{$member->name .' '. $member->last_name}} </a></td>
 											<td>{{$member->identity_number}}</td>
 											<td> {{ $member->current_membership() ?  $member->current_membership()->type->name : '-' }} </td>
-											<td class="text-center">{{$member->admission_date}}</td>
 											<td class="text-center">
-												<div class="btn-group">
-												  <button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												    <i class="fa fa-cog"></i> <span class="caret"></span>
-												  </button>
-												  <ul class="dropdown-menu">
-												    <li><a href="{{ route('members.show',$member->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a></li>
-												    <li>
-														<a href="{{ route('members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
-													</li>
-												    <li>
-												    	<a href="#" title="Eliminar" data-id="{{$member->id}}" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
-													</li>
-												  </ul>
+												<div class="btn-group" role="group">
+												  <a role="btn" class="btn btn-default btn-sm" href="{{ route('members.show',$member->id) }}" title="Ver"><i class="fa fa-eye"></i> Ver</a>
+												  <a role="btn" class="btn btn-default btn-sm" href="{{ route('members.edit',$member->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+												  <a role="btn" class="btn btn-default btn-sm" href="#" title="Eliminar" data-id="{{$member->id}}" data-member="{{ $member->name }} {{ $member->last_name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
 												  </div>
-												
 											</td>
 										</tr>
 									@endforeach

@@ -44,10 +44,10 @@
 								    				</tr>
 								    			@endif
 								    			<tr>
-								    				<td><i class="fa fa-birthday-cake user-profile-icon"></i>  <b> Fecha de Nacimiento:</b> {{$member->birth_date}}</td>
+								    				<td><i class="fa fa-birthday-cake user-profile-icon"></i>  <b> Fecha de Nacimiento:</b> {{$member->getBirthDayStringFormated()}}</td>
 								    			</tr>
 								    			<tr>
-								    				<td><i class="fa fa-sign-in user-profile-icon"></i> <b> Fecha de Ingreso:</b>{{$member->admission_date}}</td>
+								    				<td><i class="fa fa-sign-in user-profile-icon"></i> <b> Fecha de Ingreso:</b> {{$member->getAdmissionDateStringFormated()}}</td>
 								    			</tr>
 								    			<tr>
 								    				<td>

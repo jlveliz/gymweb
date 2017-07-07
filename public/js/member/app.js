@@ -14,14 +14,13 @@ jQuery(document).ready(function($) {
                 "targets": 0
             }, {
                 "orderable": false,
-                "targets": 5
+                "targets": 4
             }],
             "orderable": false,
             "order": [
                 [1, 'asc'],
                 [2, 'asc'],
                 [3, 'asc'],
-                [4, 'asc']
             ],
             "responsive": true
         });

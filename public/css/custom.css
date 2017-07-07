@@ -2305,12 +2305,12 @@ a.star {
     width: 100%;
 }
 
-.buttons,
+/*.buttons,
 button,
 .btn {
     margin-bottom: 5px!important;
     margin-right: 5px!important;
-}
+}*/
 
 .btn-group-vertical .btn,
 .btn-group .btn {

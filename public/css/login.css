@@ -346,3 +346,13 @@ header {
 
 
 /********** end of sign in ********************/
+
+.title_admin:before,
+.title_admin:after {
+    top: 20px!important;
+}
+
+.title_admin > small {
+    font-size: 15px;
+    font-weight: bold;
+}
