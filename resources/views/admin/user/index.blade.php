@@ -43,17 +43,8 @@
 											<td>{{$user->updated_at}}</td>
 											<td class="text-center">
 												<div class="btn-group">
-													<button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												    	<i class="fa fa-cog"></i> <span class="caret"></span>
-												  	</button>
-													<ul class="dropdown-menu">
-														<li>
-															<a href="{{ route('users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-														</li>
-														<li>
-															<a href="#" title="Eliminar" data-id="{{$user->id}}" data-user="{{$user->username}}" class="delete-user"> <i class="fa fa-trash"></i> Eliminar</a>
-														</li>
-													</ul>
+													<a class="btn btn-default btn-sm" href="{{ route('users.edit',$user->id) }}" title="Crear"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+													<a href="#" title="Eliminar" data-id="{{$user->id}}" data-user="{{$user->username}}" class="btn btn-default btn-sm delete-user"> <i class="fa fa-trash"></i> Eliminar</a>
 												</div>
 											</td>
 										</tr>

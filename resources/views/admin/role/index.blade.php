@@ -44,17 +44,8 @@
 											<td>{{$role->updated_at}}</td>
 											<td class="text-center">
 												<div class="btn-group">
-													<button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												    <i class="fa fa-cog"></i> <span class="caret"></span>
-												  </button>
-													<ul class="dropdown-menu">
-														<li>
-															<a href="{{ route('roles.edit',$role->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
-														</li>
-														<li>
-															<a href="#" title="Eliminar" data-id="{{$role->id}}" data-role="{{ $role->display_name }}" class="delete-role"> <i class="fa fa-trash"></i> Eliminar</a>
-														</li>
-													</ul>
+												  <a class="btn btn-default btn-sm" href="{{ route('roles.edit',$role->id) }}" title="Crear"><i class="fa fa-pencil"></i> Editar</a>
+												  <a class="btn btn-default btn-sm delete-role" href="#" title="Eliminar" data-id="{{$role->id}}" data-role="{{ $role->display_name }}"> <i class="fa fa-trash"></i> Eliminar</a>
 												</div>
 											</td>
 										</tr>
