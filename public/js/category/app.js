@@ -25,15 +25,15 @@ jQuery(document).ready(function($) {
     }
 
 
-    if ($(".delete-division").length) {
+    if ($(".delete-category").length) {
 
-        $(".delete-division").on('click', function(event) {
-            var division = $(this).data('division');
-            var divisionId = $(this).data('id');
+        $(".delete-category").on('click', function(event) {
+            var category = $(this).data('category');
+            var categoryId = $(this).data('id');
             $("#modal-delete").modal();
-            $("#modal-delete > p#division_delete").text('');
-            $("#division_delete").text(division);
-            $("#modal-delete").find('form').attr('action', window.location.href + '/' + divisionId);
+            $("#modal-delete > p#category_delete").text('');
+            $("#category_delete").text(category);
+            $("#modal-delete").find('form').attr('action', window.location.href + '/' + categoryId);
             event.preventDefault();
             /* Act on the event */
         });

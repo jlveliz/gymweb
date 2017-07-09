@@ -47,7 +47,7 @@
 											<td class="text-center">
 												<div class="btn-group">
 													<a class="btn btn-default btn-sm" href="{{ route('types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
-													<a class="btn btn-default btn-sm" href="#" title="Eliminar" data-id="{{$membershipType->id}}" data-membership="{{ $membershipType->name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
+													<a class="btn btn-default btn-sm delete-member" href="#" title="Eliminar" data-id="{{$membershipType->id}}" data-membership="{{ $membershipType->name }}"> <i class="fa fa-trash"></i> Eliminar</a>
 												</div>
 											</td>
 										</tr>
