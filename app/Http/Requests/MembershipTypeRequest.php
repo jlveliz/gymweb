@@ -24,7 +24,7 @@ class MembershipTypeRequest extends Request
     public function rules()
     {
          return [
-            'division_id' => 'required|exists:division,id',
+            'category_id' => 'required|exists:category,id',
             'name' => 'required|max:50',
             'description' => 'required|max:150',
             'length_time_number' => 'required|numeric',
@@ -37,8 +37,8 @@ class MembershipTypeRequest extends Request
     {
         
         return [
-            'division_id.required' => 'La división del tipo de membresia es requerido',
-            'division_id.exists' => 'La división que desea ingresar no existe',
+            'category_id.required' => 'La categoría del tipo de membresia es requerido',
+            'category_id.exists' => 'La categoría que desea ingresar no existe',
             'name.required' => 'El nombre de tipo de membresia requerida',
             'name.max' => 'El nombre debe tener un máximo de 50 caracteres',
             'description.required' => 'La descripción del tipo de membresia requerida',

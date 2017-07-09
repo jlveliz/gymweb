@@ -40,23 +40,14 @@
 									@foreach ($membershipTypes as $membershipType)
 										<tr>
 											<td>{{$membershipType->name}} </td>
-											<td>{{$membershipType->division->name}} </td>
+											<td>{{$membershipType->category->name}} </td>
 											<td>{{$membershipType->description}}</td>
 											<td>$ {{$membershipType->price}}</td>
 											<td>{{$membershipType->created_at}}</td>
 											<td class="text-center">
 												<div class="btn-group">
-													<button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												    	<i class="fa fa-cog"></i> <span class="caret"></span>
-												  	</button>
-													<ul class="dropdown-menu">	
-														<li>
-															<a href="{{ route('types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
-														</li>
-														<li>
-															<a href="#" title="Eliminar" data-id="{{$membershipType->id}}" data-membership="{{ $membershipType->name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
-														</li>
-													</ul>
+													<a class="btn btn-default btn-sm" href="{{ route('types.edit',$membershipType->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
+													<a class="btn btn-default btn-sm" href="#" title="Eliminar" data-id="{{$membershipType->id}}" data-membership="{{ $membershipType->name }}" class="delete-member"> <i class="fa fa-trash"></i> Eliminar</a>
 												</div>
 											</td>
 										</tr>

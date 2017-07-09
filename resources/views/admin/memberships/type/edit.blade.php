@@ -29,15 +29,15 @@
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="PUT">
 
-								<div class="form-group col-md-3 col-sm-3 col-xs-6 @if($errors->has('division_id')) has-error @endif">
-									<label class="control-label">División: <span class="text-danger">*</span></label>
-									<select name="division_id" id="division_id" class="form-control">
-										<option value="null" title="Seleccione una división" alt="Seleccione una división">--Seleccione--</option>
-										@foreach ($divisions as $division)
-											<option value="{{$division->id}}" alt="{{$division->description}}" title="{{$division->description}}" @if($membershipType->division_id == $division->id) selected  @endif>{{$division->name}}</option>
+								<div class="form-group col-md-3 col-sm-3 col-xs-6 @if($errors->has('category_id')) has-error @endif">
+									<label class="control-label">Categoría: <span class="text-danger">*</span></label>
+									<select name="category_id" id="category_id" class="form-control">
+										<option value="null" title="Seleccione una Categoría" alt="Seleccione una Categoría">--Seleccione--</option>
+										@foreach ($categories as $category)
+											<option value="{{$category->id}}" alt="{{$category->description}}" title="{{$category->description}}" @if($membershipType->category_id == $category->id) selected  @endif>{{$category->name}}</option>
 										@endforeach
 									</select>
-								    @if ($errors->has('division_id')) <p class="help-block">{{ $errors->first('division_id') }}</p> @endif
+								    @if ($errors->has('category_id')) <p class="help-block">{{ $errors->first('category_id') }}</p> @endif
 								     
 								</div>
 								

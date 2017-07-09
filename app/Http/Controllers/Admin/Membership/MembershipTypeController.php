@@ -8,7 +8,7 @@ use GymWeb\Http\Requests\MembershipTypeRequest;
 
 use GymWeb\RepositoryInterface\MembershipTypeRepositoryInterface; 
 
-use GymWeb\RepositoryInterface\DivisionRepositoryInterface; 
+use GymWeb\RepositoryInterface\CategoryRepositoryInterface; 
 
 use GymWeb\Http\Controllers\Controller;
 
@@ -19,13 +19,13 @@ class MembershipTypeController extends Controller
     
 	public $membershipType;
 
-	public $division;
+	public $category;
 
-    public function __construct(MembershipTypeRepositoryInterface $membershipType, DivisionRepositoryInterface $division)
+    public function __construct(MembershipTypeRepositoryInterface $membershipType, CategoryRepositoryInterface $category)
     {
     	$this->middleware('auth');
     	$this->membershipType = $membershipType;
-    	$this->division = $division;
+    	$this->category = $category;
     }
 
     /**
@@ -50,7 +50,7 @@ class MembershipTypeController extends Controller
 	public function create()
 	{
 		$data = [
-			'divisions' => $this->division->enum()
+			'categories' => $this->category->enum()
 		];
 		return view('admin.memberships.type.create',$data);
 	}
@@ -106,7 +106,7 @@ class MembershipTypeController extends Controller
 	{
 		$membershipType = $this->membershipType->find($id);
 		if ($membershipType) {
-			return view('admin.memberships.type.edit',['membershipType'=>$membershipType,'divisions' => $this->division->enum()]);
+			return view('admin.memberships.type.edit',['membershipType'=>$membershipType,'categories' => $this->category->enum()]);
 		}
 
 		$sessionData['tipo_mensaje'] = 'error';

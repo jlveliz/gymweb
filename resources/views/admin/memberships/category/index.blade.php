@@ -44,17 +44,8 @@
 											<td>{{$category->updated_at}}</td>
 											<td class="text-center">
 												<div class="btn-group">
-													<button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												    	<i class="fa fa-cog"></i> <span class="caret"></span>
-												  	</button>
-													<ul class="dropdown-menu">	
-														<li>
-															<a href="{{ route('categories.edit',$category->id) }}" title="Editar"><i class="fa fa-pencil"></i> Editar</a>
-														</li>
-														<li>
-															<a href="#" title="Eliminar" data-id="{{$category->id}}" data-category="{{ $category->name }}" class="delete-category"> <i class="fa fa-trash"></i> Eliminar</a>
-														</li>
-													</ul>
+												  	<a href="{{ route('categories.edit',$category->id) }}" title="Editar" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> Editar</a>
+													<a href="#" title="Eliminar" data-id="{{$category->id}}" data-category="{{ $category->name }}" class="btn btn-default delete-category btn-sm"> <i class="fa fa-trash"></i> Eliminar</a>
 												</div>
 											</td>
 										</tr>
