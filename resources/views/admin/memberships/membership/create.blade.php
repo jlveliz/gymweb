@@ -26,15 +26,15 @@
 				        <select name="membership_type_id" class="form-control"  id="membership_type_id">
 				          		<option value="null">--Selecione--</option>
 				        	<?php foreach ($membershipTypes as $key => $membershipType): ?>
-				          		<option data-price="{{$membershipType->price}}" data-division="{{$membershipType->division->name}}" data-length-time="{{$membershipType->length_time_number}} " data-length-mod="{{$membershipType->length_time_mod}}"  value="{{$membershipType->id}}" @if(old('membership_type_id') == $membershipType->id) selected  @endif>{{$membershipType->name}}</option>
+				          		<option data-price="{{$membershipType->price}}" data-category="{{$membershipType->category->name}}" data-length-time="{{$membershipType->length_time_number}} " data-length-mod="{{$membershipType->length_time_mod}}"  value="{{$membershipType->id}}" @if(old('membership_type_id') == $membershipType->id) selected  @endif>{{$membershipType->name}}</option>
 				        	<?php endforeach ?>
 				        </select>
 				         @if ($errors->has('membership_type_id')) <p class="help-block">{{ $errors->first('membership_type_id') }}</p> @endif
 				    </div>
 
 				     <div class="form-group col-md-4 col-sm-4 col-xs-6">
-				      <label class="control-label">División </label>
-				       <input type="text" placeholder="División" id="division" name="division" value="{{old('division')}}" class="form-control" readonly>
+				      <label class="control-label">Categoría </label>
+				       <input type="text" placeholder="Categoría" id="category" name="category" value="{{old('category')}}" class="form-control" readonly>
 				    </div>
 
 				     <div class="form-group col-md-3 col-sm-3 col-xs-3 @if($errors->has('expiry_mode')) has-error @endif">
@@ -121,7 +121,7 @@
 
     $("#membership_type_id").on('change', function(event) {
     	var price = $(this).children('option:selected').data('price') ? $(this).children('option:selected').data('price') : null;
-    	var division = $(this).children('option:selected').data('division') ? $(this).children('option:selected').data('division') : null;
+    	var category = $(this).children('option:selected').data('category') ? $(this).children('option:selected').data('category') : null;
 
     	var legthTime = $(this).children('option:selected').data('length-time') ? $(this).children('option:selected').data('length-time') : null;
 
@@ -131,15 +131,15 @@
     	var expiryMode = $("#expiry_mode").children('option:selected').val();
 
 
-    	if (!price || !division || !legthTime || !legthMod) {
-    		$("#division").val('');
+    	if (!price || !category || !legthTime || !legthMod) {
+    		$("#category").val('');
     		$("#price").attr('readonly', true);
     		$("#price").val('');
     		$("#period_from").attr('readonly', true);
     		$("#period_to").val('');
     		$("#max_day_job").val('');
     	} else {
-    		$("#division").val(division);
+    		$("#category").val(category);
     		$("#price").removeAttr('readonly');
     		$("#price").val(price);
     		$("#period_from").removeAttr('readonly');

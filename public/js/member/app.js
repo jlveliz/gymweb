@@ -78,10 +78,10 @@ jQuery(document).ready(function($) {
             }],
             "orderable": false,
             "order": [
-                [0, 'asc'],
+                [3, 'desc'],
                 [1, 'asc'],
                 [2, 'asc'],
-                [3, 'asc'],
+                [0, 'asc'],
             ],
             "responsive": true
         });

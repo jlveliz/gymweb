@@ -13,8 +13,8 @@
 		<tbody>
 		@foreach ($payments as $pay)
 			<tr>
-				<td><i class="fa fa-calendar-o"></i> {{$pay->created_at}}</td>
-				<td><i class="fa fa-money"></i> {{$pay->value}}</td>
+				<td><i class="fa fa-calendar-o"></i> {{$pay->getCreatedAtFormated()}}</td>
+				<td><i class="fa fa-dollar"></i> {{$pay->value}}</td>
 			</tr>
 		@endforeach
 		</tbody>
