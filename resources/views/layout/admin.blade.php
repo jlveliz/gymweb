@@ -61,8 +61,13 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="{{ route('admgym.auth.logout') }}"><i class="fa fa-sign-out pull-right"></i> Salir</a>
+                                    <li><a href="{{ route('admgym.profile.index') }}"><i class="fa fa-user"></i> Mi Perfil</a></li>
+                                    <li>
+                                        <a href="{{ route('admgym.auth.logout') }}"><i class="fa fa-sign-out"></i> Salir
+                                        </a>
                                     </li>
+
+
                                 </ul>
                             </li>
                         </ul>

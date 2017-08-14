@@ -48,6 +48,10 @@ Route::group(['prefix' => 'admgym'],function(){
 
 	Route::get('/dashboard','Admin\DashboardController@showDashboard')->name('admgym.dashboard');
 
+	//profile
+	Route::get('/profile','Admin\User\ProfileController@index')->name('admgym.profile.index');
+	Route::post('/profile','Admin\User\ProfileController@update')->name('admgym.profile.update');
+
 
 	Route::resource('members','Admin\Member\MemberController');
 	Route::resource('members.memberships','Admin\Membership\MembershipController',['only'=>['create','store','update']]);
